@@ -18,11 +18,11 @@ import CertificateItem from "@/components/user-components/CertificateItem.astro"
       Deep-dive courses with comprehensive learning notes
     </div>
 
-<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  {certificates.map((certificate) => (
-    <CertificateItem key={certificate.title} certificate={certificate} />
-  ))}
-</div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {certificates.map((certificate) => (
+        <CertificateItem key={certificate.title} certificate={certificate} />
+      ))}
+    </div>
 
   </div>
 </section>

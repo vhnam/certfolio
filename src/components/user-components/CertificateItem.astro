@@ -1,7 +1,8 @@
 ---
 import { AwardIcon, LinkIcon, BookIcon, CheckIcon } from "@lucide/astro";
+import type { Certificate } from "@/models/certificate";
 
-const { certificate } = Astro.props;
+const { certificate } = Astro.props as { certificate: Certificate };
 const { title, description, link, completed, certificateUrl, completedDate } =
   certificate || {};
 
