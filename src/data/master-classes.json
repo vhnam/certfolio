@@ -1,0 +1,14 @@
+{
+    "masterClasses": [
+        {
+            "title": "How to Design Forms Like an Expert",
+            "link": "/master-classes/how-to-design-forms-like-an-expert",
+            "description": "Learn User Experience (UX) and Design from experts"
+        },
+        {
+            "title": "Design for AI Agents: Healthcare and High-Stakes Systems",
+            "link": "/master-classes/design-for-ai-agents-healthcare-and-high-stakes-systems",
+            "description": "Discover how UX design enhances AI agents in healthcare and high-stakes systems, ensuring user-friendly experiences that improve outcomes and efficiency."
+        }
+    ]
+}

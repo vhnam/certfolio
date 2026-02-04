@@ -1,40 +1,49 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: Certfolio
+description: A centralized vault for IxDF learning notes, comprehensive certifications, and master class insights
+template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
-  actions:
-    - text: Example Guide
-      link: /guides/example/
-      icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
+  tagline: Curated insights, notes, and projects from my <strong>IxDF learning path</strong> and beyond — a centralized vault for continuous growth
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { CardGrid, LinkCard } from "@astrojs/starlight/components";
+import { masterClasses } from "@/data/master-classes.json";
+import { certificates } from "@/data/certificates.json";
+import CertificateItem from "@/components/user-components/CertificateItem.astro";
 
-## Next steps
+<section class="py-16">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10 text-center">
+      ## Certificates
+      Deep-dive courses with comprehensive learning notes
+    </div>
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
-</CardGrid>
+<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  {certificates.map((certificate) => (
+    <CertificateItem key={certificate.title} certificate={certificate} />
+  ))}
+</div>
+
+  </div>
+</section>
+
+<section class="border-t border-border/40 bg-gradient-to-b from-secondary/10 to-background py-20">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+    <div class="mb-12 text-center">
+      ## Master Classes
+      Curated insights from 90-120 minute webinars — distilled into quick reads
+    </div>
+
+    <CardGrid>
+      {masterClasses.map((masterClass) => (
+        <LinkCard
+          key={masterClass.title}
+          title={masterClass.title}
+          href={masterClass.link}
+          description={masterClass.description}
+        />
+      ))}
+    </CardGrid>
+
+  </div>
+</section>
