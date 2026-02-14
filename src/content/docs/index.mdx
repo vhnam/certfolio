@@ -7,9 +7,11 @@ hero:
 ---
 
 import { CardGrid, LinkCard } from "@astrojs/starlight/components";
+
+import CertificateItem from "@/components/user-components/CertificateItem.astro";
+
 import { masterClasses } from "@/data/master-classes.json";
 import { certificates } from "@/data/certificates.json";
-import CertificateItem from "@/components/user-components/CertificateItem.astro";
 
 <section class="py-16">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,7 +20,7 @@ import CertificateItem from "@/components/user-components/CertificateItem.astro"
       Deep-dive courses with comprehensive learning notes
     </div>
 
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 [&>div]:mt-0">
       {certificates.map((certificate) => (
         <CertificateItem key={certificate.title} certificate={certificate} />
       ))}
