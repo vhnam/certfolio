@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill-rule="evenodd" d="M81 36 64 0 47 36l-1 2-9-10a6 6 0 0 0-9 9l10 10h-2L0 64l36 17h2L28 91a6 6 0 1 0 9 9l9-10 1 2 17 36 17-36v-2l9 10a6 6 0 1 0 9-9l-9-9 2-1 36-17-36-17-2-1 9-9a6 6 0 1 0-9-9l-9 10v-2Zm-17 2-2 5c-4 8-11 15-19 19l-5 2 5 2c8 4 15 11 19 19l2 5 2-5c4-8 11-15 19-19l5-2-5-2c-8-4-15-11-19-19l-2-5Z" clip-rule="evenodd"/><path d="M118 19a6 6 0 0 0-9-9l-3 3a6 6 0 1 0 9 9l3-3Zm-96 4c-2 2-6 2-9 0l-3-3a6 6 0 1 1 9-9l3 3c3 2 3 6 0 9Zm0 82c-2-2-6-2-9 0l-3 3a6 6 0 1 0 9 9l3-3c3-2 3-6 0-9Zm96 4a6 6 0 0 1-9 9l-3-3a6 6 0 1 1 9-9l3 3Z"/><style>path{fill:#000}@media (prefers-color-scheme:dark){path{fill:#fff}}</style></svg>
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 26.25C15 22.1079 18.3579 18.75 22.5 18.75H48.75L56.25 26.25H97.5C101.642 26.25 105 29.6079 105 33.75V93.75C105 97.8921 101.642 101.25 97.5 101.25H22.5C18.3579 101.25 15 97.8921 15 93.75V26.25Z" fill="#1E9DF1" fill-opacity="0.2"/>
+<path d="M15 26.25C15 22.1079 18.3579 18.75 22.5 18.75H48.75L56.25 26.25H97.5C101.642 26.25 105 29.6079 105 33.75V93.75C105 97.8921 101.642 101.25 97.5 101.25H22.5C18.3579 101.25 15 97.8921 15 93.75V26.25Z" stroke="#1E9DF1" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M82.5 41.25H37.5C35.4289 41.25 33.75 42.9289 33.75 45V82.5C33.75 84.5711 35.4289 86.25 37.5 86.25H82.5C84.5711 86.25 86.25 84.5711 86.25 82.5V45C86.25 42.9289 84.5711 41.25 82.5 41.25Z" fill="white" stroke="#1E9DF1" stroke-width="3.75"/>
+<path d="M41.25 52.5H78.75" stroke="#1E9DF1" stroke-width="2.8125" stroke-linecap="round"/>
+<path d="M41.25 60H71.25" stroke="#1E9DF1" stroke-width="2.8125" stroke-linecap="round"/>
+<path d="M41.25 67.5H75" stroke="#1E9DF1" stroke-width="2.8125" stroke-linecap="round"/>
+<path d="M71.25 84.375C76.4277 84.375 80.625 80.1777 80.625 75C80.625 69.8223 76.4277 65.625 71.25 65.625C66.0723 65.625 61.875 69.8223 61.875 75C61.875 80.1777 66.0723 84.375 71.25 84.375Z" fill="#1E9DF1"/>
+<path d="M67.5 82.5L71.25 88.125L75 82.5" stroke="#1E9DF1" stroke-width="2.8125" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M71.25 70.3125L72.1875 73.125L75 74.0625L72.1875 75L71.25 77.8125L70.3125 75L67.5 74.0625L70.3125 73.125L71.25 70.3125Z" fill="white"/>
+</svg>
