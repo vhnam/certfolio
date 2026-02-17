@@ -25,6 +25,10 @@ export default defineConfig({
               label: "Design for AI Agents: Healthcare and High-Stakes Systems",
               link: "/master-classes/design-for-ai-agents-healthcare-and-high-stakes-systems",
             },
+            {
+              label: "Bring AI into Your Design System: Hands-On Workshop",
+              link: "/master-classes/bring-ai-into-your-design-system-hands-on-workshop",
+            },
           ],
         },
       ],
