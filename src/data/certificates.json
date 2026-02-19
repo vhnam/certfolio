@@ -31,6 +31,14 @@
             "completed": false,
             "certificateUrl": null,
             "completedDate": null
+        },
+        {
+            "title": "UX Management: Strategy and Tactics",
+            "description": "This course will explore will explore the ins and outs of UX maturity as well as the best practices on how to manage and support your UX and UI teams.",
+            "link": "https://github.com/vhnam/ux-management-strategy-and-tactics",
+            "completed": false,
+            "certificateUrl": null,
+            "completedDate": null
         }
     ]
 }
