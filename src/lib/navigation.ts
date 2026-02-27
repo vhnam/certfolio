@@ -28,6 +28,12 @@ export type CertRef = {
   path: string;
 };
 
+export type MasterClassRef = {
+  title: string;
+  slug: string;
+  path: string;
+};
+
 type Entry = {
   id: string;
   data: { title: string; description?: string; order?: number };
@@ -45,12 +51,12 @@ type Entry = {
  */
 export function buildCertNavigation(
   entries: Entry[],
-  certSlug: string
+  certSlug: string,
 ): NavCertificate | null {
-  const prefix = certSlug + '/';
+  const prefix = certSlug + "/";
   const certEntries = entries.filter((e) => e.id.startsWith(prefix));
 
-  const rootEntry = certEntries.find((e) => e.id === prefix + 'index');
+  const rootEntry = certEntries.find((e) => e.id === prefix + "index");
   if (!rootEntry) return null;
 
   let hasKeyLearnings = false;
@@ -59,11 +65,17 @@ export function buildCertNavigation(
 
   for (const entry of certEntries) {
     const rel = entry.id.slice(prefix.length);
-    const parts = rel.split('/');
+    const parts = rel.split("/");
 
-    if (rel === 'index') continue;
-    if (rel === 'key-learnings') { hasKeyLearnings = true; continue; }
-    if (rel === 'reflection') { hasReflection = true; continue; }
+    if (rel === "index") continue;
+    if (rel === "key-learnings") {
+      hasKeyLearnings = true;
+      continue;
+    }
+    if (rel === "reflection") {
+      hasReflection = true;
+      continue;
+    }
 
     // Has a sub-path → it's inside a chapter directory
     if (parts.length >= 2) {
@@ -74,11 +86,13 @@ export function buildCertNavigation(
   const chapters: NavChapter[] = [];
 
   for (const chapterSlug of chapterSlugs) {
-    const chapterPrefix = prefix + chapterSlug + '/';
-    const chapterIndex = certEntries.find((e) => e.id === chapterPrefix + 'index');
+    const chapterPrefix = prefix + chapterSlug + "/";
+    const chapterIndex = certEntries.find(
+      (e) => e.id === chapterPrefix + "index",
+    );
 
     const lessons = certEntries
-      .filter((e) => e.id.startsWith(chapterPrefix) && !e.id.endsWith('/index'))
+      .filter((e) => e.id.startsWith(chapterPrefix) && !e.id.endsWith("/index"))
       .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
       .map((e) => {
         const lessonSlug = e.id.slice(chapterPrefix.length);
@@ -114,15 +128,14 @@ export function buildCertNavigation(
   };
 }
 
-/** Extract the flat list of certificate references for the global nav view. */
 export function buildCertList(entries: Entry[]): CertRef[] {
   return entries
     .filter((e) => {
-      const parts = e.id.split('/');
-      return parts.length === 2 && parts[1] === 'index';
+      const parts = e.id.split("/");
+      return parts.length === 1;
     })
     .map((e) => {
-      const certSlug = e.id.split('/')[0];
+      const certSlug = e.id.split("/")[0];
       return {
         title: e.data.title,
         slug: certSlug,
@@ -138,16 +151,16 @@ export function buildCertList(entries: Entry[]): CertRef[] {
  */
 export function buildBreadcrumbs(
   currentPath: string,
-  currentCert: NavCertificate | null
+  currentCert: NavCertificate | null,
 ): Array<{ label: string; href?: string }> {
-  const normalized = currentPath.replace(/\/$/, '');
-  const parts = normalized.split('/').filter(Boolean);
+  const normalized = currentPath.replace(/\/$/, "");
+  const parts = normalized.split("/").filter(Boolean);
   // parts[0] = 'certificates', parts[1] = certSlug, parts[2] = chapter/key-learnings/reflection, parts[3] = lesson
 
-  if (parts[0] !== 'certificates') return [];
+  if (parts[0] !== "certificates") return [];
 
   const crumbs: Array<{ label: string; href?: string }> = [
-    { label: 'Certificates', href: '/certificates/' },
+    { label: "Certificates", href: "/certificates/" },
   ];
 
   if (parts.length < 2 || !currentCert) return crumbs;
@@ -162,13 +175,13 @@ export function buildBreadcrumbs(
 
   const thirdPart = parts[2];
 
-  if (thirdPart === 'key-learnings') {
-    crumbs.push({ label: 'Key Learnings' });
+  if (thirdPart === "key-learnings") {
+    crumbs.push({ label: "Key Learnings" });
     return crumbs;
   }
 
-  if (thirdPart === 'reflection') {
-    crumbs.push({ label: 'Reflection' });
+  if (thirdPart === "reflection") {
+    crumbs.push({ label: "Reflection" });
     return crumbs;
   }
 
@@ -196,7 +209,23 @@ function extractNumberFromSlug(slug: string): number {
 
 function formatSlug(slug: string): string {
   return slug
-    .split('-')
+    .split("-")
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(' ');
+    .join(" ");
+}
+
+export function buildMasterClassList(entries: Entry[]): MasterClassRef[] {
+  return entries
+    .filter((e) => {
+      const parts = e.id.split("/");
+      return parts.length === 1;
+    })
+    .map((e) => {
+      const masterClassSlug = e.id.split("/")[0];
+      return {
+        title: e.data.title,
+        slug: masterClassSlug,
+        path: `/master-classes/${masterClassSlug}/`,
+      };
+    });
 }

@@ -11,6 +11,7 @@ import {
   buildCertList,
   buildCertNavigation,
   buildBreadcrumbs,
+  buildMasterClassList,
 } from "@/lib/navigation";
 
 interface Props {
@@ -45,8 +46,10 @@ const currentPath = Astro.url.pathname;
 
 // ── Navigation data ──────────────────────────────────────────────────────────
 const certEntries = await getCollection("certificate").catch(() => []);
+const masterClassEntries = await getCollection("masterClass").catch(() => []);
 
 const allCerts = buildCertList(certEntries);
+const allMasterClasses = buildMasterClassList(masterClassEntries);
 
 // Detect which certificate context we're in (null when on global pages)
 const pathParts = currentPath.split("/").filter(Boolean);
@@ -141,8 +144,8 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
     </style>
   </head>
 
-  <body class="min-h-screen bg-background text-foreground antialiased">
-    <div class="flex min-h-screen">
+  <body class="overflow-y-auto h-dvh bg-background text-foreground antialiased">
+    <div class="flex overflow-y-auto h-dvh">
 
       <!-- ── Desktop sidebar ─────────────────────────────────────────────── -->
       <aside
@@ -163,6 +166,7 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
           <Sidebar
             client:load
             certificates={allCerts}
+            masterClasses={allMasterClasses}
             currentCert={currentCert}
             currentPath={currentPath}
           />
@@ -188,7 +192,7 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
         </header>
 
         <!-- Content area -->
-        <main class="flex-1 px-6 py-10 md:px-10">
+        <main class="flex-1 px-6 py-10 md:px-10 overflow-y-auto h-dvh">
           <div class="mx-auto w-full max-w-3xl">
             <Breadcrumb items={breadcrumbs} />
             <slot />

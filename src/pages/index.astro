@@ -1,7 +1,74 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { buildCertList, buildMasterClassList } from "@/lib/navigation";
+
+const certEntries = await getCollection("certificate").catch(() => []);
+const certs = buildCertList(certEntries);
+
+const masterClassEntries = await getCollection("masterClass").catch(() => []);
+const masterClasses = buildMasterClassList(masterClassEntries);
 ---
 
-<Layout>
-  <h1>Hello World</h1>
+<Layout
+  title="Certificates"
+  description="Notes and learnings from professional certificates."
+>
+  <h1 class="text-3xl font-bold tracking-tight text-foreground mb-2">
+    Certfolio
+  </h1>
+  <p class="text-muted-foreground mb-10">
+    Structured notes and key learnings from professional design and technology
+    certificates. Select a certificate below to explore the content.
+  </p>
+
+  <h2 class="text-2xl font-bold tracking-tight text-foreground mb-2">
+    Certificates
+  </h2>
+  {
+    certs.length === 0 ? (
+      <p class="text-muted-foreground">No certificates found.</p>
+    ) : (
+      <ul class="flex flex-col gap-3">
+        {certs.map((cert) => (
+          <li>
+            <a
+              href={cert.path}
+              class="flex items-center justify-between rounded-lg border border-border bg-card px-5 py-4 text-sm transition-colors hover:border-primary/40 hover:bg-accent/40"
+            >
+              <span class="font-medium text-foreground">{cert.title}</span>
+              <span class="text-muted-foreground text-xs">View notes →</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  <div class="my-10"></div>
+
+  <h2 class="text-2xl font-bold tracking-tight text-foreground mb-2">
+    Master Classes
+  </h2>
+  {
+    masterClasses.length === 0 ? (
+      <p class="text-muted-foreground">No master classes found.</p>
+    ) : (
+      <ul class="flex flex-col gap-3">
+        {masterClasses.map((masterClass) => (
+          <li>
+            <a
+              href={masterClass.path}
+              class="flex items-center justify-between rounded-lg border border-border bg-card px-5 py-4 text-sm transition-colors hover:border-primary/40 hover:bg-accent/40"
+            >
+              <span class="font-medium text-foreground">
+                {masterClass.title}
+              </span>
+              <span class="text-muted-foreground text-xs">View notes →</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
 </Layout>

@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { IconChevronDown, IconChevronLeft } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
-import type { NavCertificate, CertRef } from "@/lib/navigation";
+import type { NavCertificate, CertRef, MasterClassRef } from "@/lib/navigation";
 
 interface SidebarProps {
   certificates: CertRef[];
   currentCert: NavCertificate | null;
   currentPath: string;
+  masterClasses: MasterClassRef[];
 }
 
-export function Sidebar({ certificates, currentCert, currentPath }: SidebarProps) {
+export function Sidebar({ certificates, currentCert, currentPath, masterClasses }: SidebarProps) {
   const storageKey = currentCert ? `nav-expanded-${currentCert.slug}` : null;
 
   const [expandedChapters, setExpandedChapters] = useState<Set<string>>(() => {
@@ -67,6 +68,15 @@ export function Sidebar({ certificates, currentCert, currentPath }: SidebarProps
             )}
           >
             {cert.title}
+          </a>
+        ))}
+        <span className="my-3"></span>
+        <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+          Master Classes
+        </p>
+        {masterClasses.map((masterClass) => (
+          <a key={masterClass.slug} href={masterClass.path} className="rounded-md px-3 py-1.5 text-sm transition-colors">
+            {masterClass.title}
           </a>
         ))}
       </nav>
