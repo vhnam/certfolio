@@ -1,3 +1,25 @@
 ---
 title: "Accessibility: How to Design for All"
 ---
+
+import { CourseOverview } from "@/components/CourseOverview";
+import { ChapterOverview } from "@/components/ChapterOverview";
+import data from "@/data/certificates/accessibility-how-to-design-for-all.json";
+
+<p className="text-lg text-gray-600 leading-relaxed">{data.description}</p>
+
+<CourseOverview
+  chapters={data.chapters}
+>
+
+This course will help you design accessible products that people genuinely love to use. You’ll discover how prioritizing accessibility improves the experience for everyone—not just people with disabilities. Simple examples like video captions show how inclusive features benefit users in noisy environments, non-native speakers, and anyone browsing with sound off. With over one billion people worldwide living with disabilities, accessibility is not a niche concern—it’s a massive opportunity to create meaningful impact.
+
+Beyond doing the right thing, you’ll learn why accessibility is smart business. The course shows you how inclusive design can expand your market reach, strengthen user loyalty, and protect your brand from legal risks. You’ll gain the tools to clearly demonstrate the return on investment (ROI) of accessibility and build compelling business cases that resonate with stakeholders.
+
+You’ll develop practical, hands-on skills for implementing accessibility standards like WCAG, applying ARIA markup, writing effective alt text, and using ready-to-use accessibility screening templates. Through expert insights—including perspectives from an accessibility specialist with visual impairment—you’ll build a deep understanding of how design decisions affect usability for people with different abilities.
+
+Whether you’re new to accessibility or looking to deepen your expertise, this course equips you with timeless, human-centered skills that remain valuable—even as AI-powered features evolve. By the end, you’ll be confident in creating inclusive, compliant, and high-performing digital products that work better for everyone.
+
+</CourseOverview>
+
+<ChapterOverview chapters={data.chapters} />

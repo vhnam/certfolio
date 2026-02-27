@@ -1,5 +1,5 @@
 ---
-title: "How Accessibility Impacts Usability and SEO"
+title: How Accessibility Impacts Usability and SEO
 ---
 
 ## Accessibility, Usability, and SEO Relationship

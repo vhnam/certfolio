@@ -1,5 +1,5 @@
 ---
-title: "Lession 1 Recap"
+title: Lesson 1 Recap
 ---
 
 - Accessibility is a legal, moral and business imperative.

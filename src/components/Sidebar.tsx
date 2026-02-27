@@ -10,7 +10,12 @@ interface SidebarProps {
   masterClasses: MasterClassRef[];
 }
 
-export function Sidebar({ certificates, currentCert, currentPath, masterClasses }: SidebarProps) {
+export function Sidebar({
+  certificates,
+  currentCert,
+  currentPath,
+  masterClasses,
+}: SidebarProps) {
   const storageKey = currentCert ? `nav-expanded-${currentCert.slug}` : null;
 
   const [expandedChapters, setExpandedChapters] = useState<Set<string>>(() => {
@@ -24,7 +29,7 @@ export function Sidebar({ certificates, currentCert, currentPath, masterClasses 
     // Always expand the chapter that contains the current page
     if (currentCert) {
       const active = currentCert.chapters.find((ch) =>
-        currentPath.startsWith(ch.path)
+        currentPath.startsWith(ch.path),
       );
       if (active) result.add(active.slug);
     }
@@ -47,7 +52,9 @@ export function Sidebar({ certificates, currentCert, currentPath, masterClasses 
   }
 
   const isActive = (path: string) =>
-    currentPath === path || currentPath === path.replace(/\/$/, "") || currentPath + "/" === path;
+    currentPath === path ||
+    currentPath === path.replace(/\/$/, "") ||
+    currentPath + "/" === path;
 
   // ── Global view ──────────────────────────────────────────────────────────
   if (!currentCert) {
@@ -64,7 +71,7 @@ export function Sidebar({ certificates, currentCert, currentPath, masterClasses 
               "rounded-md px-3 py-2 text-sm transition-colors",
               isActive(cert.path)
                 ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
-                : "text-sidebar-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground"
+                : "text-sidebar-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground",
             )}
           >
             {cert.title}
@@ -75,7 +82,11 @@ export function Sidebar({ certificates, currentCert, currentPath, masterClasses 
           Master Classes
         </p>
         {masterClasses.map((masterClass) => (
-          <a key={masterClass.slug} href={masterClass.path} className="rounded-md px-3 py-1.5 text-sm transition-colors">
+          <a
+            key={masterClass.slug}
+            href={masterClass.path}
+            className="rounded-md px-3 py-1.5 text-sm transition-colors"
+          >
             {masterClass.title}
           </a>
         ))}
@@ -102,7 +113,7 @@ export function Sidebar({ certificates, currentCert, currentPath, masterClasses 
           "mb-1 block truncate px-3 text-[13px] font-semibold leading-tight transition-colors",
           isActive(currentCert.path)
             ? "text-sidebar-primary"
-            : "text-sidebar-foreground hover:text-sidebar-primary"
+            : "text-sidebar-foreground hover:text-sidebar-primary",
         )}
       >
         {currentCert.title}
@@ -115,7 +126,7 @@ export function Sidebar({ certificates, currentCert, currentPath, masterClasses 
           "rounded-md px-3 py-1.5 text-sm transition-colors",
           isActive(currentCert.path)
             ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
-            : "text-sidebar-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground"
+            : "text-sidebar-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground",
         )}
       >
         Overview
@@ -138,13 +149,15 @@ export function Sidebar({ certificates, currentCert, currentPath, masterClasses 
                 "flex items-center rounded-md transition-colors",
                 isChapterActive && !isActive(chapter.path)
                   ? "text-sidebar-foreground"
-                  : ""
+                  : "",
               )}
             >
               <a
                 href={chapter.path}
                 onClick={() =>
-                  setExpandedChapters((prev) => new Set([...prev, chapter.slug]))
+                  setExpandedChapters(
+                    (prev) => new Set([...prev, chapter.slug]),
+                  )
                 }
                 className={cn(
                   "flex-1 rounded-l-md px-3 py-1.5 text-sm transition-colors",
@@ -152,7 +165,7 @@ export function Sidebar({ certificates, currentCert, currentPath, masterClasses 
                     ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
                     : isChapterActive
                       ? "text-sidebar-foreground font-medium hover:bg-sidebar-accent/60"
-                      : "text-sidebar-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground"
+                      : "text-sidebar-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground",
                 )}
               >
                 {chapter.title}
@@ -164,7 +177,7 @@ export function Sidebar({ certificates, currentCert, currentPath, masterClasses 
                   "rounded-r-md p-1.5 pr-2.5 transition-colors",
                   isActive(chapter.path)
                     ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                    : "text-muted-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-foreground"
+                    : "text-muted-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-foreground",
                 )}
               >
                 <IconChevronDown
@@ -172,7 +185,7 @@ export function Sidebar({ certificates, currentCert, currentPath, masterClasses 
                   strokeWidth={2}
                   className={cn(
                     "transition-transform duration-200",
-                    isExpanded && "rotate-180"
+                    isExpanded && "rotate-180",
                   )}
                 />
               </button>
@@ -189,7 +202,7 @@ export function Sidebar({ certificates, currentCert, currentPath, masterClasses 
                       "rounded-md px-2 py-1.5 text-[13px] leading-snug transition-colors",
                       isActive(lesson.path)
                         ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
-                        : "text-muted-foreground hover:bg-sidebar-accent/60 hover:text-foreground"
+                        : "text-muted-foreground hover:bg-sidebar-accent/60 hover:text-foreground",
                     )}
                   >
                     {lesson.title}
@@ -200,39 +213,6 @@ export function Sidebar({ certificates, currentCert, currentPath, masterClasses 
           </div>
         );
       })}
-
-      {/* Key Learnings & Reflection */}
-      {(currentCert.hasKeyLearnings || currentCert.hasReflection) && (
-        <div className="my-2 h-px bg-sidebar-border" />
-      )}
-
-      {currentCert.hasKeyLearnings && (
-        <a
-          href={`${currentCert.path}key-learnings/`}
-          className={cn(
-            "rounded-md px-3 py-1.5 text-sm transition-colors",
-            isActive(`${currentCert.path}key-learnings/`)
-              ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
-              : "text-sidebar-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground"
-          )}
-        >
-          Key Learnings
-        </a>
-      )}
-
-      {currentCert.hasReflection && (
-        <a
-          href={`${currentCert.path}reflection/`}
-          className={cn(
-            "rounded-md px-3 py-1.5 text-sm transition-colors",
-            isActive(`${currentCert.path}reflection/`)
-              ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
-              : "text-sidebar-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground"
-          )}
-        >
-          Reflection
-        </a>
-      )}
     </nav>
   );
 }

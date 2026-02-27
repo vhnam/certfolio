@@ -3,6 +3,17 @@ export interface Certificate {
     description: string;
     link: string;
     completed: boolean;
-    certificateUrl: string | null;
+    certificateLink: string | null;
     completedDate: string | null;
+    chapters: Chapter[];
+}
+
+export interface Chapter {
+    title: string;
+    lessons: Lesson[];
+}
+
+export interface Lesson {
+    title: string;
+    slug: string;
 }

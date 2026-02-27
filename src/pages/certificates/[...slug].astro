@@ -6,10 +6,6 @@ export async function getStaticPaths() {
   const entries = await getCollection("certificate");
 
   return entries.map((entry) => {
-    // Map entry ID to a URL-friendly route slug.
-    // "google-ux-design/index"           → "google-ux-design"
-    // "google-ux-design/chapter-1/index" → "google-ux-design/chapter-1"
-    // "google-ux-design/chapter-1/lesson-1" → "google-ux-design/chapter-1/lesson-1"
     const routeSlug = entry.id.replace(/\/index$/, "");
 
     return {

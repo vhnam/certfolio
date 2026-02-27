@@ -1,5 +1,5 @@
 ---
-title: "Experiencing Accessibility Issues With Each Disability Type"
+title: Experiencing Accessibility Issues With Each Disability Type
 ---
 
 > Note that the video refers to Asperger syndrome. While this used to be an officially recognized condition, it has now been folded into Autism Spectrum Disorders more generally, along with a number of related diagnoses. Asperger syndrome does not appear in the Diagnostic and Statistical Manual of Mental Disorders (DSM-5-TR).

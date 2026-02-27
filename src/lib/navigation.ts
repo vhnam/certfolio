@@ -9,8 +9,8 @@ export type NavChapter = {
   title: string;
   slug: string;
   path: string;
-  order: number;
   lessons: NavLesson[];
+  order: number;
 };
 
 export type NavCertificate = {
@@ -18,8 +18,6 @@ export type NavCertificate = {
   slug: string;
   path: string;
   chapters: NavChapter[];
-  hasKeyLearnings: boolean;
-  hasReflection: boolean;
 };
 
 export type CertRef = {
@@ -39,92 +37,112 @@ type Entry = {
   data: { title: string; description?: string; order?: number };
 };
 
+const CERT_BASE = "/certificates/";
+
+/**
+ * Normalize entry id to a path relative to the certificate collection.
+ * Supports both formats: "certSlug/..." or "/certificates/certSlug/...".
+ */
+function normalizeEntryId(id: string): string {
+  return id.startsWith(CERT_BASE) ? id.slice(CERT_BASE.length) : id;
+}
+
 /**
  * Build the full navigation tree for a single certificate.
  *
- * Entry ID format (from glob loader, no extension):
- *   "google-ux-design/index"
- *   "google-ux-design/chapter-1/index"
- *   "google-ux-design/chapter-1/lesson-1"
- *   "google-ux-design/key-learnings"
- *   "google-ux-design/reflection"
+ * URLs produced (matching these patterns):
+ *   /certificates
+ *   /certificates/{certSlug}
+ *   /certificates/{certSlug}/{chapterSlug}
+ *   /certificates/{certSlug}/{chapterSlug}/{lessonSlug}
+ *
+ * Entry IDs may be relative (certSlug/..., certSlug/index) or absolute
+ * (/certificates/certSlug/...); both are normalized for matching.
  */
 export function buildCertNavigation(
   entries: Entry[],
   certSlug: string,
 ): NavCertificate | null {
   const prefix = certSlug + "/";
-  const certEntries = entries.filter((e) => e.id.startsWith(prefix));
+  const certEntries = entries.filter((e) => {
+    const id = normalizeEntryId(e.id);
+    return id === certSlug || id.startsWith(prefix);
+  });
 
-  const rootEntry = certEntries.find((e) => e.id === prefix + "index");
+  const rootEntry = certEntries.find((e) => {
+    const id = normalizeEntryId(e.id);
+    return id === certSlug || id === prefix + "index";
+  });
   if (!rootEntry) return null;
 
-  let hasKeyLearnings = false;
-  let hasReflection = false;
   const chapterSlugs = new Set<string>();
 
   for (const entry of certEntries) {
-    const rel = entry.id.slice(prefix.length);
+    const id = normalizeEntryId(entry.id);
+    const rel = id === certSlug ? "index" : id.slice(prefix.length);
     const parts = rel.split("/");
 
     if (rel === "index") continue;
-    if (rel === "key-learnings") {
-      hasKeyLearnings = true;
-      continue;
-    }
-    if (rel === "reflection") {
-      hasReflection = true;
-      continue;
-    }
 
-    // Has a sub-path → it's inside a chapter directory
-    if (parts.length >= 2) {
+    if (parts.length >= 1) {
       chapterSlugs.add(parts[0]);
     }
   }
 
   const chapters: NavChapter[] = [];
+  const sortedChapterSlugs = Array.from(chapterSlugs).sort((a, b) =>
+    a.localeCompare(b),
+  );
 
-  for (const chapterSlug of chapterSlugs) {
+  for (let chapterIndex = 0; chapterIndex < sortedChapterSlugs.length; chapterIndex++) {
+    const chapterSlug = sortedChapterSlugs[chapterIndex];
     const chapterPrefix = prefix + chapterSlug + "/";
-    const chapterIndex = certEntries.find(
-      (e) => e.id === chapterPrefix + "index",
-    );
+    const chapterIndexEntry = certEntries.find((e) => {
+      const id = normalizeEntryId(e.id);
+      return id === chapterPrefix.slice(0, -1) || id === chapterPrefix + "index";
+    });
 
-    const lessons = certEntries
-      .filter((e) => e.id.startsWith(chapterPrefix) && !e.id.endsWith("/index"))
-      .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
-      .map((e) => {
-        const lessonSlug = e.id.slice(chapterPrefix.length);
-        return {
-          title: e.data.title,
-          slug: lessonSlug,
-          path: `/certificates/${certSlug}/${chapterSlug}/${lessonSlug}/`,
-          order: e.data.order ?? 99,
-        };
-      });
+    const lessonEntries = certEntries.filter((e) => {
+      const id = normalizeEntryId(e.id);
+      return (
+        id.startsWith(chapterPrefix) &&
+        id !== chapterPrefix.slice(0, -1) &&
+        id !== chapterPrefix + "index"
+      );
+    });
 
-    const chapterOrder =
-      chapterIndex?.data.order ?? extractNumberFromSlug(chapterSlug);
+    const sortedLessonEntries = [...lessonEntries].sort((a, b) => {
+      const idA = normalizeEntryId(a.id);
+      const idB = normalizeEntryId(b.id);
+      return idA.localeCompare(idB);
+    });
+
+    const lessons = sortedLessonEntries.map((e, lessonIndex) => {
+      const id = normalizeEntryId(e.id);
+      const rel = id.slice(chapterPrefix.length);
+      const lessonSlug = rel.replace(/\/index$/, "");
+      return {
+        title: e.data.title,
+        slug: lessonSlug,
+        path: `${CERT_BASE}${certSlug}/${chapterSlug}/${lessonSlug}/`,
+        order: lessonIndex,
+      };
+    });
 
     chapters.push({
-      title: chapterIndex?.data.title ?? formatSlug(chapterSlug),
+      title: chapterIndexEntry?.data.title ?? formatSlug(chapterSlug),
       slug: chapterSlug,
-      path: `/certificates/${certSlug}/${chapterSlug}/`,
-      order: chapterOrder,
+      path: `${CERT_BASE}${certSlug}/${chapterSlug}/`,
       lessons,
+      order: chapterIndex,
     });
   }
-
-  chapters.sort((a, b) => a.order - b.order);
 
   return {
     title: rootEntry.data.title,
     slug: certSlug,
-    path: `/certificates/${certSlug}/`,
+    path: `${CERT_BASE}${certSlug}/`,
     chapters,
-    hasKeyLearnings,
-    hasReflection,
   };
 }
 
@@ -142,6 +160,79 @@ export function buildCertList(entries: Entry[]): CertRef[] {
         path: `/certificates/${certSlug}/`,
       };
     });
+}
+
+// ── Data from /data/*.json ───────────────────────────────────────────────────
+
+export type CertificatesListEntry = {
+  title: string;
+  description?: string;
+  slug: string;
+  link?: string;
+  completed?: boolean;
+  certificateLink?: string | null;
+  completedDate?: string | null;
+};
+
+export type CertificatesJson = { certificates: CertificatesListEntry[] };
+
+export type CertDataChapter = {
+  title: string;
+  lessons: Array<{ title: string; slug: string }>;
+};
+
+export type CertDataJson = {
+  title: string;
+  description?: string;
+  chapters: CertDataChapter[];
+};
+
+/** Build cert list from data/certificates.json (requires slug on each entry). */
+export function buildCertListFromData(data: CertificatesJson): CertRef[] {
+  return data.certificates.map((c) => ({
+    title: c.title,
+    slug: c.slug,
+    path: `${CERT_BASE}${c.slug}/`,
+  }));
+}
+
+/**
+ * Build cert navigation from data/certificates/{certSlug}.json.
+ * Lesson slug in JSON is "chapterSlug/lessonSlug".
+ */
+export function buildCertNavigationFromData(
+  certSlug: string,
+  data: CertDataJson,
+): NavCertificate {
+  const chapters: NavChapter[] = data.chapters.map((ch, chapterIndex) => {
+    const chapterSlug =
+      ch.lessons[0]?.slug.split("/")[0] ??
+      ch.title.toLowerCase().replace(/\s+/g, "-");
+    const lessons: NavLesson[] = ch.lessons.map((lesson, lessonIndex) => {
+      const lessonSlug = lesson.slug.includes("/")
+        ? lesson.slug.split("/").pop()!
+        : lesson.slug;
+      return {
+        title: lesson.title,
+        slug: lessonSlug,
+        path: `${CERT_BASE}${certSlug}/${chapterSlug}/${lessonSlug}/`,
+        order: lessonIndex,
+      };
+    });
+    return {
+      title: ch.title,
+      slug: chapterSlug,
+      path: `${CERT_BASE}${certSlug}/${chapterSlug}/`,
+      lessons,
+      order: chapterIndex,
+    };
+  });
+  return {
+    title: data.title,
+    slug: certSlug,
+    path: `${CERT_BASE}${certSlug}/`,
+    chapters,
+  };
 }
 
 /**
@@ -200,11 +291,6 @@ export function buildBreadcrumbs(
   if (lesson) crumbs.push({ label: lesson.title });
 
   return crumbs;
-}
-
-function extractNumberFromSlug(slug: string): number {
-  const match = slug.match(/(\d+)$/);
-  return match ? parseInt(match[1], 10) : 99;
 }
 
 function formatSlug(slug: string): string {

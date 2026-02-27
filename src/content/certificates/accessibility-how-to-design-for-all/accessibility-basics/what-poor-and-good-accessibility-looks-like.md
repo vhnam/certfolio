@@ -1,5 +1,5 @@
 ---
-title: "What Poor and Good Accessibility Looks Like"
+title: What Poor and Good Accessibility Looks Like
 ---
 
 ## The Impact of Accessibility Quality

@@ -8,11 +8,14 @@ import { Sidebar } from "@/components/Sidebar";
 import { MobileDrawer } from "@/components/MobileDrawer";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import {
-  buildCertList,
+  buildCertListFromData,
   buildCertNavigation,
+  buildCertNavigationFromData,
   buildBreadcrumbs,
   buildMasterClassList,
 } from "@/lib/navigation";
+import type { CertificatesJson, CertDataJson } from "@/lib/navigation";
+import certificatesData from "@/data/certificates.json";
 
 interface Props {
   title?: string;
@@ -44,21 +47,33 @@ const {
 
 const currentPath = Astro.url.pathname;
 
-// ── Navigation data ──────────────────────────────────────────────────────────
+// ── Navigation data (reuse /data/*.json) ──────────────────────────────────────
 const certEntries = await getCollection("certificate").catch(() => []);
 const masterClassEntries = await getCollection("masterClass").catch(() => []);
 
-const allCerts = buildCertList(certEntries);
+const allCerts = buildCertListFromData(certificatesData as CertificatesJson);
 const allMasterClasses = buildMasterClassList(masterClassEntries);
 
-// Detect which certificate context we're in (null when on global pages)
+// Cert nav: prefer data/certificates/{slug}.json when present, else from content
+const certDataBySlug = import.meta.glob<{ default: CertDataJson }>(
+  "../data/certificates/*.json",
+  { eager: true },
+);
 const pathParts = currentPath.split("/").filter(Boolean);
 const certSlug =
   pathParts[0] === "certificates" && pathParts[1] ? pathParts[1] : null;
-
-const currentCert = certSlug
-  ? buildCertNavigation(certEntries, certSlug)
-  : null;
+const currentCert = (() => {
+  if (!certSlug) return null;
+  const key = Object.keys(certDataBySlug).find((k) =>
+    k.endsWith(`/${certSlug}.json`),
+  );
+  if (key) {
+    const mod = certDataBySlug[key];
+    const data = mod?.default;
+    return data ? buildCertNavigationFromData(certSlug, data) : null;
+  }
+  return buildCertNavigation(certEntries, certSlug);
+})();
 
 const breadcrumbs = buildBreadcrumbs(currentPath, currentCert);
 
@@ -80,7 +95,14 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
     {description && <meta name="description" content={description} />}
     {keywords && <meta name="keywords" content={keywords} />}
     {author && <meta name="author" content={author} />}
-    {noindex && <meta name="robots" content={nofollow ? "noindex,nofollow" : "noindex"} />}
+    {
+      noindex && (
+        <meta
+          name="robots"
+          content={nofollow ? "noindex,nofollow" : "noindex"}
+        />
+      )
+    }
 
     <!-- Open Graph -->
     <meta property="og:title" content={pageTitle} />
@@ -89,21 +111,39 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
     <meta property="og:site_name" content={siteName} />
     {description && <meta property="og:description" content={description} />}
     {image && <meta property="og:image" content={image} />}
-    {type === "article" && publishedTime && (
-      <meta property="article:published_time" content={publishedTime} />
-    )}
-    {type === "article" && modifiedTime && (
-      <meta property="article:modified_time" content={modifiedTime} />
-    )}
+    {
+      type === "article" && publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )
+    }
+    {
+      type === "article" && modifiedTime && (
+        <meta property="article:modified_time" content={modifiedTime} />
+      )
+    }
 
     <!-- Theme color -->
-    <meta name="theme-color" content="#111826" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#e4e8ef" media="(prefers-color-scheme: dark)" />
+    <meta
+      name="theme-color"
+      content="#111826"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#e4e8ef"
+      media="(prefers-color-scheme: dark)"
+    />
 
     <!-- JSON-LD -->
-    {schema && (
-      <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
-    )}
+    {
+      schema && (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify(schema)}
+        />
+      )
+    }
 
     <ClientRouter />
 
@@ -146,7 +186,6 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
 
   <body class="overflow-y-auto h-dvh bg-background text-foreground antialiased">
     <div class="flex overflow-y-auto h-dvh">
-
       <!-- ── Desktop sidebar ─────────────────────────────────────────────── -->
       <aside
         class="hidden lg:flex w-60 shrink-0 flex-col border-r border-sidebar-border bg-sidebar"
@@ -175,7 +214,6 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
 
       <!-- ── Main column ──────────────────────────────────────────────────── -->
       <div class="flex min-w-0 flex-1 flex-col">
-
         <!-- Mobile top bar -->
         <header
           class="flex items-center gap-3 border-b border-border bg-background px-4 py-3 lg:hidden"
@@ -192,7 +230,7 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
         </header>
 
         <!-- Content area -->
-        <main class="flex-1 px-6 py-10 md:px-10 overflow-y-auto h-dvh">
+        <main class="flex-1 px-4 md:px-6 py-10 md:px-10 overflow-y-auto h-dvh">
           <div class="mx-auto w-full max-w-3xl">
             <Breadcrumb items={breadcrumbs} />
             <slot />
