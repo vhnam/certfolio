@@ -1,0 +1,33 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { buildCertList } from "@/lib/navigation";
+
+const certEntries = await getCollection("certificate").catch(() => []);
+const certs = buildCertList(certEntries);
+---
+
+<Layout title="Certificates" description="Notes and learnings from professional certificates.">
+  <h1 class="text-3xl font-bold tracking-tight text-foreground mb-2">Certificates</h1>
+  <p class="text-muted-foreground mb-10">
+    Structured notes taken while completing professional design certificates.
+  </p>
+
+  {certs.length === 0 ? (
+    <p class="text-muted-foreground">No certificates found.</p>
+  ) : (
+    <ul class="flex flex-col gap-3">
+      {certs.map((cert) => (
+        <li>
+          <a
+            href={cert.path}
+            class="flex items-center justify-between rounded-lg border border-border bg-card px-5 py-4 text-sm transition-colors hover:border-primary/40 hover:bg-accent/40"
+          >
+            <span class="font-medium text-foreground">{cert.title}</span>
+            <span class="text-muted-foreground text-xs">View notes →</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+</Layout>

@@ -1,0 +1,200 @@
+---
+import "@/styles/global.css";
+
+import { ClientRouter } from "astro:transitions";
+import { getCollection } from "astro:content";
+
+import { Sidebar } from "@/components/Sidebar";
+import { MobileDrawer } from "@/components/MobileDrawer";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import {
+  buildCertList,
+  buildCertNavigation,
+  buildBreadcrumbs,
+} from "@/lib/navigation";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article";
+  keywords?: string;
+  author?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  noindex?: boolean;
+  nofollow?: boolean;
+  schema?: Record<string, any>;
+}
+
+const {
+  title,
+  description,
+  image,
+  type = "website",
+  keywords,
+  author,
+  publishedTime,
+  modifiedTime,
+  noindex = false,
+  nofollow = false,
+  schema,
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+
+// ── Navigation data ──────────────────────────────────────────────────────────
+const certEntries = await getCollection("certificate").catch(() => []);
+
+const allCerts = buildCertList(certEntries);
+
+// Detect which certificate context we're in (null when on global pages)
+const pathParts = currentPath.split("/").filter(Boolean);
+const certSlug =
+  pathParts[0] === "certificates" && pathParts[1] ? pathParts[1] : null;
+
+const currentCert = certSlug
+  ? buildCertNavigation(certEntries, certSlug)
+  : null;
+
+const breadcrumbs = buildBreadcrumbs(currentPath, currentCert);
+
+// ── Page metadata ────────────────────────────────────────────────────────────
+const siteName = "Certfolio";
+const pageTitle = title ? `${title} · ${siteName}` : siteName;
+const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <title>{pageTitle}</title>
+    {description && <meta name="description" content={description} />}
+    {keywords && <meta name="keywords" content={keywords} />}
+    {author && <meta name="author" content={author} />}
+    {noindex && <meta name="robots" content={nofollow ? "noindex,nofollow" : "noindex"} />}
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={siteName} />
+    {description && <meta property="og:description" content={description} />}
+    {image && <meta property="og:image" content={image} />}
+    {type === "article" && publishedTime && (
+      <meta property="article:published_time" content={publishedTime} />
+    )}
+    {type === "article" && modifiedTime && (
+      <meta property="article:modified_time" content={modifiedTime} />
+    )}
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#111826" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#e4e8ef" media="(prefers-color-scheme: dark)" />
+
+    <!-- JSON-LD -->
+    {schema && (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+    )}
+
+    <ClientRouter />
+
+    <!-- Inline theme script: runs before first paint to avoid flash -->
+    <script is:inline>
+      (function () {
+        const getTheme = () => {
+          if (typeof localStorage !== "undefined") {
+            const stored = localStorage.getItem("theme");
+            if (stored === "light" || stored === "dark") return stored;
+          }
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        };
+
+        const applyTheme = () => {
+          const theme = getTheme();
+          if (theme === "dark") {
+            document.documentElement.classList.add("dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+          }
+        };
+
+        applyTheme();
+        document.addEventListener("astro:page-load", applyTheme);
+      })();
+    </script>
+
+    <style>
+      /* Keep client-side navigation without view transition animations */
+      ::view-transition-group(*),
+      ::view-transition-old(*),
+      ::view-transition-new(*) {
+        animation-duration: 0ms !important;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen bg-background text-foreground antialiased">
+    <div class="flex min-h-screen">
+
+      <!-- ── Desktop sidebar ─────────────────────────────────────────────── -->
+      <aside
+        class="hidden lg:flex w-60 shrink-0 flex-col border-r border-sidebar-border bg-sidebar"
+      >
+        <!-- Sidebar logo / wordmark -->
+        <div class="border-b border-sidebar-border px-4 py-3.5">
+          <a
+            href="/"
+            class="text-sm font-semibold text-sidebar-foreground hover:text-sidebar-primary transition-colors"
+          >
+            Certfolio
+          </a>
+        </div>
+
+        <!-- Scrollable nav tree -->
+        <div class="flex-1 overflow-y-auto">
+          <Sidebar
+            client:load
+            certificates={allCerts}
+            currentCert={currentCert}
+            currentPath={currentPath}
+          />
+        </div>
+      </aside>
+
+      <!-- ── Main column ──────────────────────────────────────────────────── -->
+      <div class="flex min-w-0 flex-1 flex-col">
+
+        <!-- Mobile top bar -->
+        <header
+          class="flex items-center gap-3 border-b border-border bg-background px-4 py-3 lg:hidden"
+        >
+          <MobileDrawer
+            client:load
+            certificates={allCerts}
+            currentCert={currentCert}
+            currentPath={currentPath}
+          />
+          <a href="/" class="text-sm font-semibold text-foreground">
+            Certfolio
+          </a>
+        </header>
+
+        <!-- Content area -->
+        <main class="flex-1 px-6 py-10 md:px-10">
+          <div class="mx-auto w-full max-w-3xl">
+            <Breadcrumb items={breadcrumbs} />
+            <slot />
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
