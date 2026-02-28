@@ -59,7 +59,10 @@ export function Sidebar({
   // ── Global view ──────────────────────────────────────────────────────────
   if (!currentCert) {
     return (
-      <nav className='flex flex-col gap-0.5 px-3 py-4'>
+      <nav
+        className='flex flex-col gap-0.5 px-3 py-4'
+        aria-label='Main navigation'
+      >
         <p className='mb-2 px-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground'>
           Certificates
         </p>
@@ -96,7 +99,10 @@ export function Sidebar({
 
   // ── Certificate context view ──────────────────────────────────────────────
   return (
-    <nav className='flex flex-col gap-0.5 px-3 py-4'>
+    <nav
+      className='flex flex-col gap-0.5 px-3 py-4'
+      aria-label='Main navigation'
+    >
       {/* Back link */}
       <a
         href='/certificates/'
@@ -173,6 +179,7 @@ export function Sidebar({
               <button
                 onClick={() => toggleChapter(chapter.slug)}
                 aria-label={isExpanded ? 'Collapse chapter' : 'Expand chapter'}
+                aria-expanded={isExpanded}
                 className={cn(
                   'rounded-r-md p-1.5 pr-2.5 transition-colors',
                   isActive(chapter.path)

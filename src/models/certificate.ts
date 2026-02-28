@@ -1,7 +1,7 @@
 export interface Certificate {
   title: string;
   description: string;
-  link: string;
+  courseLink: string;
   completed: boolean;
   certificateLink: string | null;
   completedDate: string | null;

@@ -2,8 +2,6 @@
 title: "Interview: Social Media Accessibility Experiences"
 ---
 
-# Social Media Accessibility: Platform Inconsistency and Task Barriers
-
 ## Facebook: Platform Gaps and Clutter
 
 - The **desktop website** is largely unusable with screen readers, especially for core tasks like commenting.

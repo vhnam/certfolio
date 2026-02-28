@@ -23,7 +23,11 @@ export type NavCertificate = {
 export type CertRef = {
   title: string;
   slug: string;
-  path: string;
+  courseLink: string;
+  description?: string;
+  completed?: boolean;
+  certificateLink?: string | null;
+  completedDate?: string | null;
 };
 
 export type MasterClassRef = {
@@ -199,6 +203,10 @@ export function buildCertListFromData(data: CertificatesJson): CertRef[] {
     title: c.title,
     slug: c.slug,
     path: `${CERT_BASE}${c.slug}/`,
+    description: c.description,
+    completed: c.completed,
+    certificateLink: c.certificateLink,
+    completedDate: c.completedDate,
   }));
 }
 

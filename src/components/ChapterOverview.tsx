@@ -2,9 +2,10 @@ import type { Chapter } from '@/models/certificate';
 
 interface ChapterOverviewProps {
   chapters: Chapter[];
+  slug: string;
 }
 
-export const ChapterOverview = ({ chapters }: ChapterOverviewProps) => {
+export const ChapterOverview = ({ chapters, slug }: ChapterOverviewProps) => {
   return (
     <div>
       <h2 className='text-2xl font-semibold text-gray-900 mb-6'>
@@ -23,7 +24,7 @@ export const ChapterOverview = ({ chapters }: ChapterOverviewProps) => {
               {chapter.lessons.map((lesson) => (
                 <li key={lesson.title}>
                   <a
-                    href={lesson.slug}
+                    href={`${slug}/${lesson.slug}`}
                     className='text-blue-600 hover:text-blue-700 hover:underline text-sm'
                   >
                     {lesson.title}

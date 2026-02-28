@@ -1,10 +1,11 @@
 {
   "title": "Accessibility: How to Design for All",
+  "slug": "accessibility-how-to-design-for-all",
   "description": "This course will explore how to approach accessibility from all angles and incorporate it into your design and development processes.",
   "completed": false,
   "certificateLink": null,
   "completedDate": null,
-  "sourceLink": "https://www.interaction-design.org/courses/accessibility-how-to-design-for-all",
+  "courseLink": "https://www.interaction-design.org/courses/accessibility-how-to-design-for-all",
   "chapters": [
     {
       "title": "Accessibility Basics",

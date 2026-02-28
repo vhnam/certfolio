@@ -1,0 +1,102 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { buildCertListFromData } from "@/lib/navigation";
+import { IconAward } from "@tabler/icons-react";
+import certificatesData from "@/data/certificates.json";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+
+const certificatesList = buildCertListFromData(certificatesData);
+---
+
+<Layout title="Certificates">
+  <div class="mb-12">
+    <h1 class="text-4xl font-bold text-gray-900 mb-4">Certificates</h1>
+    <p class="text-xl text-gray-600 leading-relaxed">
+      Structured notes and key learnings from professional design and technology
+      certificates. Select a certificate below to explore the content.
+    </p>
+  </div>
+
+  <ul class="flex flex-col gap-4" role="list">
+    {
+      certificatesList.map((certificate) => (
+        <li
+          class={cn(
+            "group border border-gray-200 rounded-lg p-6 hover:border-blue-300 hover:bg-blue-50/30 transition-colors transition-[border-color,background-color]",
+            {
+              "border-green-300 bg-green-50/30 hover:border-green-400 hover:bg-green-50/40":
+                certificate.completed,
+            },
+          )}
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class={cn(
+                "p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 text-blue-700 transition-colors",
+                {
+                  "bg-green-100 group-hover:bg-green-200 text-green-700":
+                    certificate.completed,
+                },
+              )}
+              aria-hidden="true"
+            >
+              <IconAward className="size-6" />
+            </div>
+            <div class="flex-1">
+              <h2
+                class={cn(
+                  "text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors",
+                  {
+                    "group-hover:text-green-700": certificate.completed,
+                  },
+                )}
+              >
+                {certificate.title}
+              </h2>
+              <p class="text-gray-600 mb-4 leading-relaxed">
+                {certificate.description}
+              </p>
+              <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 lg:gap-6 text-sm text-gray-500">
+                <div class="space-x-4">
+                  {certificate.completedDate && (
+                    <span class="text-gray-500">
+                      Completed on {certificate.completedDate}
+                    </span>
+                  )}
+                </div>
+                <div class="space-x-1 space-y-3 md:space-y-0">
+                  {certificate.certificateLink && (
+                    <Button variant="outline">
+                      <a
+                        href={certificate.certificateLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View certificate (opens in new tab)"
+                      >
+                        View certificate
+                      </a>
+                    </Button>
+                  )}
+                  <Button variant="outline">
+                    <a href={certificate.courseLink} aria-label="View course">
+                      View course
+                    </a>
+                  </Button>
+                  <Button variant="outline">
+                    <a
+                      href={`/certificates/${certificate.slug}`}
+                      aria-label="View notes"
+                    >
+                      View notes
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

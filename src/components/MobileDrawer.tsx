@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   IconMenu2,
   IconX,
@@ -7,6 +7,9 @@ import {
 } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
 import type { NavCertificate, CertRef } from '@/lib/navigation';
+
+const FOCUSABLE =
+  'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 interface MobileDrawerProps {
   certificates: CertRef[];
@@ -20,6 +23,8 @@ export function MobileDrawer({
   currentPath,
 }: MobileDrawerProps) {
   const storageKey = currentCert ? `nav-expanded-${currentCert.slug}` : null;
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -49,6 +54,56 @@ export function MobileDrawer({
     };
   }, [isOpen]);
 
+  // Focus management: move focus into dialog when open, return to trigger when closed
+  useEffect(() => {
+    if (!isOpen) return;
+    const panel = panelRef.current;
+    const focusables = panel?.querySelectorAll<HTMLElement>(FOCUSABLE);
+    const first = focusables?.[0];
+    if (first) {
+      const id = requestAnimationFrame(() => first.focus());
+      return () => cancelAnimationFrame(id);
+    }
+  }, [isOpen]);
+
+  const closeDrawer = () => {
+    setIsOpen(false);
+    triggerRef.current?.focus();
+  };
+
+  // Escape to close
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeDrawer();
+      }
+      // Focus trap: keep Tab within dialog
+      if (e.key !== 'Tab' || !panelRef.current) return;
+      const focusables = Array.from(
+        panelRef.current.querySelectorAll<HTMLElement>(FOCUSABLE)
+      ).filter((el) => !el.hasAttribute('aria-hidden'));
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+      if (e.shiftKey) {
+        if (active === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (active === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [isOpen]);
+
   function toggleChapter(slug: string) {
     setExpandedChapters((prev) => {
       const next = new Set(prev);
@@ -75,13 +130,15 @@ export function MobileDrawer({
 
   return (
     <>
-      {/* Hamburger button */}
+      {/* Hamburger button: min 44px touch target (WCAG 2.5.8) */}
       <button
+        ref={triggerRef}
         onClick={() => setIsOpen(true)}
         aria-label='Open navigation menu'
-        className='rounded-md p-2 text-foreground hover:bg-accent/50 transition-colors'
+        aria-expanded={isOpen}
+        className='rounded-md min-h-[44px] min-w-[44px] flex items-center justify-center text-foreground hover:bg-accent/50 transition-colors lg:hidden'
       >
-        <IconMenu2 size={20} strokeWidth={1.75} />
+        <IconMenu2 size={20} strokeWidth={1.75} aria-hidden />
       </button>
 
       {/* Overlay */}
@@ -89,14 +146,16 @@ export function MobileDrawer({
         <div
           className='fixed inset-0 z-40 bg-black/40 backdrop-blur-sm'
           aria-hidden='true'
-          onClick={() => setIsOpen(false)}
+          onClick={closeDrawer}
         />
       )}
 
       {/* Drawer panel */}
       <div
+        ref={panelRef}
         className={cn(
-          'fixed top-0 left-0 z-50 h-full w-72 overflow-y-auto bg-sidebar shadow-xl transition-transform duration-300 ease-in-out',
+          'fixed top-0 left-0 z-50 h-full w-72 overflow-y-auto overscroll-contain bg-sidebar shadow-xl ease-in-out',
+          'transition-transform duration-300 motion-reduce:duration-0',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
         aria-modal='true'
@@ -104,28 +163,31 @@ export function MobileDrawer({
         aria-label='Navigation'
       >
         {/* Drawer header */}
-        <div className='flex items-center justify-between border-b border-sidebar-border px-4 py-3'>
+        <div className='flex items-center justify-between border-b border-sidebar-border px-6 py-3'>
           <a href='/' className='text-sm font-semibold text-sidebar-foreground'>
             Certfolio
           </a>
           <button
-            onClick={() => setIsOpen(false)}
+            onClick={closeDrawer}
             aria-label='Close menu'
-            className='rounded-md p-1.5 text-muted-foreground hover:text-foreground transition-colors'
+            className='rounded-md min-h-[44px] min-w-[44px] flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors'
           >
-            <IconX size={18} strokeWidth={1.75} />
+            <IconX size={18} strokeWidth={1.75} aria-hidden />
           </button>
         </div>
 
         {/* Navigation content */}
-        <nav className='flex flex-col gap-0.5 px-3 py-4'>
+        <nav
+          className='flex flex-col gap-0.5 px-3 py-4'
+          aria-label='Main navigation'
+        >
           {currentCert ? (
             <>
               {/* Back link */}
               <a
                 href='/certificates/'
                 className='mb-4 flex items-center gap-1.5 px-3 text-sm text-muted-foreground transition-colors hover:text-foreground'
-                onClick={() => setIsOpen(false)}
+                onClick={closeDrawer}
               >
                 <IconChevronLeft size={14} strokeWidth={2} />
                 All Certificates
@@ -140,7 +202,7 @@ export function MobileDrawer({
               <a
                 href={currentCert.path}
                 className={linkClass(currentCert.path)}
-                onClick={() => setIsOpen(false)}
+                onClick={closeDrawer}
               >
                 Overview
               </a>
@@ -162,7 +224,7 @@ export function MobileDrawer({
                           setExpandedChapters(
                             (prev) => new Set([...prev, chapter.slug])
                           );
-                          setIsOpen(false);
+                          closeDrawer();
                         }}
                         className={cn(
                           'flex-1 rounded-l-md px-3 py-2.5 text-sm transition-colors',
@@ -178,6 +240,7 @@ export function MobileDrawer({
                         aria-label={
                           isExpanded ? 'Collapse chapter' : 'Expand chapter'
                         }
+                        aria-expanded={isExpanded}
                         className={cn(
                           'rounded-r-md p-2.5 pr-3 transition-colors',
                           isActive(chapter.path)
@@ -202,7 +265,7 @@ export function MobileDrawer({
                           <a
                             key={lesson.slug}
                             href={lesson.path}
-                            onClick={() => setIsOpen(false)}
+                            onClick={closeDrawer}
                             className={cn(
                               'block rounded-md px-2 py-2 text-[13px] leading-snug transition-colors',
                               isActive(lesson.path)
@@ -229,7 +292,7 @@ export function MobileDrawer({
                   key={cert.slug}
                   href={cert.path}
                   className={linkClass(cert.path)}
-                  onClick={() => setIsOpen(false)}
+                  onClick={closeDrawer}
                 >
                   {cert.title}
                 </a>

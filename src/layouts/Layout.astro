@@ -118,15 +118,15 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
       )
     }
 
-    <!-- Theme color -->
+    <!-- Theme color (match page background per scheme) -->
     <meta
       name="theme-color"
-      content="#111826"
+      content="#ffffff"
       media="(prefers-color-scheme: light)"
     />
     <meta
       name="theme-color"
-      content="#e4e8ef"
+      content="#1f2937"
       media="(prefers-color-scheme: dark)"
     />
 
@@ -181,15 +181,24 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
   </head>
 
   <body class="overflow-y-auto h-dvh bg-background text-foreground antialiased">
-    <div class="border-b border-sidebar-border px-4 py-3.5">
-      <a
-        href="/"
-        class="text-sm font-semibold text-sidebar-foreground hover:text-sidebar-primary transition-colors"
-      >
-        Certfolio
-      </a>
-    </div>
-    <div class="flex overflow-y-auto h-[calc(100dvh-53px)]">
+    <a
+      href="#main"
+      class="sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:m-0 focus:w-auto focus:h-auto focus:overflow-visible focus:clip-auto focus:bg-background focus:text-foreground focus:ring-2 focus:ring-ring focus:rounded-md"
+    >
+      Skip to content
+    </a>
+    <header
+      class="flex items-center gap-3 border-b border-border bg-background px-4 py-3 lg:px-6"
+    >
+      <MobileDrawer
+        client:load
+        certificates={allCerts}
+        currentCert={currentCert}
+        currentPath={currentPath}
+      />
+      <a href="/" class="text-sm font-semibold text-foreground"> Certfolio </a>
+    </header>
+    <div class="flex overflow-y-auto h-[calc(100dvh-61px)]">
       <!-- ── Desktop sidebar ─────────────────────────────────────────────── -->
       <aside
         class="hidden lg:flex w-60 shrink-0 flex-col border-r border-sidebar-border bg-sidebar"
@@ -208,23 +217,10 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
 
       <!-- ── Main column ──────────────────────────────────────────────────── -->
       <div class="flex min-w-0 flex-1 flex-col">
-        <!-- Mobile top bar -->
-        <header
-          class="flex items-center gap-3 border-b border-border bg-background px-4 py-3 lg:hidden"
-        >
-          <MobileDrawer
-            client:load
-            certificates={allCerts}
-            currentCert={currentCert}
-            currentPath={currentPath}
-          />
-          <a href="/" class="text-sm font-semibold text-foreground">
-            Certfolio
-          </a>
-        </header>
-
         <!-- Content area -->
         <main
+          id="main"
+          tabindex="-1"
           class="flex-1 min-h-0 px-4 md:px-6 lg:px-10 py-10 overflow-y-auto"
         >
           <div class="mx-auto w-full max-w-3xl">
