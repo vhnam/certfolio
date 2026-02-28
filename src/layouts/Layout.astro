@@ -6,12 +6,10 @@ import { getCollection } from "astro:content";
 
 import { Sidebar } from "@/components/Sidebar";
 import { MobileDrawer } from "@/components/MobileDrawer";
-import Breadcrumb from "@/components/Breadcrumb.astro";
 import {
   buildCertListFromData,
   buildCertNavigation,
   buildCertNavigationFromData,
-  buildBreadcrumbs,
   buildMasterClassList,
 } from "@/lib/navigation";
 import type { CertificatesJson, CertDataJson } from "@/lib/navigation";
@@ -74,8 +72,6 @@ const currentCert = (() => {
   }
   return buildCertNavigation(certEntries, certSlug);
 })();
-
-const breadcrumbs = buildBreadcrumbs(currentPath, currentCert);
 
 // ── Page metadata ────────────────────────────────────────────────────────────
 const siteName = "Certfolio";
@@ -185,21 +181,19 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
   </head>
 
   <body class="overflow-y-auto h-dvh bg-background text-foreground antialiased">
-    <div class="flex overflow-y-auto h-dvh">
+    <div class="border-b border-sidebar-border px-4 py-3.5">
+      <a
+        href="/"
+        class="text-sm font-semibold text-sidebar-foreground hover:text-sidebar-primary transition-colors"
+      >
+        Certfolio
+      </a>
+    </div>
+    <div class="flex overflow-y-auto h-[calc(100dvh-53px)]">
       <!-- ── Desktop sidebar ─────────────────────────────────────────────── -->
       <aside
         class="hidden lg:flex w-60 shrink-0 flex-col border-r border-sidebar-border bg-sidebar"
       >
-        <!-- Sidebar logo / wordmark -->
-        <div class="border-b border-sidebar-border px-4 py-3.5">
-          <a
-            href="/"
-            class="text-sm font-semibold text-sidebar-foreground hover:text-sidebar-primary transition-colors"
-          >
-            Certfolio
-          </a>
-        </div>
-
         <!-- Scrollable nav tree -->
         <div class="flex-1 overflow-y-auto">
           <Sidebar
@@ -230,9 +224,10 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
         </header>
 
         <!-- Content area -->
-        <main class="flex-1 px-4 md:px-6 py-10 md:px-10 overflow-y-auto h-dvh">
+        <main
+          class="flex-1 min-h-0 px-4 md:px-6 lg:px-10 py-10 overflow-y-auto"
+        >
           <div class="mx-auto w-full max-w-3xl">
-            <Breadcrumb items={breadcrumbs} />
             <slot />
           </div>
         </main>

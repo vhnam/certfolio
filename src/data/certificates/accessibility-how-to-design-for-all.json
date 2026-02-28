@@ -1,203 +1,203 @@
 {
-    "title": "Accessibility: How to Design for All",
-    "description": "This course will explore how to approach accessibility from all angles and incorporate it into your design and development processes.",
-    "completed": false,
-    "certificateLink": null,
-    "completedDate": null,
-    "sourceLink": "https://www.interaction-design.org/courses/accessibility-how-to-design-for-all",
-    "chapters": [
+  "title": "Accessibility: How to Design for All",
+  "description": "This course will explore how to approach accessibility from all angles and incorporate it into your design and development processes.",
+  "completed": false,
+  "certificateLink": null,
+  "completedDate": null,
+  "sourceLink": "https://www.interaction-design.org/courses/accessibility-how-to-design-for-all",
+  "chapters": [
+    {
+      "title": "Accessibility Basics",
+      "lessons": [
         {
-            "title": "Accessibility Basics",
-            "lessons": [
-                {
-                    "title": "Accessibility: Why It Matters",
-                    "slug": "accessibility-basics/accessibility-why-it-matters"
-                },
-                {
-                    "title": "Ten Principles of Accessibility for Web and Mobile Design",
-                    "slug": "accessibility-basics/ten-principles-of-accessibility-for-web-and-mobile-design"
-                },
-                {
-                    "title": "How Accessibility Impacts Usability and SEO",
-                    "slug": "accessibility-basics/how-accessibility-impacts-usability-and-seo"
-                },
-                {
-                    "title": "Interview the Impact of Poor Accessibility",
-                    "slug": "accessibility-basics/interview-the-impact-of-poor-accessibility"
-                },
-                {
-                    "title": "Experiencing Accessibility Issues with Each Disability Type",
-                    "slug": "accessibility-basics/experiencing-accessibility-issues-with-each-disability-type"
-                },
-                {
-                    "title": "What Poor and Good Accessibility Looks Like",
-                    "slug": "accessibility-basics/what-poor-and-good-accessibility-looks-like"
-                },
-                {
-                    "title": "Recap",
-                    "slug": "accessibility-basics/recap"
-                }
-            ]
+          "title": "Accessibility: Why It Matters",
+          "slug": "accessibility-basics/accessibility-why-it-matters"
         },
         {
-            "title": "Steps to Gaining Compliance",
-            "lessons": [
-                {
-                    "title": "Using Automated Tools: Pros and Cons",
-                    "slug": "steps-to-gaining-compliance/using-automated-tools-pros-and-cons"
-                },
-                {
-                    "title": "Following the Guidelines: Pros and Cons",
-                    "slug": "steps-to-gaining-compliance/following-the-guidelines-pros-and-cons"
-                },
-                {
-                    "title": "Getting Compliant: Section 508 Issues and Lessons",
-                    "slug": "steps-to-gaining-compliance/getting-compliant-section-508-issues-and-lessons"
-                },
-                {
-                    "title": "Identifying Your Compliance Requirements: A, AA, AAA",
-                    "slug": "steps-to-gaining-compliance/identifying-your-compliance-requirements-a-aa-aaa"
-                },
-                {
-                    "title": "How to Use WCAG 2.0 Guidelines: Theory vs Practice",
-                    "slug": "steps-to-gaining-compliance/how-to-use-wcag-2-0-guidelines-theory-vs-practice"
-                },
-                {
-                    "title": "Recap",
-                    "slug": "steps-to-gaining-compliance/recap"
-                }
-            ]
+          "title": "Ten Principles of Accessibility for Web and Mobile Design",
+          "slug": "accessibility-basics/ten-principles-of-accessibility-for-web-and-mobile-design"
         },
         {
-            "title": "Optimizing Your Code",
-            "lessons": [
-                {
-                    "title": "Code Optimization Basics and Opportunities",
-                    "slug": "optimizing-your-code/code-optimization-basics-and-opportunities"
-                },
-                {
-                    "title": "Images: All about Alt + Contrast",
-                    "slug": "optimizing-your-code/images-all-about-alt-and-contrast"
-                },
-                {
-                    "title": "Keyboard",
-                    "slug": "optimizing-your-code/keyboard"
-                },
-                {
-                    "title": "Focus Control + Layout Considerations For UX Designers",
-                    "slug": "optimizing-your-code/focus-control-layout-considerations-for-ux-designers"
-                },
-                {
-                    "title": "Forms, Tables and Search",
-                    "slug": "optimizing-your-code/forms-tables-and-search"
-                },
-                {
-                    "title": "3rd Party Content",
-                    "slug": "optimizing-your-code/3rd-party-content"
-                },
-                {
-                    "title": "Pop-ups + Iframes",
-                    "slug": "optimizing-your-code/pop-ups-iframes"
-                },
-                {
-                    "title": "HTML5, CSS + ARIA",
-                    "slug": "optimizing-your-code/html5-css-aria"
-                },
-                {
-                    "title": "ARIA Markup",
-                    "slug": "optimizing-your-code/aria-markup"
-                },
-                {
-                    "title": "JavaScript",
-                    "slug": "optimizing-your-code/javascript"
-                },
-                {
-                    "title": "Dynamic Content: Infographics, Animations, Audio Descriptions, Video, Live Events",
-                    "slug": "optimizing-your-code/dynamic-content-infographics-animations-audio-descriptions-video-live-events"
-                },
-                {
-                    "title": "Designing Accessible Navigation",
-                    "slug": "optimizing-your-code/designing-accessible-navigation"
-                },
-                {
-                    "title": "Recap",
-                    "slug": "optimizing-your-code/recap"
-                }
-            ]
+          "title": "How Accessibility Impacts Usability and SEO",
+          "slug": "accessibility-basics/how-accessibility-impacts-usability-and-seo"
         },
         {
-            "title": "Meeting Accessibility Design Challenges",
-            "lessons": [
-                {
-                    "title": "Toward Accessible Interaction Design",
-                    "slug": "meeting-accessibility-design-challenges/toward-accessible-interaction-design"
-                },
-                {
-                    "title": "Interview: Visual Bias e.g. Maps",
-                    "slug": "meeting-accessibility-design-challenges/interview-visual-bias-e-g-maps"
-                },
-                {
-                    "title": "Web Site and Web Application Issues and Tips",
-                    "slug": "meeting-accessibility-design-challenges/web-site-and-web-application-issues-and-tips"
-                },
-                {
-                    "title": "Interview: Social Media Accessibility Experiences",
-                    "slug": "meeting-accessibility-design-challenges/interview-social-media-accessibility-experiences"
-                },
-                {
-                    "title": "Mobile Accessibility Issues and Tips",
-                    "slug": "meeting-accessibility-design-challenges/mobile-accessibility-issues-and-tips"
-                },
-                {
-                    "title": "VR/AR Accessibility Issues and Tips",
-                    "slug": "meeting-accessibility-design-challenges/vr-ar-accessibility-issues-and-tips"
-                },
-                {
-                    "title": "Plain English and Copywriting Tips for Inclusive Design",
-                    "slug": "meeting-accessibility-design-challenges/plain-english-and-copywriting-tips-for-inclusive-design"
-                },
-                {
-                    "title": "PDF Accessibility and Document Accessibility Experiences",
-                    "slug": "meeting-accessibility-design-challenges/pdf-accessibility-and-document-accessibility-experiences"
-                },
-                {
-                    "title": "Elderly and Senior Users",
-                    "slug": "meeting-accessibility-design-challenges/elderly-and-senior-users"
-                },
-                {
-                    "title": "Recap",
-                    "slug": "meeting-accessibility-design-challenges/recap"
-                }
-            ]
+          "title": "Interview the Impact of Poor Accessibility",
+          "slug": "accessibility-basics/interview-the-impact-of-poor-accessibility"
         },
         {
-            "title": "Inclusive Design Strategies and Organizational Maturity",
-            "lessons": [
-                {
-                    "title": "Approaching Inclusive Design and Compliance",
-                    "slug": "inclusive-design-strategies-and-tactics/approaching-inclusive-design-and-compliance"
-                },
-                {
-                    "title": "Identify Your Audience: Disability Personas",
-                    "slug": "inclusive-design-strategies-and-tactics/identify-your-audience-disability-personas"
-                },
-                {
-                    "title": "Interview: Accessibility Needs to be Built into Design and Dev from the Start",
-                    "slug": "inclusive-design-strategies-and-tactics/interview-accessibility-needs-to-be-built-into-design-and-dev-from-the-start"
-                },
-                {
-                    "title": "Building Accessibility Maturity as a Strategic, Enterprise Program",
-                    "slug": "inclusive-design-strategies-and-tactics/building-an-accessibility-program-in-your-organization"
-                },
-                {
-                    "title": "ROI of Accessibility",
-                    "slug": "inclusive-design-strategies-and-tactics/roi-of-accessibility"
-                },
-                {
-                    "title": "Recap",
-                    "slug": "inclusive-design-strategies-and-tactics/recap"
-                }
-            ]
+          "title": "Experiencing Accessibility Issues with Each Disability Type",
+          "slug": "accessibility-basics/experiencing-accessibility-issues-with-each-disability-type"
+        },
+        {
+          "title": "What Poor and Good Accessibility Looks Like",
+          "slug": "accessibility-basics/what-poor-and-good-accessibility-looks-like"
+        },
+        {
+          "title": "Recap",
+          "slug": "accessibility-basics/recap"
         }
-    ]
+      ]
+    },
+    {
+      "title": "Steps to Gaining Compliance",
+      "lessons": [
+        {
+          "title": "Using Automated Tools: Pros and Cons",
+          "slug": "steps-to-gaining-compliance/using-automated-tools-pros-and-cons"
+        },
+        {
+          "title": "Following the Guidelines: Pros and Cons",
+          "slug": "steps-to-gaining-compliance/following-the-guidelines-pros-and-cons"
+        },
+        {
+          "title": "Getting Compliant: Section 508 Issues and Lessons",
+          "slug": "steps-to-gaining-compliance/getting-compliant-section-508-issues-and-lessons"
+        },
+        {
+          "title": "Identifying Your Compliance Requirements: A, AA, AAA",
+          "slug": "steps-to-gaining-compliance/identifying-your-compliance-requirements-a-aa-aaa"
+        },
+        {
+          "title": "How to Use WCAG 2.0 Guidelines: Theory vs Practice",
+          "slug": "steps-to-gaining-compliance/how-to-use-wcag-2-0-guidelines-theory-vs-practice"
+        },
+        {
+          "title": "Recap",
+          "slug": "steps-to-gaining-compliance/recap"
+        }
+      ]
+    },
+    {
+      "title": "Optimizing Your Code",
+      "lessons": [
+        {
+          "title": "Code Optimization Basics and Opportunities",
+          "slug": "optimizing-your-code/code-optimization-basics-and-opportunities"
+        },
+        {
+          "title": "Images: All about Alt + Contrast",
+          "slug": "optimizing-your-code/images-all-about-alt-and-contrast"
+        },
+        {
+          "title": "Keyboard",
+          "slug": "optimizing-your-code/keyboard"
+        },
+        {
+          "title": "Focus Control + Layout Considerations For UX Designers",
+          "slug": "optimizing-your-code/focus-control-layout-considerations-for-ux-designers"
+        },
+        {
+          "title": "Forms, Tables and Search",
+          "slug": "optimizing-your-code/forms-tables-and-search"
+        },
+        {
+          "title": "3rd Party Content",
+          "slug": "optimizing-your-code/3rd-party-content"
+        },
+        {
+          "title": "Pop-ups + Iframes",
+          "slug": "optimizing-your-code/pop-ups-iframes"
+        },
+        {
+          "title": "HTML5, CSS + ARIA",
+          "slug": "optimizing-your-code/html5-css-aria"
+        },
+        {
+          "title": "ARIA Markup",
+          "slug": "optimizing-your-code/aria-markup"
+        },
+        {
+          "title": "JavaScript",
+          "slug": "optimizing-your-code/javascript"
+        },
+        {
+          "title": "Dynamic Content: Infographics, Animations, Audio Descriptions, Video, Live Events",
+          "slug": "optimizing-your-code/dynamic-content-infographics-animations-audio-descriptions-video-live-events"
+        },
+        {
+          "title": "Designing Accessible Navigation",
+          "slug": "optimizing-your-code/designing-accessible-navigation"
+        },
+        {
+          "title": "Recap",
+          "slug": "optimizing-your-code/recap"
+        }
+      ]
+    },
+    {
+      "title": "Meeting Accessibility Design Challenges",
+      "lessons": [
+        {
+          "title": "Toward Accessible Interaction Design",
+          "slug": "meeting-accessibility-design-challenges/toward-accessible-interaction-design"
+        },
+        {
+          "title": "Interview: Visual Bias e.g. Maps",
+          "slug": "meeting-accessibility-design-challenges/interview-visual-bias-e-g-maps"
+        },
+        {
+          "title": "Web Site and Web Application Issues and Tips",
+          "slug": "meeting-accessibility-design-challenges/web-site-and-web-application-issues-and-tips"
+        },
+        {
+          "title": "Interview: Social Media Accessibility Experiences",
+          "slug": "meeting-accessibility-design-challenges/interview-social-media-accessibility-experiences"
+        },
+        {
+          "title": "Mobile Accessibility Issues and Tips",
+          "slug": "meeting-accessibility-design-challenges/mobile-accessibility-issues-and-tips"
+        },
+        {
+          "title": "VR/AR Accessibility Issues and Tips",
+          "slug": "meeting-accessibility-design-challenges/vr-ar-accessibility-issues-and-tips"
+        },
+        {
+          "title": "Plain English and Copywriting Tips for Inclusive Design",
+          "slug": "meeting-accessibility-design-challenges/plain-english-and-copywriting-tips-for-inclusive-design"
+        },
+        {
+          "title": "PDF Accessibility and Document Accessibility Experiences",
+          "slug": "meeting-accessibility-design-challenges/pdf-accessibility-and-document-accessibility-experiences"
+        },
+        {
+          "title": "Elderly and Senior Users",
+          "slug": "meeting-accessibility-design-challenges/elderly-and-senior-users"
+        },
+        {
+          "title": "Recap",
+          "slug": "meeting-accessibility-design-challenges/recap"
+        }
+      ]
+    },
+    {
+      "title": "Inclusive Design Strategies and Organizational Maturity",
+      "lessons": [
+        {
+          "title": "Approaching Inclusive Design and Compliance",
+          "slug": "inclusive-design-strategies-and-tactics/approaching-inclusive-design-and-compliance"
+        },
+        {
+          "title": "Identify Your Audience: Disability Personas",
+          "slug": "inclusive-design-strategies-and-tactics/identify-your-audience-disability-personas"
+        },
+        {
+          "title": "Interview: Accessibility Needs to be Built into Design and Dev from the Start",
+          "slug": "inclusive-design-strategies-and-tactics/interview-accessibility-needs-to-be-built-into-design-and-dev-from-the-start"
+        },
+        {
+          "title": "Building Accessibility Maturity as a Strategic, Enterprise Program",
+          "slug": "inclusive-design-strategies-and-tactics/building-an-accessibility-program-in-your-organization"
+        },
+        {
+          "title": "ROI of Accessibility",
+          "slug": "inclusive-design-strategies-and-tactics/roi-of-accessibility"
+        },
+        {
+          "title": "Recap",
+          "slug": "inclusive-design-strategies-and-tactics/recap"
+        }
+      ]
+    }
+  ]
 }

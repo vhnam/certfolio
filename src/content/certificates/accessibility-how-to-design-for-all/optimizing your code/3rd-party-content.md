@@ -7,7 +7,7 @@ title: "3rd Party Content"
   - Evaluate vendor accessibility **before purchase**
   - Test basics yourself (keyboard, focus, alt text, contrast)
   - Include **accessibility requirements in contracts**
- 
+
 - Legal and regulatory requirements can **block vendors** from selling inaccessible software, especially in government contexts.
 - If third-party content is already in use, options are limited:
   - Remove or replace it

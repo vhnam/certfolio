@@ -1,49 +1,49 @@
 {
-    "certificates": [
-        {
-            "title": "Google UX Design",
-            "slug": "google-ux-design",
-            "description": "Get on the fast track to a career in UX design. In this certificate program, you’ll learn in-demand skills, and get AI training from Google experts. Learn at your own pace, no degree or experience required.",
-            "link": "https://github.com/vhnam/uxdesign-certificate-notes",
-            "completed": true,
-            "certificateLink": "https://coursera.org/share/ba930980fed3d0cf99ca30c46fc1ac72",
-            "completedDate": "Oct 31, 2025"
-        },
-        {
-            "title": "Accessibility: How to Design for All",
-            "slug": "accessibility-how-to-design-for-all",
-            "description": "This course will explore how to approach accessibility from all angles and incorporate it into your design and development processes.",
-            "link": "https://github.com/vhnam/accessibility-how-to-design-for-all",
-            "completed": false,
-            "certificateLink": null,
-            "completedDate": null
-        },
-        {
-            "title": "Agile Methods for UX Design",
-            "slug": "agile-methods-for-ux-design",
-            "description": "In this course, we aim to show you what true agility is and how closely agile methodologies can map to design.",
-            "link": "https://github.com/vhnam/agile-methods-for-ux-design",
-            "completed": false,
-            "certificateLink": null,
-            "completedDate": null
-        },
-        {
-            "title": "Design for the 21st Century with Don Norman",
-            "slug": "design-for-the-21st-century-with-don-norman",
-            "description": "In this course, by Don Norman, you'll learn how to apply human-centered design to solve complex global challenges to make a difference in the world.",
-            "link": "https://github.com/vhnam/design-for-the-21st-century-with-don-norman",
-            "completed": false,
-            "certificateLink": null,
-            "completedDate": null
-        },
-        {
-            "title": "UX Management: Strategy and Tactics",
-            "slug": "ux-management-strategy-and-tactics",
-            "description": "This course will explore will explore the ins and outs of UX maturity as well as the best practices on how to manage and support your UX and UI teams.",
-            "link": "https://github.com/vhnam/ux-management-strategy-and-tactics",
-            "completed": false,
-            "certificateLink": null,
-            "completedDate": null
-        }
-    ]
+  "certificates": [
+    {
+      "title": "Google UX Design",
+      "slug": "google-ux-design",
+      "description": "Get on the fast track to a career in UX design. In this certificate program, you’ll learn in-demand skills, and get AI training from Google experts. Learn at your own pace, no degree or experience required.",
+      "link": "https://github.com/vhnam/uxdesign-certificate-notes",
+      "completed": true,
+      "certificateLink": "https://coursera.org/share/ba930980fed3d0cf99ca30c46fc1ac72",
+      "completedDate": "Oct 31, 2025"
+    },
+    {
+      "title": "Accessibility: How to Design for All",
+      "slug": "accessibility-how-to-design-for-all",
+      "description": "This course will explore how to approach accessibility from all angles and incorporate it into your design and development processes.",
+      "link": "https://github.com/vhnam/accessibility-how-to-design-for-all",
+      "completed": false,
+      "certificateLink": null,
+      "completedDate": null
+    },
+    {
+      "title": "Agile Methods for UX Design",
+      "slug": "agile-methods-for-ux-design",
+      "description": "In this course, we aim to show you what true agility is and how closely agile methodologies can map to design.",
+      "link": "https://github.com/vhnam/agile-methods-for-ux-design",
+      "completed": false,
+      "certificateLink": null,
+      "completedDate": null
+    },
+    {
+      "title": "Design for the 21st Century with Don Norman",
+      "slug": "design-for-the-21st-century-with-don-norman",
+      "description": "In this course, by Don Norman, you'll learn how to apply human-centered design to solve complex global challenges to make a difference in the world.",
+      "link": "https://github.com/vhnam/design-for-the-21st-century-with-don-norman",
+      "completed": false,
+      "certificateLink": null,
+      "completedDate": null
+    },
+    {
+      "title": "UX Management: Strategy and Tactics",
+      "slug": "ux-management-strategy-and-tactics",
+      "description": "This course will explore will explore the ins and outs of UX maturity as well as the best practices on how to manage and support your UX and UI teams.",
+      "link": "https://github.com/vhnam/ux-management-strategy-and-tactics",
+      "completed": false,
+      "certificateLink": null,
+      "completedDate": null
+    }
+  ]
 }

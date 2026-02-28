@@ -94,12 +94,18 @@ export function buildCertNavigation(
     a.localeCompare(b),
   );
 
-  for (let chapterIndex = 0; chapterIndex < sortedChapterSlugs.length; chapterIndex++) {
+  for (
+    let chapterIndex = 0;
+    chapterIndex < sortedChapterSlugs.length;
+    chapterIndex++
+  ) {
     const chapterSlug = sortedChapterSlugs[chapterIndex];
     const chapterPrefix = prefix + chapterSlug + "/";
     const chapterIndexEntry = certEntries.find((e) => {
       const id = normalizeEntryId(e.id);
-      return id === chapterPrefix.slice(0, -1) || id === chapterPrefix + "index";
+      return (
+        id === chapterPrefix.slice(0, -1) || id === chapterPrefix + "index"
+      );
     });
 
     const lessonEntries = certEntries.filter((e) => {
@@ -209,9 +215,13 @@ export function buildCertNavigationFromData(
       ch.lessons[0]?.slug.split("/")[0] ??
       ch.title.toLowerCase().replace(/\s+/g, "-");
     const lessons: NavLesson[] = ch.lessons.map((lesson, lessonIndex) => {
-      const lessonSlug = lesson.slug.includes("/")
-        ? lesson.slug.split("/").pop()!
-        : lesson.slug;
+      const lessonSlug = (() => {
+        if (lesson.slug.includes("/")) {
+          const part = lesson.slug.split("/").filter(Boolean).pop();
+          return part ?? lesson.slug;
+        }
+        return lesson.slug;
+      })();
       return {
         title: lesson.title,
         slug: lessonSlug,
@@ -233,64 +243,6 @@ export function buildCertNavigationFromData(
     path: `${CERT_BASE}${certSlug}/`,
     chapters,
   };
-}
-
-/**
- * Build breadcrumb items from the current path and the resolved certificate nav.
- *
- * Returns an empty array when outside a certificate route.
- */
-export function buildBreadcrumbs(
-  currentPath: string,
-  currentCert: NavCertificate | null,
-): Array<{ label: string; href?: string }> {
-  const normalized = currentPath.replace(/\/$/, "");
-  const parts = normalized.split("/").filter(Boolean);
-  // parts[0] = 'certificates', parts[1] = certSlug, parts[2] = chapter/key-learnings/reflection, parts[3] = lesson
-
-  if (parts[0] !== "certificates") return [];
-
-  const crumbs: Array<{ label: string; href?: string }> = [
-    { label: "Certificates", href: "/certificates/" },
-  ];
-
-  if (parts.length < 2 || !currentCert) return crumbs;
-
-  // On the certificate overview page
-  if (parts.length === 2) {
-    crumbs.push({ label: currentCert.title });
-    return crumbs;
-  }
-
-  crumbs.push({ label: currentCert.title, href: currentCert.path });
-
-  const thirdPart = parts[2];
-
-  if (thirdPart === "key-learnings") {
-    crumbs.push({ label: "Key Learnings" });
-    return crumbs;
-  }
-
-  if (thirdPart === "reflection") {
-    crumbs.push({ label: "Reflection" });
-    return crumbs;
-  }
-
-  const chapter = currentCert.chapters.find((ch) => ch.slug === thirdPart);
-  if (!chapter) return crumbs;
-
-  if (parts.length === 3) {
-    crumbs.push({ label: chapter.title });
-    return crumbs;
-  }
-
-  crumbs.push({ label: chapter.title, href: chapter.path });
-
-  const lessonSlug = parts[3];
-  const lesson = chapter.lessons.find((l) => l.slug === lessonSlug);
-  if (lesson) crumbs.push({ label: lesson.title });
-
-  return crumbs;
 }
 
 function formatSlug(slug: string): string {
