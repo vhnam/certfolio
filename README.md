@@ -1,49 +1,62 @@
-# Starlight Starter Kit: Basics
+# Certfolio
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+A static site for organizing and browsing professional certificates and master classes, with structured notes and key learnings. Built with [Astro](https://astro.build), React islands, MDX, and Tailwind CSS.
 
-```
-pnpm create astro@latest -- --template starlight
-```
+## Tech stack
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Astro 5** — static site generation, content collections
+- **React** — interactive components (navigation, UI)
+- **MDX** — certificate/course content with JSX
+- **Tailwind CSS 4** — styling
+- **Base UI / shadcn-style** — UI components
 
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+## Project structure
 
 ```
 .
-├── public/
+├── public/                 # Static assets (favicon, etc.)
 ├── src/
-│   ├── assets/
+│   ├── components/         # React and Astro components
+│   │   ├── ui/             # Reusable UI (button, collapsible, etc.)
+│   │   ├── ChapterOverview.tsx
+│   │   ├── CourseOverview.tsx
+│   │   └── MobileDrawer.tsx
 │   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
+│   │   ├── certificates/   # Certificate course content (MDX + markdown)
+│   │   └── master-classes/# Master class content
+│   ├── data/              # JSON: certificates.json, master-classes.json
+│   ├── layouts/
+│   ├── lib/                # Utilities, navigation helpers
+│   ├── models/             # Content collection schemas
+│   └── pages/
+│       ├── index.astro     # Home: certs + master classes
+│       ├── certificates/   # Certificate list & [...slug] course pages
+│       └── master-classes/ # Master class list & [...slug] pages
 ├── astro.config.mjs
+├── components.json
 ├── package.json
 └── tsconfig.json
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+- **Certificates** are defined in `src/data/certificates.json` and can have full course content under `src/content/certificates/<slug>/`.
+- **Master classes** are listed in `src/data/master-classes.json` with content in `src/content/master-classes/`.
+- Course structure (chapters, lessons) is driven by the file tree and optional per-certificate JSON in `src/data/certificates/<slug>.json`.
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+## Commands
 
-Static assets, like favicons, can be placed in the `public/` directory.
+From the project root:
 
-## 🧞 Commands
+| Command          | Action                                          |
+| ---------------- | ----------------------------------------------- |
+| `pnpm install`   | Install dependencies                            |
+| `pnpm dev`       | Start dev server at `localhost:4321`            |
+| `pnpm build`     | Build production site to `./dist/`              |
+| `pnpm preview`   | Preview the production build locally            |
+| `pnpm format`    | Format code with Prettier                       |
+| `pnpm astro ...` | Run Astro CLI (e.g. `astro add`, `astro check`) |
 
-All commands are run from the root of the project, from a terminal:
+## Learn more
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `pnpm install`         | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+- [Astro docs](https://docs.astro.build)
+- [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/)
+- [MDX in Astro](https://docs.astro.build/en/guides/integrations-guide/mdx/)

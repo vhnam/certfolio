@@ -1,5 +1,6 @@
 {
   "name": "certfolio",
+  "description": "Structured notes and key learnings from professional design and technology certificates. Select a certificate below to explore the content.",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
