@@ -199,6 +199,19 @@
           "slug": "inclusive-design-strategies-and-tactics/recap"
         }
       ]
+    },
+    {
+      "title": "Accessibility Testing",
+      "lessons": [
+        {
+          "title": "How Does Accessibility Testing Differ From Other Kinds of Testing?",
+          "slug": "accessibility-testing/how-does-accessibility-testing-differ-from-other-kinds-of-testing"
+        },
+        {
+          "title": "Assistive Technologies: Test Tools",
+          "slug": "accessibility-testing/assistive-technologies-test-tools"
+        }
+      ]
     }
   ]
 }
