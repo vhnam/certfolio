@@ -210,6 +210,14 @@
         {
           "title": "Assistive Technologies: Test Tools",
           "slug": "accessibility-testing/assistive-technologies-test-tools"
+        },
+        {
+          "title": "Accessibility Testing: How to Conduct Access Testing",
+          "slug": "accessibility-testing/accessibility-testing-how-to-conduct-access-testing"
+        },
+        {
+          "title": "Tips for Recruiting Users; Moderating Tests: Assessing and Taking Action on Feedback",
+          "slug": "accessibility-testing/tips-for-recruiting-users-moderating-tests-assessing-and-taking-action-on-feedback"
         }
       ]
     }
