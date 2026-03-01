@@ -57,7 +57,6 @@ Before the session:
   - Available
   - Updated
   - Fully charged (especially mobile devices)
-
 - In Agile/formative tests:
   - It is acceptable to let users review the site before testing to reduce anxiety and surface issues faster.
 
@@ -188,7 +187,6 @@ Key insight:
   - 100% = Full success
   - 50% = Partial success
   - 0% = Failure
-
 - Number of confusions
 - Number of errors
 - Bugs or weird issues to follow up on
