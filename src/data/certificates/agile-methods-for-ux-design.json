@@ -146,6 +146,15 @@
                     "slug": "how-designers-can-succeed-on-agile-teams/recap"
                 }
             ]
+        },
+        {
+            "title": "How to Design for Experimentation",
+            "lessons": [
+                {
+                    "title": "Welcome and Introduction",
+                    "slug": "how-to-design-for-experimentation/welcome-and-introduction"
+                }
+            ]
         }
     ]
 }
