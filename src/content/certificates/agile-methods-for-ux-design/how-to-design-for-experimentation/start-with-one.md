@@ -1,4 +1,6 @@
-# Start with One: Designing Small Experiments
+---
+title: "Start with One: Designing Small Experiments"
+---
 
 ## Designing for Experimentation
 

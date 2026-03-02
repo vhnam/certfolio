@@ -1,0 +1,21 @@
+---
+title: "Design for the 21st Century with Don Norman"
+---
+
+import { CourseOverview } from "@/components/CourseOverview";
+import { ChapterOverview } from "@/components/ChapterOverview";
+import data from "@/data/certificates/design-for-the-21st-century-with-don-norman.json";
+
+<p className="text-lg text-gray-600 leading-relaxed">{data.description}</p>
+
+<CourseOverview
+  chapters={data.chapters}
+>
+Get excited about designing a better world by learning how to apply human-centered design, systems thinking, and design thinking to real challenges like climate change, inequality, and public health. Led by world-renowned designer Don Norman, the course shows that you don’t need to be a professional designer—just someone motivated to improve things. You’ll gain practical tools to rethink complex systems, address root causes, and create solutions that genuinely improve people’s lives.
+
+Make yourself invaluable by building timeless human-centered skills—like empathy, problem framing, and root-cause analysis—that help you use AI responsibly and effectively. Instead of chasing speed alone, you’ll learn how to guide innovation in ways that protect wellbeing and solve real problems beneath surface symptoms. These capabilities strengthen your impact at work, increase your leadership potential, and position you for long-term career growth in design-driven organizations.
+
+Gain confidence and credibility by applying what you learn immediately through ready-to-use tools such as the 5 Whys method and optional case studies aligned with the UN Sustainable Development Goals. From day one, you’ll practice driving meaningful change, collaborating with stakeholders, and communicating ideas clearly. By the end, you’ll have the mindset and practical skills to create lasting impact in your job, community, and beyond.
+</CourseOverview>
+
+<ChapterOverview chapters={data.chapters} slug={data.slug} />
