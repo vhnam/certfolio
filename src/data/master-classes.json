@@ -3,7 +3,7 @@
     {
       "title": "How to Design Forms Like an Expert",
       "link": "/master-classes/how-to-design-forms-like-an-expert",
-      "description": "Learn User Experience (UX) and Design from experts"
+      "description": "Improve your form UX and drive business success. Learn from Zoltan Kollin how to design effective, user-friendly forms that convert."
     },
     {
       "title": "Design for AI Agents: Healthcare and High-Stakes Systems",
@@ -14,6 +14,11 @@
       "title": "Bring AI into Your Design System: Hands-On Workshop",
       "link": "/master-classes/bring-ai-into-your-design-system-hands-on-workshop",
       "description": "Join our hands-on workshop to learn how to seamlessly incorporate AI into your design system. Transform your creative process and boost your efficiency"
+    },
+    {
+      "title": "Accessible Typography: Design UIs All Your Users Will Love to Use",
+      "link": "/master-classes/accessible-typography-design-uis-all-your-users-will-love-to-use",
+      "description": "Discover accessible typography strategies for web and UI design. Enhance readability and user experience for all audiences."
     }
   ]
 }
