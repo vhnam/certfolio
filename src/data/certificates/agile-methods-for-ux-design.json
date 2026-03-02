@@ -1,0 +1,151 @@
+{
+    "title": "Agile Methods for UX Design",
+    "slug": "agile-methods-for-ux-design",
+    "description": "In this course, we aim to show you what true agility is and how closely agile methodologies can map to design.",
+    "completed": false,
+    "certificateLink": null,
+    "completedDate": null,
+    "courseLink": "https://www.interaction-design.org/courses/agile-methods-for-ux-design",
+    "chapters": [
+        {
+            "title": "What is Agile and where it came from?",
+            "lessons": [
+                {
+                    "title": "Welcome to Agile Methods for UX Design",
+                    "slug": "what-is-agile-and-where-it-came-from/welcome-to-agile-methods-for-ux-design"
+                },
+                {
+                    "title": "A Brief History of Agile",
+                    "slug": "what-is-agile-and-where-it-came-from/a-brief-history-of-agile"
+                },
+                {
+                    "title": "Why Is Design Missing in Agile?",
+                    "slug": "what-is-agile-and-where-it-came-from/why-is-design-missing-in-agile"
+                },
+                {
+                    "title": "Common Agile Rituals and Meetings",
+                    "slug": "what-is-agile-and-where-it-came-from/common-agile-rituals-and-meetings"
+                },
+                {
+                    "title": "What Does an Agile Team Look Like?",
+                    "slug": "what-is-agile-and-where-it-came-from/what-does-an-agile-team-look-like"
+                },
+                {
+                    "title": "Common Agile Practices and Jargon",
+                    "slug": "what-is-agile-and-where-it-came-from/common-agile-practices-and-jargon"
+                },
+                {
+                    "title": "Design Meetings and Practices in Agile",
+                    "slug": "what-is-agile-and-where-it-came-from/design-meetings-and-practices-in-agile"
+                },
+                {
+                    "title": "Lesson 1 Recap",
+                    "slug": "what-is-agile-and-where-it-came-from/recap"
+                }
+            ]
+        },
+        {
+            "title": "Agile Patterns, Anti-Patterns, and Myths",
+            "lessons": [
+                {
+                    "title": "Welcome and Introduction",
+                    "slug": "agile-patterns-anti-patterns-and-myths/welcome-and-introduction"
+                },
+                {
+                    "title": "There Is No Agile",
+                    "slug": "agile-patterns-anti-patterns-and-myths/there-is-no-agile"
+                },
+                {
+                    "title": "Agile Myths",
+                    "slug": "agile-patterns-anti-patterns-and-myths/agile-myths"
+                },
+                {
+                    "title": "Agile Anti-Pattern",
+                    "slug": "agile-patterns-anti-patterns-and-myths/agile-anti-pattern"
+                },
+                {
+                    "title": "Agile Patterns in Large Organizations",
+                    "slug": "agile-patterns-anti-patterns-and-myths/agile-patterns-in-large-organizations"
+                },
+                {
+                    "title": "Lesson 2 Recap",
+                    "slug": "agile-patterns-anti-patterns-and-myths/recap"
+                }
+            ]
+        },
+        {
+            "title": "How Researchers Can Succeed on Agile Teams",
+            "lessons": [
+                {
+                    "title": "Welcome and Introduction",
+                    "slug": "how-researchers-can-succeed-on-agile-teams/welcome-and-introduction"
+                },
+                {
+                    "title": "Continuous Discovery",
+                    "slug": "how-researchers-can-succeed-on-agile-teams/continuous-discovery"
+                },
+                {
+                    "title": "Innovation vs Incremental Improvement",
+                    "slug": "how-researchers-can-succeed-on-agile-teams/innovation-vs-incremental-improvement"
+                },
+                {
+                    "title": "Quicker and More Targeted Research and Experiments",
+                    "slug": "how-researchers-can-succeed-on-agile-teams/quicker-and-more-targeted-research-and-experiments"
+                },
+                {
+                    "title": "Collaborating with Your Team for Research",
+                    "slug": "how-researchers-can-succeed-on-agile-teams/collaborating-with-your-team-for-research"
+                },
+                {
+                    "title": "When Generative Research Gets Done",
+                    "slug": "how-researchers-can-succeed-on-agile-teams/when-generative-research-gets-done"
+                },
+                {
+                    "title": "Sharing Research Results in an Agile Way",
+                    "slug": "how-researchers-can-succeed-on-agile-teams/sharing-research-results-in-an-agile-way"
+                },
+                {
+                    "title": "Lesson 3 Recap",
+                    "slug": "how-researchers-can-succeed-on-agile-teams/recap"
+                }
+            ]
+        },
+        {
+            "title": "How Designers Can Succeed on Agile Teams",
+            "lessons": [
+                {
+                    "title": "Welcome and Introduction",
+                    "slug": "how-designers-can-succeed-on-agile-teams/welcome-and-introduction"
+                },
+                {
+                    "title": "Designing the Smallest Possible Thing",
+                    "slug": "how-designers-can-succeed-on-agile-teams/designing-the-smallest-possible-thing"
+                },
+                {
+                    "title": "Designing from the Outside In",
+                    "slug": "how-designers-can-succeed-on-agile-teams/designing-from-the-outside-in"
+                },
+                {
+                    "title": "Design Slices",
+                    "slug": "how-designers-can-succeed-on-agile-teams/design-slices"
+                },
+                {
+                    "title": "Design Refactoring and Iterating",
+                    "slug": "how-designers-can-succeed-on-agile-teams/design-refactoring-and-iterating"
+                },
+                {
+                    "title": "Design Systems",
+                    "slug": "how-designers-can-succeed-on-agile-teams/design-systems"
+                },
+                {
+                    "title": "Acceptance Criteria",
+                    "slug": "how-designers-can-succeed-on-agile-teams/acceptance-criteria"
+                },
+                {
+                    "title": "Lesson 4 Recap",
+                    "slug": "how-designers-can-succeed-on-agile-teams/recap"
+                }
+            ]
+        }
+    ]
+}
