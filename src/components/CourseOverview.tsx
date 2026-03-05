@@ -15,8 +15,8 @@ export const CourseOverview = ({ chapters, children }: OverviewProps) => {
 
   return (
     <div className='bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 rounded-lg p-4 md:p-6 mb-12 mt-8'>
-      <h2 className='flex items-center gap-2 text-lg font-semibold !text-blue-900 dark:!text-blue-300 mb-3 !mt-0'>
-        <IconInfoCircle className='w-5 h-5' />
+      <h2 className='flex items-center gap-2 !text-lg font-semibold !text-indigo-900 dark:!text-indigo-200 mb-4 !mt-0'>
+        <IconInfoCircle className='w-5 h-5' aria-hidden />
         About This Course
       </h2>
       <div className='[&_p]:!text-blue-900 dark:[&_p]:!text-blue-100 ![&_p]:leading-relaxed ![&_p]:mb-4'>
@@ -24,7 +24,7 @@ export const CourseOverview = ({ chapters, children }: OverviewProps) => {
       </div>
       <div className='flex items-center gap-6 text-sm !text-blue-800 dark:!text-blue-300'>
         <div className='flex items-center gap-1.5'>
-          <IconBook className='size-4' />
+          <IconBook className='size-4' aria-hidden />
           <span>{totalChapters} chapters</span>
         </div>
         <div>{totalLessons} lessons total</div>

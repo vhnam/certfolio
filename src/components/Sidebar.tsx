@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { IconChevronLeft } from '@tabler/icons-react';
+import { IconCertificate, IconChevronLeft } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
 import type { NavCertificate, CertRef, MasterClassRef } from '@/lib/navigation';
 
@@ -71,13 +71,20 @@ export function Sidebar({
             key={cert.slug}
             href={`/certificates/${cert.slug}`}
             className={cn(
-              'rounded-md px-3 py-2 text-sm transition-colors',
+              'flex gap-2 justify-start rounded-md px-3 py-2 text-sm hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors',
               isActive(`/certificates/${cert.slug}`)
-                ? 'bg-sidebar-accent text-sidebar-accent-foreground font-medium'
-                : 'text-sidebar-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground'
+                ? 'bg-sidebar-accent text-sidebar-accent-foreground'
+                : 'text-sidebar-foreground hover:bg-sidebar-accent/60'
             )}
           >
-            {cert.title}
+            <div className='w-3 pt-0.5'>
+              {cert.completed ? (
+                <IconCertificate size={12} />
+              ) : (
+                <span className='w-3'>&nbsp;</span>
+              )}
+            </div>
+            <span>{cert.title}</span>
           </a>
         ))}
         <span className='my-3'></span>
@@ -88,9 +95,17 @@ export function Sidebar({
           <a
             key={masterClass.slug}
             href={masterClass.path}
-            className='rounded-md px-3 py-1.5 text-sm transition-colors'
+            className={cn(
+              'flex gap-2 justify-start rounded-md px-3 py-2 text-sm hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors',
+              isActive(masterClass.path)
+                ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 font-medium'
+                : 'text-sidebar-foreground hover:bg-sidebar-accent/60'
+            )}
           >
-            {masterClass.title}
+            <div className='w-3 pt-0.5'>
+              <IconCertificate size={12} />
+            </div>
+            <span>{masterClass.title}</span>
           </a>
         ))}
       </nav>
@@ -210,7 +225,7 @@ export function Sidebar({
                     key={lesson.slug}
                     href={lesson.path}
                     className={`block px-3 py-2 text-sm rounded-md transition-colors ${
-                      isActive(lesson.path)
+                      isActive(`/master-classes/${lesson.slug}`)
                         ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 font-medium'
                         : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-900'
                     }`}

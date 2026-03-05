@@ -1,12 +1,11 @@
 ---
+import "@fontsource/poppins";
 import "@/styles/global.css";
 
 import { ClientRouter } from "astro:transitions";
 import { getCollection } from "astro:content";
 
 import { Sidebar } from "@/components/Sidebar";
-import { MobileDrawer } from "@/components/MobileDrawer";
-import { ToggleTheme } from "@/components/ToggleTheme";
 import {
   buildCertListFromData,
   buildCertNavigation,
@@ -15,6 +14,8 @@ import {
 } from "@/lib/navigation";
 import type { CertificatesJson, CertDataJson } from "@/lib/navigation";
 import certificatesData from "@/data/certificates.json";
+import Header from "@/layouts/Header.astro";
+import Footer from "./Footer.astro";
 
 interface Props {
   title?: string;
@@ -188,26 +189,18 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
     >
       Skip to content
     </a>
-    <header
-      class="flex items-center gap-3 border-b border-border bg-background px-4 py-3 lg:px-6"
-    >
-      <MobileDrawer
-        client:load
-        certificates={allCerts}
-        currentCert={currentCert}
-        currentPath={currentPath}
-      />
-      <a href="/" class="text-sm font-semibold text-gray-900 dark:text-gray-100"
-        >Certfolio</a
-      >
-      <div class="ml-auto">
-        <ToggleTheme client:load />
-      </div>
-    </header>
-    <div class="flex overflow-y-auto h-[calc(100dvh-61px)]">
+
+    <Header
+      allCerts={allCerts}
+      currentCert={currentCert}
+      currentPath={currentPath}
+    />
+
+    <div class="flex overflow-y-auto h-[calc(100dvh-var(--header-height))]">
       <!-- ── Desktop sidebar ─────────────────────────────────────────────── -->
       <aside
         class="hidden lg:flex w-60 shrink-0 flex-col border-r border-sidebar-border bg-sidebar"
+        aria-label="Certificate and course navigation"
       >
         <!-- Scrollable nav tree -->
         <div class="flex-1 overflow-y-auto">
@@ -227,11 +220,13 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
         <main
           id="main"
           tabindex="-1"
-          class="flex-1 min-h-0 px-4 md:px-6 lg:px-10 py-10 overflow-y-auto"
+          class="flex-1 min-h-0 px-4 md:px-6 lg:px-10 pt-10 overflow-y-auto"
         >
           <div class="mx-auto w-full max-w-3xl">
             <slot />
           </div>
+
+          <Footer />
         </main>
       </div>
     </div>

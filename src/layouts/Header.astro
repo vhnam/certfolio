@@ -1,0 +1,33 @@
+---
+import { MobileDrawer } from "@/components/MobileDrawer";
+import { ToggleTheme } from "@/components/ToggleTheme";
+import type { CertRef, NavCertificate } from "@/lib/navigation";
+
+interface Props {
+  allCerts: CertRef[];
+  currentCert: NavCertificate | null;
+  currentPath: string;
+}
+
+const { allCerts, currentCert, currentPath } = Astro.props;
+---
+
+<header
+  class="flex items-center gap-3 border-b border-border bg-sidebar px-4 py-3 lg:px-6"
+>
+  <MobileDrawer
+    client:load
+    certificates={allCerts}
+    currentCert={currentCert}
+    currentPath={currentPath}
+  />
+  <a
+    href="/"
+    class="text-sm font-bold text-blue-700 dark:text-blue-300 tracking-widest uppercase"
+  >
+    Certfolio
+  </a>
+  <div class="ml-auto">
+    <ToggleTheme client:load />
+  </div>
+</header>

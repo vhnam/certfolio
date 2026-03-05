@@ -16,6 +16,9 @@ importers:
       "@base-ui/react":
         specifier: ^1.2.0
         version: 1.2.0(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      "@fontsource/poppins":
+        specifier: ^5.2.7
+        version: 5.2.7
       "@tabler/icons-react":
         specifier: ^3.37.1
         version: 3.37.1(react@19.2.4)
@@ -923,6 +926,12 @@ packages:
     resolution:
       {
         integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==,
+      }
+
+  "@fontsource/poppins@5.2.7":
+    resolution:
+      {
+        integrity: sha512-6uQyPmseo4FgI97WIhA4yWRlNaoLk4vSDK/PyRwdqqZb5zAEuc+Kunt8JTMcsHYUEGYBtN15SNkMajMdqUSUmg==,
       }
 
   "@hono/node-server@1.19.9":
@@ -6343,6 +6352,8 @@ snapshots:
       react-dom: 19.2.4(react@19.2.4)
 
   "@floating-ui/utils@0.2.10": {}
+
+  "@fontsource/poppins@5.2.7": {}
 
   "@hono/node-server@1.19.9(hono@4.12.3)":
     dependencies:

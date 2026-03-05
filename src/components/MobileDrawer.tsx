@@ -29,10 +29,16 @@ export function MobileDrawer({
   const [isOpen, setIsOpen] = useState(false);
 
   const [expandedChapters, setExpandedChapters] = useState<Set<string>>(() => {
-    const stored: string[] =
-      typeof localStorage !== 'undefined' && storageKey
-        ? (JSON.parse(localStorage.getItem(storageKey) ?? '[]') as string[])
-        : [];
+    let stored: string[] = [];
+    if (typeof localStorage !== 'undefined' && storageKey) {
+      try {
+        const raw = localStorage.getItem(storageKey);
+        const json = raw ? (JSON.parse(raw) as unknown) : [];
+        if (Array.isArray(json)) stored = json.filter((x): x is string => typeof x === 'string');
+      } catch {
+        stored = [];
+      }
+    }
 
     const result = new Set<string>(stored);
 
@@ -161,6 +167,7 @@ export function MobileDrawer({
         aria-modal='true'
         role='dialog'
         aria-label='Navigation'
+        aria-hidden={!isOpen}
       >
         {/* Drawer header */}
         <div className='flex items-center justify-between border-b border-sidebar-border px-6 py-3'>
