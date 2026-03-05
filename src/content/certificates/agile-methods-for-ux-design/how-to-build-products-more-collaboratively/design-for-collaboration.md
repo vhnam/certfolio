@@ -79,7 +79,6 @@ Examples:
 
 - Payment requirement:
   Understand whether all payment methods must launch immediately or can be added later.
-
 - Visual request (e.g., a large red button):
   Determine whether the real concern is visibility of the call-to-action.
 
