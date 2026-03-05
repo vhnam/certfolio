@@ -11,8 +11,10 @@ const certificatesList = buildCertListFromData(certificatesData);
 
 <Layout title="Certificates">
   <div class="mb-12">
-    <h1 class="text-4xl font-bold text-gray-900 mb-4">Certificates</h1>
-    <p class="text-xl text-gray-600 leading-relaxed">
+    <h1 class="text-4xl font-bold text-gray-900 mb-4 dark:text-gray-100">
+      Certificates
+    </h1>
+    <p class="text-xl text-gray-600 leading-relaxed dark:text-gray-300">
       Structured notes and key learnings from professional design and technology
       certificates. Select a certificate below to explore the content.
     </p>
@@ -23,9 +25,9 @@ const certificatesList = buildCertListFromData(certificatesData);
       certificatesList.map((certificate) => (
         <li
           class={cn(
-            "group border border-gray-200 rounded-lg p-6 hover:border-blue-300 hover:bg-blue-50/30 transition-colors transition-[border-color,background-color]",
+            "group border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:border-blue-300 dark:hover:border-blue-600 hover:bg-blue-50/30 dark:hover:bg-blue-950/20 transition-colors transition-[border-color,background-color]",
             {
-              "border-green-300 bg-green-50/30 hover:border-green-400 hover:bg-green-50/40":
+              "border-green-300 bg-green-50/30 dark:bg-green-950/20 hover:border-green-400 dark:hover:border-green-600 hover:bg-green-50/40 dark:hover:bg-green-950/30":
                 certificate.completed,
             },
           )}
@@ -33,9 +35,9 @@ const certificatesList = buildCertListFromData(certificatesData);
           <div class="flex items-start gap-4">
             <div
               class={cn(
-                "p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 text-blue-700 transition-colors",
+                "p-3 bg-blue-100 dark:bg-blue-950 rounded-lg group-hover:bg-blue-200 dark:group-hover:bg-blue-800 text-blue-700 dark:text-blue-300 transition-colors",
                 {
-                  "bg-green-100 group-hover:bg-green-200 text-green-700":
+                  "bg-green-100 dark:bg-green-950 group-hover:bg-green-200 dark:group-hover:bg-green-800 text-green-700 dark:text-green-300":
                     certificate.completed,
                 },
               )}
@@ -46,21 +48,22 @@ const certificatesList = buildCertListFromData(certificatesData);
             <div class="flex-1">
               <h2
                 class={cn(
-                  "text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors",
+                  "text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors",
                   {
-                    "group-hover:text-green-700": certificate.completed,
+                    "group-hover:text-green-700 dark:group-hover:text-green-300":
+                      certificate.completed,
                   },
                 )}
               >
                 {certificate.title}
               </h2>
-              <p class="text-gray-600 mb-4 leading-relaxed">
+              <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
                 {certificate.description}
               </p>
               <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 lg:gap-6 text-sm text-gray-500">
                 <div class="space-x-4">
                   {certificate.completedDate && (
-                    <span class="text-gray-500">
+                    <span class="text-gray-500 dark:text-gray-300">
                       Completed on {certificate.completedDate}
                     </span>
                   )}

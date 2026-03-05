@@ -18,6 +18,7 @@ export type NavCertificate = {
   slug: string;
   path: string;
   chapters: NavChapter[];
+  description: string;
 };
 
 export type CertRef = {
@@ -249,6 +250,7 @@ export function buildCertNavigationFromData(
     title: data.title,
     slug: certSlug,
     path: `${CERT_BASE}${certSlug}/`,
+    description: data.description ?? "",
     chapters,
   };
 }

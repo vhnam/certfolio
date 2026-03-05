@@ -1,138 +1,138 @@
 {
-    "title": "Design for the 21st Century with Don Norman",
-    "slug": "design-for-the-21st-century-with-don-norman",
-    "description": "In this course, by Don Norman, you'll learn how to apply human-centered design to solve complex global challenges to make a difference in the world.",
-    "completed": true,
-    "certificateLink": "https://www.interaction-design.org/members/nam-vo/certificate/course/25041a28-f1bf-4efe-8620-e2ccc7448016",
-    "completedDate": "Feb 24, 2026",
-    "courseLink": "https://www.interaction-design.org/courses/design-for-the-21st-century",
-    "chapters": [
+  "title": "Design for the 21st Century with Don Norman",
+  "slug": "design-for-the-21st-century-with-don-norman",
+  "description": "In this course, by Don Norman, you'll learn how to apply human-centered design to solve complex global challenges to make a difference in the world.",
+  "completed": true,
+  "certificateLink": "https://www.interaction-design.org/members/nam-vo/certificate/course/25041a28-f1bf-4efe-8620-e2ccc7448016",
+  "completedDate": "Feb 24, 2026",
+  "courseLink": "https://www.interaction-design.org/courses/design-for-the-21st-century",
+  "chapters": [
+    {
+      "title": "How Designers Can Improve the World",
+      "lessons": [
         {
-            "title": "How Designers Can Improve the World",
-            "lessons": [
-                {
-                    "title": "Welcome to Design for the 21st Century with Don Norman",
-                    "slug": "how-designers-can-improve-the-world/welcome-to-design-for-the-21st-century-with-don-norman"
-                },
-                {
-                    "title": "21st Century Design: Let's Use Human-Centered Design to Solve Major Global Challenges",
-                    "slug": "how-designers-can-improve-the-world/21st-century-design-lets-use-human-centered-design-to-solve-major-global-challenges"
-                },
-                {
-                    "title": "Why We've Evolved from User-Centered Design to People-, Human- and Humanity-Centered Design",
-                    "slug": "how-designers-can-improve-the-world/why-weve-evolved-from-user-centered-design-to-people-human-and-humanity-centered-design"
-                },
-                {
-                    "title": "Don Norman: Why Designers (Not Engineers or Scientists) Will Solve the UN's 17 Biggest Problems",
-                    "slug": "how-designers-can-improve-the-world/don-norman-why-designers-not-engineers-or-scientists-will-solve-the-uns-17-biggest-problems"
-                },
-                {
-                    "title": "Let's Democratize Design",
-                    "slug": "how-designers-can-improve-the-world/lets-democratize-design"
-                },
-                {
-                    "title": "What is the Difference Between Wicked Problems and Complex Socio-Technical Systems?",
-                    "slug": "how-designers-can-improve-the-world/what-is-the-difference-between-wicked-problems-and-complex-socio-technical-systems"
-                },
-                {
-                    "title": "Lesson 1 Recap",
-                        "slug": "how-designers-can-improve-the-world/recap"
-                }
-            ]
+          "title": "Welcome to Design for the 21st Century with Don Norman",
+          "slug": "how-designers-can-improve-the-world/welcome-to-design-for-the-21st-century-with-don-norman"
         },
         {
-            "title": "How You Can Apply Human-Centered Design Insights and Processes When You Aim to Solve Complex Global Problems",
-            "lessons": [
-                {
-                    "title": "Welcome and Introduction",
-                    "slug": "how-you-can-apply-human-centered-design-insights-and-processes-when-you-aim-to-solve-complex-global-problems/welcome-and-introduction"
-                },
-                {
-                    "title": "Human-Centered Design: How to Focus on People When You Solve Complex Global Challenges",
-                    "slug": "how-you-can-apply-human-centered-design-insights-and-processes-when-you-aim-to-solve-complex-global-problems/human-centered-design-how-to-focus-on-people-when-you-solve-complex-global-challenges"
-                },
-                {
-                    "title": "Everything Is a System: What Is a Feedback Loop and Why Is It So Important to Humans?",
-                    "slug": "how-you-can-apply-human-centered-design-insights-and-processes-when-you-aim-to-solve-complex-global-problems/everything-is-a-system-what-is-a-feedback-loop-and-why-is-it-so-important-to-humans"
-                },
-                {
-                    "title": "Use Systems Thinking and Solve the Root Causes of Problems",
-                    "slug": "how-you-can-apply-human-centered-design-insights-and-processes-when-you-aim-to-solve-complex-global-problems/use-systems-thinking-and-solve-the-root-causes-of-problems"
-                },
-                {
-                    "title": "The 5 Whys Method: How to Identify the Root Causes of a Problem by Investigating the Entire System",
-                    "slug": "how-you-can-apply-human-centered-design-insights-and-processes-when-you-aim-to-solve-complex-global-problems/the-5-whys-method-how-to-identify-the-root-causes-of-a-problem-by-investigating-the-entire-system"
-                },
-                {
-                    "title": "How to Tackle Major Problems: Muddle Through by Taking Small Incremental Steps",
-                    "slug": "how-you-can-apply-human-centered-design-insights-and-processes-when-you-aim-to-solve-complex-global-problems/how-to-tackle-major-problems-muddle-through-by-taking-small-incremental-steps"
-                },
-                {
-                    "title": "Lesson 2 Recap",
-                    "slug": "how-you-can-apply-human-centered-design-insights-and-processes-when-you-aim-to-solve-complex-global-problems/recap"
-                }
-            ]
+          "title": "21st Century Design: Let's Use Human-Centered Design to Solve Major Global Challenges",
+          "slug": "how-designers-can-improve-the-world/21st-century-design-lets-use-human-centered-design-to-solve-major-global-challenges"
         },
         {
-            "title": "What are the Design Skills You Will Need to Make a Difference in the 21st Century?",
-            "lessons": [
-                {
-                    "title": "Welcome and Introduction",
-                    "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/welcome-and-introduction"
-                },
-                {
-                    "title": "Don Norman: The Way We Measure Success Today is Wrong!",
-                    "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/don-norman-the-way-we-measure-success-today-is-wrong"
-                },
-                {
-                    "title": "Don Norman: The Way We Design Today is Wrong!",
-                    "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/don-norman-the-way-we-design-today-is-wrong"
-                },
-                {
-                    "title": "How You Can Get More Power and Influence as a Designer",
-                    "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/how-you-can-get-more-power-and-influence-as-a-designer"
-                },
-                {
-                    "title": "Don Norman: How You Can Rapidly Move Up by Thinking in Systems (Not Features)",
-                    "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/don-norman-how-you-can-rapidly-move-up-by-thinking-in-systems-not-features"
-                },
-                {
-                    "title": "If You Don’t Fail, You’re Not Trying Hard Enough",
-                    "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/if-you-dont-fail-youre-not-trying-hard-enough"
-                },
-                {
-                    "title": "How to Explain Complex Design Ideas So People Get Excited and Promote You",
-                    "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/how-to-explain-complex-design-ideas-so-people-get-excited-and-promote-you"
-                },
-                {
-                    "title": "What’s the Secret Behind Don Norman’s Success?",
-                    "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/whats-the-secret-behind-don-normans-success"
-                },
-                {
-                    "title": "Don Norman: To Become a World-Class Designer, You Must Be a Generalist",
-                    "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/don-norman-to-become-a-world-class-designer-you-must-be-a-generalist"
-                },
-                {
-                    "title": "The 4 Types of Designers Who Will Thrive in 2030 (And the One Most Schools Still Ignore)",
-                    "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/the-4-types-of-designers-who-will-thrive-in-2030-and-the-one-most-schools-still-ignore"
-                },
-                {
-                    "title": "How You as a Lone Designer Can Change the World",
-                    "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/how-you-as-a-lone-designer-can-change-the-world"
-                },
-                {
-                    "title": "95% of Design Schools Are Training You for Jobs That Won’t Exist",
-                    "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/how-design-educators-can-help-designers-in-the-21st-century"
-                },
-                {
-                    "title": "Build Your Portfolio: Make a Difference",
-                    "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/build-your-portfolio-make-a-difference"
-                },
-                {
-                    "title": "Lesson 3 Recap",
-                    "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/recap"
-                }
-            ]
+          "title": "Why We've Evolved from User-Centered Design to People-, Human- and Humanity-Centered Design",
+          "slug": "how-designers-can-improve-the-world/why-weve-evolved-from-user-centered-design-to-people-human-and-humanity-centered-design"
+        },
+        {
+          "title": "Don Norman: Why Designers (Not Engineers or Scientists) Will Solve the UN's 17 Biggest Problems",
+          "slug": "how-designers-can-improve-the-world/don-norman-why-designers-not-engineers-or-scientists-will-solve-the-uns-17-biggest-problems"
+        },
+        {
+          "title": "Let's Democratize Design",
+          "slug": "how-designers-can-improve-the-world/lets-democratize-design"
+        },
+        {
+          "title": "What is the Difference Between Wicked Problems and Complex Socio-Technical Systems?",
+          "slug": "how-designers-can-improve-the-world/what-is-the-difference-between-wicked-problems-and-complex-socio-technical-systems"
+        },
+        {
+          "title": "Lesson 1 Recap",
+          "slug": "how-designers-can-improve-the-world/recap"
         }
-    ]
+      ]
+    },
+    {
+      "title": "How You Can Apply Human-Centered Design Insights and Processes When You Aim to Solve Complex Global Problems",
+      "lessons": [
+        {
+          "title": "Welcome and Introduction",
+          "slug": "how-you-can-apply-human-centered-design-insights-and-processes-when-you-aim-to-solve-complex-global-problems/welcome-and-introduction"
+        },
+        {
+          "title": "Human-Centered Design: How to Focus on People When You Solve Complex Global Challenges",
+          "slug": "how-you-can-apply-human-centered-design-insights-and-processes-when-you-aim-to-solve-complex-global-problems/human-centered-design-how-to-focus-on-people-when-you-solve-complex-global-challenges"
+        },
+        {
+          "title": "Everything Is a System: What Is a Feedback Loop and Why Is It So Important to Humans?",
+          "slug": "how-you-can-apply-human-centered-design-insights-and-processes-when-you-aim-to-solve-complex-global-problems/everything-is-a-system-what-is-a-feedback-loop-and-why-is-it-so-important-to-humans"
+        },
+        {
+          "title": "Use Systems Thinking and Solve the Root Causes of Problems",
+          "slug": "how-you-can-apply-human-centered-design-insights-and-processes-when-you-aim-to-solve-complex-global-problems/use-systems-thinking-and-solve-the-root-causes-of-problems"
+        },
+        {
+          "title": "The 5 Whys Method: How to Identify the Root Causes of a Problem by Investigating the Entire System",
+          "slug": "how-you-can-apply-human-centered-design-insights-and-processes-when-you-aim-to-solve-complex-global-problems/the-5-whys-method-how-to-identify-the-root-causes-of-a-problem-by-investigating-the-entire-system"
+        },
+        {
+          "title": "How to Tackle Major Problems: Muddle Through by Taking Small Incremental Steps",
+          "slug": "how-you-can-apply-human-centered-design-insights-and-processes-when-you-aim-to-solve-complex-global-problems/how-to-tackle-major-problems-muddle-through-by-taking-small-incremental-steps"
+        },
+        {
+          "title": "Lesson 2 Recap",
+          "slug": "how-you-can-apply-human-centered-design-insights-and-processes-when-you-aim-to-solve-complex-global-problems/recap"
+        }
+      ]
+    },
+    {
+      "title": "What are the Design Skills You Will Need to Make a Difference in the 21st Century?",
+      "lessons": [
+        {
+          "title": "Welcome and Introduction",
+          "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/welcome-and-introduction"
+        },
+        {
+          "title": "Don Norman: The Way We Measure Success Today is Wrong!",
+          "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/don-norman-the-way-we-measure-success-today-is-wrong"
+        },
+        {
+          "title": "Don Norman: The Way We Design Today is Wrong!",
+          "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/don-norman-the-way-we-design-today-is-wrong"
+        },
+        {
+          "title": "How You Can Get More Power and Influence as a Designer",
+          "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/how-you-can-get-more-power-and-influence-as-a-designer"
+        },
+        {
+          "title": "Don Norman: How You Can Rapidly Move Up by Thinking in Systems (Not Features)",
+          "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/don-norman-how-you-can-rapidly-move-up-by-thinking-in-systems-not-features"
+        },
+        {
+          "title": "If You Don’t Fail, You’re Not Trying Hard Enough",
+          "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/if-you-dont-fail-youre-not-trying-hard-enough"
+        },
+        {
+          "title": "How to Explain Complex Design Ideas So People Get Excited and Promote You",
+          "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/how-to-explain-complex-design-ideas-so-people-get-excited-and-promote-you"
+        },
+        {
+          "title": "What’s the Secret Behind Don Norman’s Success?",
+          "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/whats-the-secret-behind-don-normans-success"
+        },
+        {
+          "title": "Don Norman: To Become a World-Class Designer, You Must Be a Generalist",
+          "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/don-norman-to-become-a-world-class-designer-you-must-be-a-generalist"
+        },
+        {
+          "title": "The 4 Types of Designers Who Will Thrive in 2030 (And the One Most Schools Still Ignore)",
+          "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/the-4-types-of-designers-who-will-thrive-in-2030-and-the-one-most-schools-still-ignore"
+        },
+        {
+          "title": "How You as a Lone Designer Can Change the World",
+          "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/how-you-as-a-lone-designer-can-change-the-world"
+        },
+        {
+          "title": "95% of Design Schools Are Training You for Jobs That Won’t Exist",
+          "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/how-design-educators-can-help-designers-in-the-21st-century"
+        },
+        {
+          "title": "Build Your Portfolio: Make a Difference",
+          "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/build-your-portfolio-make-a-difference"
+        },
+        {
+          "title": "Lesson 3 Recap",
+          "slug": "what-are-the-design-skills-you-will-need-to-make-a-difference-in-the-21st-century/recap"
+        }
+      ]
+    }
+  ]
 }

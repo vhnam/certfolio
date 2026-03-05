@@ -290,8 +290,8 @@ export function MobileDrawer({
               {certificates.map((cert) => (
                 <a
                   key={cert.slug}
-                  href={cert.path}
-                  className={linkClass(cert.path)}
+                  href={`/certificates/${cert.slug}`}
+                  className={linkClass(`/certificates/${cert.slug}`)}
                   onClick={closeDrawer}
                 >
                   {cert.title}

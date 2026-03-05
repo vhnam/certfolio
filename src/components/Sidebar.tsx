@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { IconChevronDown, IconChevronLeft } from '@tabler/icons-react';
+import { IconChevronLeft } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
 import type { NavCertificate, CertRef, MasterClassRef } from '@/lib/navigation';
 
@@ -69,10 +69,10 @@ export function Sidebar({
         {certificates.map((cert) => (
           <a
             key={cert.slug}
-            href={cert.path}
+            href={`/certificates/${cert.slug}`}
             className={cn(
               'rounded-md px-3 py-2 text-sm transition-colors',
-              isActive(cert.path)
+              isActive(`/certificates/${cert.slug}`)
                 ? 'bg-sidebar-accent text-sidebar-accent-foreground font-medium'
                 : 'text-sidebar-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground'
             )}
@@ -106,34 +106,38 @@ export function Sidebar({
       {/* Back link */}
       <a
         href='/certificates/'
-        className='mb-4 flex items-center gap-1.5 px-3 text-sm text-muted-foreground transition-colors hover:text-foreground'
+        className='flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 mb-6 transition-colors'
       >
         <IconChevronLeft size={14} strokeWidth={2} />
         All Certificates
       </a>
 
       {/* Certificate title */}
-      <a
-        href={currentCert.path}
-        className={cn(
-          'mb-1 block truncate px-3 text-[13px] font-semibold leading-tight transition-colors',
-          isActive(currentCert.path)
-            ? 'text-sidebar-primary'
-            : 'text-sidebar-foreground hover:text-sidebar-primary'
-        )}
-      >
-        {currentCert.title}
-      </a>
+      <div className='mb-6'>
+        <a
+          href={currentCert.path}
+          className={cn(
+            'text-base font-semibold text-gray-900 dark:text-gray-100 mb-1',
+            isActive(`/certificates/${currentCert.slug}`)
+              ? 'text-sidebar-primary'
+              : 'text-sidebar-foreground hover:text-sidebar-primary'
+          )}
+        >
+          {currentCert.title}
+        </a>
+        <p className='text-gray-600 dark:text-gray-400 text-sm'>
+          {currentCert.description}
+        </p>
+      </div>
 
       {/* Overview */}
       <a
         href={currentCert.path}
-        className={cn(
-          'rounded-md px-3 py-1.5 text-sm transition-colors',
+        className={`block px-3 py-2 text-sm rounded-md transition-colors ${
           isActive(currentCert.path)
-            ? 'bg-sidebar-accent text-sidebar-accent-foreground font-medium'
-            : 'text-sidebar-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground'
-        )}
+            ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 font-medium'
+            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-900'
+        }`}
       >
         Overview
       </a>
@@ -182,17 +186,17 @@ export function Sidebar({
                 aria-expanded={isExpanded}
                 className={cn(
                   'rounded-r-md p-1.5 pr-2.5 transition-colors',
-                  isActive(chapter.path)
+                  isActive(`/certificates/${currentCert.slug}/${chapter.slug}`)
                     ? 'bg-sidebar-accent text-sidebar-accent-foreground'
                     : 'text-muted-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-foreground'
                 )}
               >
-                <IconChevronDown
+                <IconChevronLeft
                   size={13}
                   strokeWidth={2}
                   className={cn(
                     'transition-transform duration-200',
-                    isExpanded && 'rotate-180'
+                    isExpanded && '-rotate-90'
                   )}
                 />
               </button>
@@ -200,17 +204,16 @@ export function Sidebar({
 
             {/* Lessons */}
             {isExpanded && chapter.lessons.length > 0 && (
-              <div className='ml-3 mt-0.5 mb-1 flex flex-col gap-0.5 border-l border-sidebar-border pl-3'>
+              <div className='ml-8 mt-1 space-y-1 border-l border-gray-200 dark:border-gray-700 pl-3'>
                 {chapter.lessons.map((lesson) => (
                   <a
                     key={lesson.slug}
                     href={lesson.path}
-                    className={cn(
-                      'rounded-md px-2 py-1.5 text-[13px] leading-snug transition-colors',
+                    className={`block px-3 py-2 text-sm rounded-md transition-colors ${
                       isActive(lesson.path)
-                        ? 'bg-sidebar-accent text-sidebar-accent-foreground font-medium'
-                        : 'text-muted-foreground hover:bg-sidebar-accent/60 hover:text-foreground'
-                    )}
+                        ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 font-medium'
+                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-900'
+                    }`}
                   >
                     {lesson.title}
                   </a>

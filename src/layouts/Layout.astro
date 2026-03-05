@@ -6,6 +6,7 @@ import { getCollection } from "astro:content";
 
 import { Sidebar } from "@/components/Sidebar";
 import { MobileDrawer } from "@/components/MobileDrawer";
+import { ToggleTheme } from "@/components/ToggleTheme";
 import {
   buildCertListFromData,
   buildCertNavigation,
@@ -196,7 +197,12 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
         currentCert={currentCert}
         currentPath={currentPath}
       />
-      <a href="/" class="text-sm font-semibold text-foreground"> Certfolio </a>
+      <a href="/" class="text-sm font-semibold text-gray-900 dark:text-gray-100"
+        >Certfolio</a
+      >
+      <div class="ml-auto">
+        <ToggleTheme client:load />
+      </div>
     </header>
     <div class="flex overflow-y-auto h-[calc(100dvh-61px)]">
       <!-- ── Desktop sidebar ─────────────────────────────────────────────── -->
