@@ -175,6 +175,19 @@
           "slug": "how-to-design-for-experimentation/recap"
         }
       ]
+    },
+    {
+      "title": "How to Build Products More Collaboratively",
+      "lessons": [
+        {
+          "title": "Welcome and Introduction",
+          "slug": "how-to-build-products-more-collaboratively/welcome-and-introduction"
+        },
+        {
+          "title": "Design for Collaboration",
+          "slug": "how-to-build-products-more-collaboratively/design-for-collaboration"
+        }
+      ]
     }
   ]
 }
