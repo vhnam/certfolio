@@ -21,6 +21,10 @@
         {
           "title": "Learn how AI works",
           "slug": "ai-fundamentals/learn-how-ai-works"
+        },
+        {
+          "title": "Design great prompts",
+          "slug": "ai-fundamentals/design-great-prompts"
         }
       ]
     }
