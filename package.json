@@ -16,6 +16,7 @@
     "@astrojs/netlify": "^6.6.4",
     "@astrojs/react": "^4.4.2",
     "@base-ui/react": "^1.2.0",
+    "@fontsource/ibm-plex-mono": "^5.2.7",
     "@fontsource/poppins": "^5.2.7",
     "@tabler/icons-react": "^3.37.1",
     "@tailwindcss/typography": "^0.5.19",

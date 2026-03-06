@@ -5,6 +5,7 @@
 
 :root {
   --font-sans: "Poppins", "sans-serif";
+  --font-mono: "IBM Plex Mono", "monospace";
   --header-height: 54px;
 
   --background: #ffffff;
@@ -178,7 +179,7 @@
     @apply text-gray-700 dark:text-gray-300 leading-relaxed mb-4;
   }
   a {
-    @apply text-sky-500 dark:text-sky-400 font-medium no-underline transition-colors hover:underline;
+    @apply font-mono text-sky-500 dark:text-sky-400 font-medium no-underline transition-colors hover:underline;
   }
   strong {
     @apply font-semibold;
