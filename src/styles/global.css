@@ -189,6 +189,9 @@
   ul {
     @apply mb-6 list-inside list-disc space-y-2 pl-2;
   }
+  ol {
+    @apply mb-6 list-decimal list-inside space-y-2 pl-2;
+  }
   ul ul,
   ol ul {
     @apply mb-3 mt-2 list-[circle] pl-6;
@@ -199,9 +202,6 @@
   }
   li {
     @apply text-gray-700 dark:text-gray-300 leading-relaxed;
-  }
-  ol {
-    @apply mb-6 list-decimal space-y-4 pl-6;
   }
   blockquote {
     @apply border-muted-foreground/30 text-muted-foreground my-6 border-l-4 pl-4 italic;
