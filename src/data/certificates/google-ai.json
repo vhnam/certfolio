@@ -35,7 +35,8 @@
           "slug": "ai-fundamentals/use-ai-responsibly"
         }
       ]
-    }, {
+    },
+    {
       "title": "AI for Brainstorming and Planning",
       "lessons": [
         {
@@ -45,6 +46,10 @@
         {
           "title": "Create a Project Timeline in Gemini",
           "slug": "ai-for-brainstorming-and-planning/create-a-project-timeline-in-gemini"
+        },
+        {
+          "title": "Build a Knowledge Hub in NotebookLM",
+          "slug": "ai-for-brainstorming-and-planning/build-a-knowledge-hub-in-notebook-lm"
         }
       ]
     }
