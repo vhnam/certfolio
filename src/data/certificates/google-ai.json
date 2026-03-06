@@ -52,6 +52,14 @@
           "slug": "ai-for-brainstorming-and-planning/build-a-knowledge-hub-in-notebook-lm"
         }
       ]
+    }, {
+      "title": "AI for Research and Insights",
+      "lessons": [
+        {
+          "title": "Build a Research Report with Gemini Deep Research",
+          "slug": "ai-for-research-and-insights/build-a-research-report-with-gemini-deep-research"
+        }
+      ]
     }
   ]
 }
