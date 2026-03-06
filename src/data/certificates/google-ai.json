@@ -35,6 +35,14 @@
           "slug": "ai-fundamentals/use-ai-responsibly"
         }
       ]
+    }, {
+      "title": "AI for Brainstorming and Planning",
+      "lessons": [
+        {
+          "title": "Brainstorm Ideas in Gemini",
+          "slug": "ai-for-brainstorming-and-planning/brainstorm-ideas-in-gemini"
+        }
+      ]
     }
   ]
 }
