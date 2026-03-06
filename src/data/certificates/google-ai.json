@@ -17,6 +17,10 @@
         {
           "title": "Practice using AI",
           "slug": "ai-fundamentals/practice-using-ai"
+        },
+        {
+          "title": "Learn how AI works",
+          "slug": "ai-fundamentals/learn-how-ai-works"
         }
       ]
     }
