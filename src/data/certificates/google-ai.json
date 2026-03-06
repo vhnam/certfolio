@@ -1,0 +1,20 @@
+{
+  "title": "Google AI",
+  "slug": "google-ai",
+  "description": "Build your AI fluency and get more done, faster. Get the AI skills employers are looking for and create 20+ solutions you can use at work, right away.",
+  "completed": false,
+  "certificateLink": null,
+  "completedDate": null,
+  "courseLink": "https://www.coursera.org/professional-certificates/google-ai",
+  "chapters": [
+    {
+      "title": "AI Fundamentals",
+      "lessons": [
+        {
+          "title": "Collaborate with AI",
+          "slug": "ai-fundamentals/collaborate-with-ai"
+        }
+      ]
+    }
+  ]
+}
