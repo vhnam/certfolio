@@ -1,0 +1,25 @@
+---
+title: "Object-Oriented UI Design: Build Interfaces Users Love"
+---
+
+import { CourseOverview } from "@/components/CourseOverview";
+import { ChapterOverview } from "@/components/ChapterOverview";
+import data from "@/data/certificates/object-oriented-ui-design-build-interfaces-users-love.json";
+
+<p className="text-lg text-gray-600 leading-relaxed">{data.description}</p>
+
+<CourseOverview
+  chapters={data.chapters}
+>
+
+This course introduces **object-oriented UI design**, a method that helps designers transform messy requirements into clear, user-centered interfaces. Instead of designing screens by stacking features, you learn to design around **objects that reflect how users naturally see the world**. This approach leads to interfaces that are more intuitive, scalable, and easier for development teams to implement. Because many designers are still unfamiliar with this method, mastering it gives you a competitive advantage and helps create products that users understand and adopt more easily.
+
+The course also focuses on **aligning design and development**. By learning shared concepts such as user stories, epics, constraints, conceptual models, and design maps, you can communicate more effectively with engineers and avoid impractical designs or costly rework. Understanding technical realities helps you design solutions that are both user-friendly and feasible to build. Combined with modern AI tools, this foundation enables faster workflows, better decision-making, and smoother collaboration across teams.
+
+Another key outcome is building **confidence in design decision-making**. You’ll learn how to analyze requirements, prevent feature creep, and structure interfaces that remain consistent and easy to understand as products evolve. With stronger research, user insight, and technical awareness, you can support your decisions clearly and become a trusted partner in cross-functional teams.
+
+Finally, the course helps you create **portfolio-ready artifacts** that demonstrate real product thinking. You’ll practice writing user stories, building wireframes and prototypes, and creating design maps that connect requirements to implementation-ready interfaces. These deliverables showcase your ability to design solutions that both users love and development teams can efficiently build.
+
+</CourseOverview>
+
+<ChapterOverview chapters={data.chapters} slug={data.slug} />

@@ -1,0 +1,20 @@
+{
+    "title": "Object-Oriented UI Design: Build Interfaces Users Love",
+    "slug": "object-oriented-ui-design-build-interfaces-users-love",
+    "description": "Master the new standard in UI design and get the clarity, control, and credibility to deliver interfaces that users love and teams love building.",
+    "completed": false,
+    "certificateLink": null,
+    "completedDate": null,
+    "courseLink": "https://ixdf.org/courses/object-oriented-user-interface-design",
+    "chapters": [
+        {
+            "title": "Introduction to Object-Oriented UI Design",
+            "lessons": [
+                {
+                    "title": "Welcome to Object-Oriented UI Design: Build Interfaces Users Love",
+                    "slug": "master-the-object-oriented-principles-behind-every-great-ui/welcome-to-object-oriented-ui-design-build-interfaces-users-love"
+                }
+            ]
+        }
+    ]
+}
