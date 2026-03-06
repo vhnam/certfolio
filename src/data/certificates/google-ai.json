@@ -58,6 +58,10 @@
         {
           "title": "Build a Research Report with Gemini Deep Research",
           "slug": "ai-for-research-and-insights/build-a-research-report-with-gemini-deep-research"
+        },
+        {
+          "title": "Create and Share Research Summaries in NotebookLM",
+          "slug": "ai-for-research-and-insights/create-and-share-research-summaries-in-notebook-lm"
         }
       ]
     }
