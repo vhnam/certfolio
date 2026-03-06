@@ -1,5 +1,6 @@
 ---
 title: Collaborate with AI
+description: Shift your mindset from using AI as a task completer to using AI as a collaborator.
 ---
 
 ## AI Skills for Work with Google Tools

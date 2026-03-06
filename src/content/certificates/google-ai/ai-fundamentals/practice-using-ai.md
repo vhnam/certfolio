@@ -1,5 +1,6 @@
 ---
 title: Practice using AI
+description: Learn how to use labs for hands-on experience with AI. Get the most out of Gemini with Google AI Pro, then start using Gemini by brainstorming ideas.
 ---
 
 ## How to Get the Most Out of AI Labs

@@ -1,5 +1,6 @@
 ---
 title: Level up your prompts
+description: Understand advanced prompting techniques and practice prompt chaining.
 ---
 
 ## Prompt Chaining Strategies

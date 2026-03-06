@@ -1,5 +1,6 @@
 ---
 title: Design great prompts
+description: Learn a prompting framework, then use it to improve the quality of your outputs.
 ---
 
 ## Effective Prompting Techniques for AI

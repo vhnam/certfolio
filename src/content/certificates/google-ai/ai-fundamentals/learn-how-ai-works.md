@@ -1,5 +1,6 @@
 ---
 title: Learn how AI works
+description: Discover how AI works and how to leverage its capabilities in the workplace.
 ---
 
 ## Understanding How AI Works

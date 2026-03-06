@@ -1,5 +1,6 @@
 ---
 title: Use AI Responsibly
+description: Recognize challenges and limitations of working with AI, and learn about AI agents.
 ---
 
 ## Responsible Use of AI
