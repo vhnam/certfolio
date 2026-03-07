@@ -45,9 +45,19 @@
                 {
                     "title": "Build on Stories to Create Solutions Users Need",
                     "slug": "master-the-object-oriented-principles-behind-every-great-ui/build-on-stories-to-create-solutions-users-need"
-                },{
+                },
+                {
                     "title": "Lesson 1 Recap",
                     "slug": "master-the-object-oriented-principles-behind-every-great-ui/recap"
+                }
+            ]
+        },
+        {
+            "title": "Managing Complexity in UI Design",
+            "lessons": [
+                {
+                    "title": "Welcome and Introduction",
+                    "slug": "prioritize-what-matters-to-your-users-and-your-team-turn-features-epics-and-constraints-into-a-clear-plan/welcome-and-introduction"
                 }
             ]
         }
