@@ -84,6 +84,15 @@
                     "slug": "prioritize-what-matters-to-your-users-and-your-team-turn-features-epics-and-constraints-into-a-clear-plan/recap"
                 }
             ]
+        },
+        {
+            "title": "From Stories to Structure: Build the Models That Power Great Interfaces",
+            "lessons": [
+                {
+                    "title": "Welcome and Introduction",
+                    "slug": "from-stories-to-structure-build-the-models-that-power-great-interfaces/welcome-and-introduction"
+                }
+            ]
         }
     ]
 }
