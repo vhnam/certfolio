@@ -174,10 +174,7 @@ Users only need to understand **how to use the elevator**, not how it works inte
 
 #### Engineer Conceptual Model
 
-<div className="bg-white rounded-lg">
-  ![Engineer's conceptual model of an
-  elevator.](../../../../assets/images/object-oriented-ui-design-build-interfaces-users-love/master-the-object-oriented-principles-behind-every-great-ui/object-oriented-ui-design-illustrations-engineers-model.avif)
-</div>
+![Engineer's conceptual model of an elevator.](../../../../assets/images/object-oriented-ui-design-build-interfaces-users-love/master-the-object-oriented-principles-behind-every-great-ui/object-oriented-ui-design-illustrations-engineers-model.avif)
 
 Engineers model the system differently.
 
