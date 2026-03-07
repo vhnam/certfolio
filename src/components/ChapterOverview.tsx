@@ -12,19 +12,19 @@ export const ChapterOverview = ({ chapters, slug }: ChapterOverviewProps) => {
         Course Structure
       </h2>
       <div className='space-y-6'>
-        {chapters.map((chapter, index) => (
+        {chapters.map((chapter, chapterIndex) => (
           <div
-            key={chapter.title}
+            key={`${chapterIndex}-${chapter.title}`}
             className='border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-6'
           >
             <h3 className='text-lg font-semibold text-gray-900 dark:text-gray-50 mb-3'>
-              Chapter {index + 1}. {chapter.title}
+              Chapter {chapterIndex + 1}. {chapter.title}
             </h3>
             <ul className='space-y-2'>
-              {chapter.lessons.map((lesson) => (
-                <li key={lesson.title}>
+              {chapter.lessons.map((lesson, lessonIndex) => (
+                <li key={`${lessonIndex}-${lesson.slug}`}>
                   <a
-                    href={lesson.slug}
+                    href={`/certificates/${slug}/${lesson.slug}`}
                     className='!text-blue-600 dark:!text-blue-400 hover:!text-blue-700 dark:hover:!text-blue-300 hover:underline text-sm'
                   >
                     {lesson.title}

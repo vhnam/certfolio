@@ -7,6 +7,8 @@ import {
 } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
 import type { NavCertificate, CertRef } from '@/lib/navigation';
+import { isActivePath } from '@/lib/navigation';
+import { useExpandedChapters } from '@/hooks/useExpandedChapters';
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
@@ -27,30 +29,11 @@ export function MobileDrawer({
   const panelRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState(false);
-
-  const [expandedChapters, setExpandedChapters] = useState<Set<string>>(() => {
-    let stored: string[] = [];
-    if (typeof localStorage !== 'undefined' && storageKey) {
-      try {
-        const raw = localStorage.getItem(storageKey);
-        const json = raw ? (JSON.parse(raw) as unknown) : [];
-        if (Array.isArray(json)) stored = json.filter((x): x is string => typeof x === 'string');
-      } catch {
-        stored = [];
-      }
-    }
-
-    const result = new Set<string>(stored);
-
-    if (currentCert) {
-      const active = currentCert.chapters.find((ch) =>
-        currentPath.startsWith(ch.path)
-      );
-      if (active) result.add(active.slug);
-    }
-
-    return result;
-  });
+  const [expandedChapters, setChapterOpen] = useExpandedChapters(
+    storageKey,
+    currentCert,
+    currentPath
+  );
 
   // Lock body scroll while drawer is open
   useEffect(() => {
@@ -111,20 +94,11 @@ export function MobileDrawer({
   }, [isOpen]);
 
   function toggleChapter(slug: string) {
-    setExpandedChapters((prev) => {
-      const next = new Set(prev);
-      next.has(slug) ? next.delete(slug) : next.add(slug);
-      if (storageKey) {
-        localStorage.setItem(storageKey, JSON.stringify([...next]));
-      }
-      return next;
-    });
+    const isExpanded = expandedChapters.has(slug);
+    setChapterOpen(slug, !isExpanded);
   }
 
-  const isActive = (path: string) =>
-    currentPath === path ||
-    currentPath === path.replace(/\/$/, '') ||
-    currentPath + '/' === path;
+  const isActive = (path: string) => isActivePath(currentPath, path);
 
   const linkClass = (path: string) =>
     cn(
@@ -228,9 +202,7 @@ export function MobileDrawer({
                       <a
                         href={chapter.path}
                         onClick={() => {
-                          setExpandedChapters(
-                            (prev) => new Set([...prev, chapter.slug])
-                          );
+                          setChapterOpen(chapter.slug, true);
                           closeDrawer();
                         }}
                         className={cn(
@@ -245,7 +217,9 @@ export function MobileDrawer({
                       <button
                         onClick={() => toggleChapter(chapter.slug)}
                         aria-label={
-                          isExpanded ? 'Collapse chapter' : 'Expand chapter'
+                          isExpanded
+                            ? `Collapse ${chapter.title}`
+                            : `Expand ${chapter.title}`
                         }
                         aria-expanded={isExpanded}
                         className={cn(

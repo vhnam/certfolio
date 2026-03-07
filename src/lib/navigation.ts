@@ -42,6 +42,33 @@ type Entry = {
   data: { title: string; description?: string; order?: number };
 };
 
+// ── Path helpers ───────────────────────────────────────────────────────────
+
+function normalizePath(s: string): string {
+  return s.replace(/\/$/, "") || "/";
+}
+
+/**
+ * Returns whether the current path matches the given path (trailing-slash insensitive).
+ */
+export function isActivePath(currentPath: string, path: string): boolean {
+  return normalizePath(currentPath) === normalizePath(path);
+}
+
+/**
+ * Read expanded chapter slugs from localStorage. Returns [] on SSR or parse error.
+ */
+export function readStoredExpanded(storageKey: string | null): string[] {
+  if (typeof localStorage === "undefined" || !storageKey) return [];
+  try {
+    return JSON.parse(localStorage.getItem(storageKey) ?? "[]") as string[];
+  } catch {
+    return [];
+  }
+}
+
+// ── Certificate navigation (content collection) ──────────────────────────────
+
 const CERT_BASE = "/certificates/";
 
 /**
@@ -153,6 +180,7 @@ export function buildCertNavigation(
     title: rootEntry.data.title,
     slug: certSlug,
     path: `${CERT_BASE}${certSlug}/`,
+    description: rootEntry.data.description ?? "",
     chapters,
   };
 }
@@ -168,6 +196,7 @@ export function buildCertList(entries: Entry[]): CertRef[] {
       return {
         title: e.data.title,
         slug: certSlug,
+        courseLink: "",
         path: `/certificates/${certSlug}/`,
       };
     });
@@ -180,6 +209,7 @@ export type CertificatesListEntry = {
   description?: string;
   slug: string;
   link?: string;
+  courseLink?: string;
   completed?: boolean;
   certificateLink?: string | null;
   completedDate?: string | null;
@@ -203,6 +233,7 @@ export function buildCertListFromData(data: CertificatesJson): CertRef[] {
   return data.certificates.map((c) => ({
     title: c.title,
     slug: c.slug,
+    courseLink: c.courseLink ?? c.link ?? "",
     path: `${CERT_BASE}${c.slug}/`,
     description: c.description,
     completed: c.completed,

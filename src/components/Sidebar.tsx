@@ -1,7 +1,20 @@
-import { useState, useEffect } from 'react';
 import { IconCertificate, IconChevronLeft } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
-import type { NavCertificate, CertRef, MasterClassRef } from '@/lib/navigation';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '@/components/ui/collapsible';
+import type {
+  NavCertificate,
+  NavChapter,
+  CertRef,
+  MasterClassRef,
+} from '@/lib/navigation';
+import { isActivePath } from '@/lib/navigation';
+import { useExpandedChapters } from '@/hooks/useExpandedChapters';
+
+// ── Types ───────────────────────────────────────────────────────────────────
 
 interface SidebarProps {
   certificates: CertRef[];
@@ -10,115 +23,230 @@ interface SidebarProps {
   masterClasses: MasterClassRef[];
 }
 
-export function Sidebar({
+// ── Shared styles ───────────────────────────────────────────────────────────
+
+const navClass = 'flex flex-col gap-0.5 px-3 py-4';
+const sectionTitleClass =
+  'mb-2 px-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground';
+const listLinkBaseClass =
+  'flex gap-2 justify-start rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-blue-700 dark:hover:text-blue-300';
+const listLinkInactiveClass =
+  'text-sidebar-foreground hover:bg-sidebar-accent/60';
+const listLinkAccentActiveClass =
+  'bg-sidebar-accent text-sidebar-accent-foreground';
+const listLinkHighlightActiveClass =
+  'bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 font-medium';
+const blockLinkBaseClass =
+  'block px-3 py-2 text-sm rounded-md transition-colors';
+const blockLinkInactiveClass =
+  'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-900';
+const lessonLinkInactiveClass =
+  'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-900';
+
+// ── Subcomponents ───────────────────────────────────────────────────────────
+
+function SidebarSectionTitle({ children }: { children: React.ReactNode }) {
+  return <p className={sectionTitleClass}>{children}</p>;
+}
+
+interface SidebarListLinkProps {
+  href: string;
+  isActive: boolean;
+  activeVariant?: 'accent' | 'highlight';
+  icon?: React.ReactNode;
+  children: React.ReactNode;
+}
+
+function SidebarListLink({
+  href,
+  isActive,
+  activeVariant = 'accent',
+  icon,
+  children,
+}: SidebarListLinkProps) {
+  const activeClass =
+    activeVariant === 'highlight'
+      ? listLinkHighlightActiveClass
+      : listLinkAccentActiveClass;
+  return (
+    <a
+      href={href}
+      className={cn(
+        listLinkBaseClass,
+        isActive ? activeClass : listLinkInactiveClass
+      )}
+    >
+      {icon != null ? <div className='w-3 pt-0.5'>{icon}</div> : null}
+      <span>{children}</span>
+    </a>
+  );
+}
+
+interface SidebarBlockLinkProps {
+  href: string;
+  isActive: boolean;
+  variant?: 'overview' | 'lesson';
+  children: React.ReactNode;
+}
+
+function SidebarBlockLink({
+  href,
+  isActive,
+  variant = 'overview',
+  children,
+}: SidebarBlockLinkProps) {
+  const inactiveClass =
+    variant === 'lesson' ? lessonLinkInactiveClass : blockLinkInactiveClass;
+  return (
+    <a
+      href={href}
+      className={cn(
+        blockLinkBaseClass,
+        isActive ? listLinkHighlightActiveClass : inactiveClass
+      )}
+    >
+      {children}
+    </a>
+  );
+}
+
+// ── Global view (certificates + master classes) ─────────────────────────────
+
+interface SidebarGlobalViewProps {
+  certificates: CertRef[];
+  masterClasses: MasterClassRef[];
+  isActive: (path: string) => boolean;
+}
+
+function SidebarGlobalView({
   certificates,
+  masterClasses,
+  isActive,
+}: SidebarGlobalViewProps) {
+  return (
+    <nav className={navClass} aria-label='Main navigation'>
+      <SidebarSectionTitle>Certificates</SidebarSectionTitle>
+      {certificates.map((cert) => (
+        <SidebarListLink
+          key={cert.slug}
+          href={`/certificates/${cert.slug}`}
+          isActive={isActive(`/certificates/${cert.slug}`)}
+          icon={
+            cert.completed ? (
+              <IconCertificate size={12} />
+            ) : (
+              <span className='w-3'>&nbsp;</span>
+            )
+          }
+        >
+          {cert.title}
+        </SidebarListLink>
+      ))}
+      <span className='my-3' aria-hidden />
+      <SidebarSectionTitle>Master Classes</SidebarSectionTitle>
+      {masterClasses.map((masterClass) => (
+        <SidebarListLink
+          key={masterClass.slug}
+          href={masterClass.path}
+          isActive={isActive(masterClass.path)}
+          activeVariant='highlight'
+          icon={<IconCertificate size={12} />}
+        >
+          {masterClass.title}
+        </SidebarListLink>
+      ))}
+    </nav>
+  );
+}
+
+// ── Chapter (collapsible + lessons) ─────────────────────────────────────────
+
+interface SidebarChapterProps {
+  chapter: NavChapter;
+  currentPath: string;
+  isExpanded: boolean;
+  onToggle: (open: boolean) => void;
+  isActive: (path: string) => boolean;
+}
+
+function SidebarChapter({
+  chapter,
+  currentPath,
+  isExpanded,
+  onToggle,
+  isActive,
+}: SidebarChapterProps) {
+  const isChapterActive = currentPath.startsWith(chapter.path);
+
+  return (
+    <Collapsible open={isExpanded} onOpenChange={onToggle}>
+      <CollapsibleTrigger
+        className={cn(
+          'flex w-full cursor-pointer items-center rounded-md text-left transition-colors',
+          isChapterActive &&
+            !isActive(chapter.path) &&
+            'text-sidebar-foreground',
+          isChapterActive
+            ? 'bg-sidebar-accent/60 text-sidebar-foreground font-medium hover:bg-sidebar-accent'
+            : 'text-sidebar-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground'
+        )}
+        aria-label={
+          isExpanded ? `Collapse ${chapter.title}` : `Expand ${chapter.title}`
+        }
+      >
+        <span className='flex-1 rounded-l-md px-3 py-1.5 text-sm'>
+          {chapter.title}
+        </span>
+        <span className='rounded-r-md p-1.5 pr-2.5 text-muted-foreground'>
+          <IconChevronLeft
+            size={13}
+            strokeWidth={2}
+            className={cn(
+              'transition-transform duration-200',
+              isExpanded && '-rotate-90'
+            )}
+          />
+        </span>
+      </CollapsibleTrigger>
+      {chapter.lessons.length > 0 && (
+        <CollapsibleContent>
+          <div className='ml-8 mt-1 space-y-1 border-l border-gray-200 dark:border-gray-700 pl-3'>
+            {chapter.lessons.map((lesson) => (
+              <SidebarBlockLink
+                key={lesson.slug}
+                href={lesson.path}
+                isActive={isActive(lesson.path)}
+                variant='lesson'
+              >
+                {lesson.title}
+              </SidebarBlockLink>
+            ))}
+          </div>
+        </CollapsibleContent>
+      )}
+    </Collapsible>
+  );
+}
+
+// ── Certificate context view ───────────────────────────────────────────────
+
+interface SidebarCertViewProps {
+  currentCert: NavCertificate;
+  currentPath: string;
+  expandedChapters: Set<string>;
+  setChapterOpen: (slug: string, open: boolean) => void;
+  isActive: (path: string) => boolean;
+}
+
+function SidebarCertView({
   currentCert,
   currentPath,
-  masterClasses,
-}: SidebarProps) {
-  const storageKey = currentCert ? `nav-expanded-${currentCert.slug}` : null;
-
-  const [expandedChapters, setExpandedChapters] = useState<Set<string>>(() => {
-    const stored: string[] =
-      typeof localStorage !== 'undefined' && storageKey
-        ? (JSON.parse(localStorage.getItem(storageKey) ?? '[]') as string[])
-        : [];
-
-    const result = new Set<string>(stored);
-
-    // Always expand the chapter that contains the current page
-    if (currentCert) {
-      const active = currentCert.chapters.find((ch) =>
-        currentPath.startsWith(ch.path)
-      );
-      if (active) result.add(active.slug);
-    }
-
-    return result;
-  });
-
-  useEffect(() => {
-    if (storageKey) {
-      localStorage.setItem(storageKey, JSON.stringify([...expandedChapters]));
-    }
-  }, [expandedChapters, storageKey]);
-
-  function toggleChapter(slug: string) {
-    setExpandedChapters((prev) => {
-      const next = new Set(prev);
-      next.has(slug) ? next.delete(slug) : next.add(slug);
-      return next;
-    });
-  }
-
-  const isActive = (path: string) =>
-    currentPath === path ||
-    currentPath === path.replace(/\/$/, '') ||
-    currentPath + '/' === path;
-
-  // ── Global view ──────────────────────────────────────────────────────────
-  if (!currentCert) {
-    return (
-      <nav
-        className='flex flex-col gap-0.5 px-3 py-4'
-        aria-label='Main navigation'
-      >
-        <p className='mb-2 px-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground'>
-          Certificates
-        </p>
-        {certificates.map((cert) => (
-          <a
-            key={cert.slug}
-            href={`/certificates/${cert.slug}`}
-            className={cn(
-              'flex gap-2 justify-start rounded-md px-3 py-2 text-sm hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors',
-              isActive(`/certificates/${cert.slug}`)
-                ? 'bg-sidebar-accent text-sidebar-accent-foreground'
-                : 'text-sidebar-foreground hover:bg-sidebar-accent/60'
-            )}
-          >
-            <div className='w-3 pt-0.5'>
-              {cert.completed ? (
-                <IconCertificate size={12} />
-              ) : (
-                <span className='w-3'>&nbsp;</span>
-              )}
-            </div>
-            <span>{cert.title}</span>
-          </a>
-        ))}
-        <span className='my-3'></span>
-        <p className='mb-2 px-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground'>
-          Master Classes
-        </p>
-        {masterClasses.map((masterClass) => (
-          <a
-            key={masterClass.slug}
-            href={masterClass.path}
-            className={cn(
-              'flex gap-2 justify-start rounded-md px-3 py-2 text-sm hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors',
-              isActive(masterClass.path)
-                ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 font-medium'
-                : 'text-sidebar-foreground hover:bg-sidebar-accent/60'
-            )}
-          >
-            <div className='w-3 pt-0.5'>
-              <IconCertificate size={12} />
-            </div>
-            <span>{masterClass.title}</span>
-          </a>
-        ))}
-      </nav>
-    );
-  }
-
-  // ── Certificate context view ──────────────────────────────────────────────
+  expandedChapters,
+  setChapterOpen,
+  isActive,
+}: SidebarCertViewProps) {
   return (
-    <nav
-      className='flex flex-col gap-0.5 px-3 py-4'
-      aria-label='Main navigation'
-    >
-      {/* Back link */}
+    <nav className={navClass} aria-label='Main navigation'>
       <a
         href='/certificates/'
         className='flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 mb-6 transition-colors'
@@ -127,7 +255,6 @@ export function Sidebar({
         All Certificates
       </a>
 
-      {/* Certificate title */}
       <div className='mb-6'>
         <a
           href={currentCert.path}
@@ -145,99 +272,67 @@ export function Sidebar({
         </p>
       </div>
 
-      {/* Overview */}
-      <a
+      <SidebarBlockLink
         href={currentCert.path}
-        className={`block px-3 py-2 text-sm rounded-md transition-colors ${
-          isActive(currentCert.path)
-            ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 font-medium'
-            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-900'
-        }`}
+        isActive={isActive(currentCert.path)}
       >
         Overview
-      </a>
+      </SidebarBlockLink>
 
-      {/* Chapters */}
       {currentCert.chapters.length > 0 && (
         <div className='my-2 h-px bg-sidebar-border' />
       )}
 
       {currentCert.chapters.map((chapter) => {
         const isExpanded = expandedChapters.has(chapter.slug);
-        const isChapterActive = currentPath.startsWith(chapter.path);
-
         return (
-          <div key={chapter.slug}>
-            {/* Chapter row */}
-            <div
-              className={cn(
-                'flex items-center rounded-md transition-colors',
-                isChapterActive && !isActive(chapter.path)
-                  ? 'text-sidebar-foreground'
-                  : ''
-              )}
-            >
-              <span
-                // href={chapter.path}
-                // onClick={() =>
-                //   setExpandedChapters(
-                //     (prev) => new Set([...prev, chapter.slug])
-                //   )
-                // }
-                className={cn(
-                  'flex-1 rounded-l-md px-3 py-1.5 text-sm transition-colors',
-                  isActive(chapter.slug)
-                    ? 'bg-sidebar-accent text-sidebar-accent-foreground font-medium'
-                    : isChapterActive
-                      ? 'text-sidebar-foreground font-medium hover:bg-sidebar-accent/60'
-                      : 'text-sidebar-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground'
-                )}
-              >
-                {chapter.title}
-              </span>
-              <button
-                onClick={() => toggleChapter(chapter.slug)}
-                aria-label={isExpanded ? 'Collapse chapter' : 'Expand chapter'}
-                aria-expanded={isExpanded}
-                className={cn(
-                  'rounded-r-md p-1.5 pr-2.5 transition-colors',
-                  isActive(`/certificates/${currentCert.slug}/${chapter.slug}`)
-                    ? 'bg-sidebar-accent text-sidebar-accent-foreground'
-                    : 'text-muted-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-foreground'
-                )}
-              >
-                <IconChevronLeft
-                  size={13}
-                  strokeWidth={2}
-                  className={cn(
-                    'transition-transform duration-200',
-                    isExpanded && '-rotate-90'
-                  )}
-                />
-              </button>
-            </div>
-
-            {/* Lessons */}
-            {isExpanded && chapter.lessons.length > 0 && (
-              <div className='ml-8 mt-1 space-y-1 border-l border-gray-200 dark:border-gray-700 pl-3'>
-                {chapter.lessons.map((lesson) => (
-                  <a
-                    key={lesson.slug}
-                    href={lesson.path}
-                    className={`block px-3 py-2 text-sm rounded-md transition-colors ${
-                      isActive(`/master-classes/${lesson.slug}`)
-                        ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 font-medium'
-                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-900'
-                    }`}
-                  >
-                    {lesson.title}
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
+          <SidebarChapter
+            key={chapter.slug}
+            chapter={chapter}
+            currentPath={currentPath}
+            isExpanded={isExpanded}
+            onToggle={(open) => setChapterOpen(chapter.slug, open)}
+            isActive={isActive}
+          />
         );
       })}
     </nav>
+  );
+}
+
+// ── Main component ───────────────────────────────────────────────────────────
+
+export function Sidebar({
+  certificates,
+  currentCert,
+  currentPath,
+  masterClasses,
+}: SidebarProps) {
+  const storageKey = currentCert ? `nav-expanded-${currentCert.slug}` : null;
+  const [expandedChapters, setChapterOpen] = useExpandedChapters(
+    storageKey,
+    currentCert,
+    currentPath
+  );
+  const isActive = (path: string) => isActivePath(currentPath, path);
+
+  if (!currentCert) {
+    return (
+      <SidebarGlobalView
+        certificates={certificates}
+        masterClasses={masterClasses}
+        isActive={isActive}
+      />
+    );
+  }
+
+  return (
+    <SidebarCertView
+      currentCert={currentCert}
+      currentPath={currentPath}
+      expandedChapters={expandedChapters}
+      setChapterOpen={setChapterOpen}
+      isActive={isActive}
+    />
   );
 }
