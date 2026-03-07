@@ -24,7 +24,7 @@ export const ChapterOverview = ({ chapters, slug }: ChapterOverviewProps) => {
               {chapter.lessons.map((lesson) => (
                 <li key={lesson.title}>
                   <a
-                    href={`${slug}/${lesson.slug}`}
+                    href={lesson.slug}
                     className='!text-blue-600 dark:!text-blue-400 hover:!text-blue-700 dark:hover:!text-blue-300 hover:underline text-sm'
                   >
                     {lesson.title}

@@ -177,16 +177,16 @@ export function Sidebar({
                   : ''
               )}
             >
-              <a
-                href={chapter.path}
-                onClick={() =>
-                  setExpandedChapters(
-                    (prev) => new Set([...prev, chapter.slug])
-                  )
-                }
+              <span
+                // href={chapter.path}
+                // onClick={() =>
+                //   setExpandedChapters(
+                //     (prev) => new Set([...prev, chapter.slug])
+                //   )
+                // }
                 className={cn(
                   'flex-1 rounded-l-md px-3 py-1.5 text-sm transition-colors',
-                  isActive(chapter.path)
+                  isActive(chapter.slug)
                     ? 'bg-sidebar-accent text-sidebar-accent-foreground font-medium'
                     : isChapterActive
                       ? 'text-sidebar-foreground font-medium hover:bg-sidebar-accent/60'
@@ -194,7 +194,7 @@ export function Sidebar({
                 )}
               >
                 {chapter.title}
-              </a>
+              </span>
               <button
                 onClick={() => toggleChapter(chapter.slug)}
                 aria-label={isExpanded ? 'Collapse chapter' : 'Expand chapter'}
