@@ -33,13 +33,13 @@ const navClass = 'flex flex-col gap-0.5 px-3 py-4';
 const sectionTitleClass =
   'mb-2 px-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground';
 const listLinkBaseClass =
-  'flex gap-2 justify-start rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-blue-700 dark:hover:text-blue-300';
+  'flex gap-2 justify-start rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-red-700 dark:hover:text-red-300';
 const listLinkInactiveClass =
   'text-sidebar-foreground hover:bg-sidebar-accent/60';
 const listLinkAccentActiveClass =
   'bg-sidebar-accent text-sidebar-accent-foreground';
 const listLinkHighlightActiveClass =
-  'bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 font-medium';
+  'bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 font-medium';
 const blockLinkBaseClass =
   'block px-3 py-2 text-sm rounded-md transition-colors';
 const blockLinkInactiveClass =
@@ -139,7 +139,7 @@ function SidebarGlobalView({
             cert.completed ? (
               <IconCertificate
                 size={12}
-                className='text-blue-500 dark:text-blue-400'
+                className='text-red-500 dark:text-red-400'
               />
             ) : (
               <IconProgress
@@ -163,7 +163,7 @@ function SidebarGlobalView({
           icon={
             <IconCertificate
               size={12}
-              className='text-blue-500 dark:text-blue-400'
+              className='text-red-500 dark:text-red-400'
             />
           }
         >
