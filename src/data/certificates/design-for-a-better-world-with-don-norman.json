@@ -6,5 +6,15 @@
   "certificateLink": null,
   "completedDate": null,
   "courseLink": "https://ixdf.org/courses/design-for-a-better-world-with-don-norman-course",
-  "chapters": []
+  "chapters": [
+    {
+      "title": " The World Is Artificial and the Way We Measure It Is Wrong",
+      "lessons": [
+        {
+          "title": "Welcome to Design for a Better World",
+          "slug": "the-world-is-artificial-and-the-way-we-measure-it-is-wrong/welcome-to-design-for-a-better-world"
+        }
+      ]
+    }
+  ]
 }
