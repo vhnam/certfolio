@@ -1,0 +1,24 @@
+{
+  "title": "Design Thinking: The Ultimate Guide",
+  "slug": "design-thinking-the-ultimate-guide",
+  "description": "In this course, you will explore the fundamental phases and methods in design thinking and how to apply that knowledge in your professional work life.",
+  "completed": false,
+  "certificateLink": null,
+  "completedDate": null,
+  "courseLink": "https://ixdf.org/courses/design-thinking-the-ultimate-guide",
+  "chapters": [
+    {
+      "title": "What is Design Thinking?",
+      "lessons": [
+        {
+          "title": "Welcome to Design Thinking: The Ultimate Guide",
+          "slug": "what-is-design-thinking/welcome-to-design-thinking-the-ultimate-guide"
+        },
+        {
+          "title": "What is Design Thinking and Why is it So Popular?",
+          "slug": "what-is-design-thinking/what-is-design-thinking-and-why-is-it-so-popular"
+        }
+      ]
+    }
+  ]
+}

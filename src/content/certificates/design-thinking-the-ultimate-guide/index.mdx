@@ -1,0 +1,24 @@
+---
+title: "Design Thinking: The Ultimate Guide"
+---
+
+import { CourseOverview } from "@/components/CourseOverview";
+import { ChapterOverview } from "@/components/ChapterOverview";
+import data from "@/data/certificates/design-thinking-the-ultimate-guide.json";
+
+<p className="text-lg text-gray-600 leading-relaxed">{data.description}</p>
+
+<CourseOverview
+  chapters={data.chapters}
+>
+Design Thinking is a structured, human-centered approach to solving real-world problems and driving innovation. Instead of starting from scratch, it provides proven methods that help individuals and teams improve the way they already work. Companies like Apple and Google use Design Thinking to continuously create meaningful products and experiences, and the same framework can be applied to many different industries and challenges.
+
+At its core, Design Thinking builds on skills people already have—creativity, problem-solving, and empathy. By following a clear five-stage process (Empathize, Define, Ideate, Prototype, and Test), it helps teams deeply understand users, generate innovative ideas, and quickly validate solutions. This structured approach allows designers and product teams to transform insights about real user needs into practical, impactful solutions.
+
+The method also provides practical tools such as user interviews, empathy maps, affinity diagrams, and “How Might We” questions to guide research and idea generation. Rapid prototyping and testing allow teams to experiment quickly, learn from feedback, and refine solutions before investing heavily in development.
+
+In today’s AI-driven world, Design Thinking becomes even more valuable. While AI can accelerate workflows, human abilities like empathy, strategic thinking, and creativity are what guide technology toward meaningful outcomes. By mastering Design Thinking, professionals can strengthen their ability to create user-centered products, improve business results, and remain highly valuable as technology continues to evolve.
+
+</CourseOverview>
+
+<ChapterOverview chapters={data.chapters} slug={data.slug} />
