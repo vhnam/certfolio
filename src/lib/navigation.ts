@@ -239,7 +239,7 @@ export function buildCertListFromData(data: CertificatesJson): CertRef[] {
     completed: c.completed,
     certificateLink: c.certificateLink,
     completedDate: c.completedDate,
-  }));
+  })).sort((a, b) => a.title.localeCompare(b.title));
 }
 
 /**
@@ -306,5 +306,5 @@ export function buildMasterClassList(entries: Entry[]): MasterClassRef[] {
         slug: masterClassSlug,
         path: `/master-classes/${masterClassSlug}/`,
       };
-    });
+    }).sort((a, b) => a.title.localeCompare(b.title));
 }

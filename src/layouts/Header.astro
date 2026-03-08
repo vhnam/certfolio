@@ -1,23 +1,26 @@
 ---
 import { MobileDrawer } from "@/components/MobileDrawer";
 import { ToggleTheme } from "@/components/ToggleTheme";
-import type { CertRef, NavCertificate } from "@/lib/navigation";
+import type { CertRef, MasterClassRef, NavCertificate } from "@/lib/navigation";
 
 interface Props {
   allCerts: CertRef[];
+  allMasterClasses: MasterClassRef[];
   currentCert: NavCertificate | null;
   currentPath: string;
 }
 
-const { allCerts, currentCert, currentPath } = Astro.props;
+const { allCerts, allMasterClasses, currentCert, currentPath } = Astro.props;
 ---
 
 <header
+  id="site-header"
   class="flex items-center gap-3 border-b border-border bg-sidebar px-4 py-3 lg:px-6"
 >
   <MobileDrawer
     client:load
     certificates={allCerts}
+    masterClasses={allMasterClasses}
     currentCert={currentCert}
     currentPath={currentPath}
   />

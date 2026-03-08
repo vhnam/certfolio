@@ -6,7 +6,7 @@ import {
   IconChevronLeft,
 } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
-import type { NavCertificate, CertRef } from '@/lib/navigation';
+import type { NavCertificate, CertRef, MasterClassRef } from '@/lib/navigation';
 import { isActivePath } from '@/lib/navigation';
 import { useExpandedChapters } from '@/hooks/useExpandedChapters';
 
@@ -15,12 +15,14 @@ const FOCUSABLE =
 
 interface MobileDrawerProps {
   certificates: CertRef[];
+  masterClasses: MasterClassRef[];
   currentCert: NavCertificate | null;
   currentPath: string;
 }
 
 export function MobileDrawer({
   certificates,
+  masterClasses,
   currentCert,
   currentPath,
 }: MobileDrawerProps) {
@@ -35,11 +37,22 @@ export function MobileDrawer({
     currentPath
   );
 
-  // Lock body scroll while drawer is open
+  // Lock body scroll and hide main content from screen readers while drawer is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
+    const main = document.getElementById('main');
+    const header = document.getElementById('site-header');
+    if (isOpen) {
+      main?.setAttribute('aria-hidden', 'true');
+      header?.setAttribute('aria-hidden', 'true');
+    } else {
+      main?.removeAttribute('aria-hidden');
+      header?.removeAttribute('aria-hidden');
+    }
     return () => {
       document.body.style.overflow = '';
+      main?.removeAttribute('aria-hidden');
+      header?.removeAttribute('aria-hidden');
     };
   }, [isOpen]);
 
@@ -100,12 +113,14 @@ export function MobileDrawer({
 
   const isActive = (path: string) => isActivePath(currentPath, path);
 
-  const linkClass = (path: string) =>
+  const linkClass = (path: string, completed?: boolean) =>
     cn(
       'block rounded-md px-3 py-2.5 text-sm transition-colors',
       isActive(path)
         ? 'bg-sidebar-accent text-sidebar-accent-foreground font-medium'
-        : 'text-sidebar-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground'
+        : completed
+          ? 'text-sidebar-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground'
+          : 'text-gray-500 dark:text-gray-400 hover:bg-sidebar-accent/60'
     );
 
   return (
@@ -160,7 +175,7 @@ export function MobileDrawer({
         {/* Navigation content */}
         <nav
           className='flex flex-col gap-0.5 px-3 py-4'
-          aria-label='Main navigation'
+          aria-label='Certificate and course navigation'
         >
           {currentCert ? (
             <>
@@ -272,10 +287,27 @@ export function MobileDrawer({
                 <a
                   key={cert.slug}
                   href={`/certificates/${cert.slug}`}
-                  className={linkClass(`/certificates/${cert.slug}`)}
+                  className={linkClass(
+                    `/certificates/${cert.slug}`,
+                    cert.completed
+                  )}
                   onClick={closeDrawer}
                 >
                   {cert.title}
+                </a>
+              ))}
+              <span className='my-3 block' aria-hidden />
+              <p className='mb-2 px-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground'>
+                Master Classes
+              </p>
+              {masterClasses.map((masterClass) => (
+                <a
+                  key={masterClass.slug}
+                  href={masterClass.path}
+                  className={linkClass(masterClass.path)}
+                  onClick={closeDrawer}
+                >
+                  {masterClass.title}
                 </a>
               ))}
             </>

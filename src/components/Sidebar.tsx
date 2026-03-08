@@ -1,4 +1,8 @@
-import { IconCertificate, IconChevronLeft } from '@tabler/icons-react';
+import {
+  IconCertificate,
+  IconChevronLeft,
+  IconProgress,
+} from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
 import {
   Collapsible,
@@ -124,7 +128,7 @@ function SidebarGlobalView({
   isActive,
 }: SidebarGlobalViewProps) {
   return (
-    <nav className={navClass} aria-label='Main navigation'>
+    <nav className={navClass} aria-label='Certificate and course navigation'>
       <SidebarSectionTitle>Certificates</SidebarSectionTitle>
       {certificates.map((cert) => (
         <SidebarListLink
@@ -133,9 +137,15 @@ function SidebarGlobalView({
           isActive={isActive(`/certificates/${cert.slug}`)}
           icon={
             cert.completed ? (
-              <IconCertificate size={12} />
+              <IconCertificate
+                size={12}
+                className='text-blue-500 dark:text-blue-400'
+              />
             ) : (
-              <span className='w-3'>&nbsp;</span>
+              <IconProgress
+                size={12}
+                className='animate-spin text-gray-500 dark:text-gray-400'
+              />
             )
           }
         >
@@ -150,7 +160,7 @@ function SidebarGlobalView({
           href={masterClass.path}
           isActive={isActive(masterClass.path)}
           activeVariant='highlight'
-          icon={<IconCertificate size={12} />}
+          icon={<IconCertificate size={12} className='text-blue-500 dark:text-blue-400' />}
         >
           {masterClass.title}
         </SidebarListLink>
@@ -246,7 +256,7 @@ function SidebarCertView({
   isActive,
 }: SidebarCertViewProps) {
   return (
-    <nav className={navClass} aria-label='Main navigation'>
+    <nav className={navClass} aria-label='Certificate and course navigation'>
       <a
         href='/certificates/'
         className='flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 mb-6 transition-colors'
