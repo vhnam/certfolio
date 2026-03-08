@@ -4,17 +4,7 @@ import { getCollection } from "astro:content";
 import { buildCertListFromData, buildMasterClassList } from "@/lib/navigation";
 import type { CertificatesJson } from "@/lib/navigation";
 import certificatesData from "@/data/certificates.json";
-import { IconArrowRight, IconExternalLink } from "@tabler/icons-react";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardAction,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import CertificateCard from "@/components/CertificateCard.astro";
 
 const certs = buildCertListFromData(certificatesData as CertificatesJson);
 
@@ -22,26 +12,6 @@ const masterClassEntries = await getCollection("masterClass").catch(() => []);
 const masterClasses = buildMasterClassList(masterClassEntries).sort((a, b) =>
   a.title.localeCompare(b.title),
 );
-
-/** Truncate description to ~2 lines for card preview */
-function truncateDescription(
-  text: string | undefined,
-  maxLength = 120,
-): string {
-  if (!text) return "";
-  if (text.length <= maxLength) return text;
-  return (
-    text
-      .slice(0, maxLength)
-      .trim()
-      .replace(/\s+\S*$/, "") + "…"
-  );
-}
-
-/** Format completed date for display (already a string like "Oct 31, 2025") */
-function formatCompletedDate(date: string | null | undefined): string {
-  return date ?? "";
-}
 ---
 
 <Layout
@@ -98,106 +68,13 @@ function formatCompletedDate(date: string | null | undefined): string {
         certs.length === 0 ? (
           <p class="text-muted-foreground">No certificates found.</p>
         ) : (
-          <ul class="grid grid-cols-1 md:grid-cols-2 gap-6" role="list">
+          <ul
+            class="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-auto"
+            role="list"
+          >
             {certs.map((cert, i) => (
               <li class="index-card-wrap" style={`--stagger: ${i}`}>
-                <Card
-                  className="index-cert-card group border-border shadow-sm transition-[border-color,box-shadow,background-color] duration-200 hover:border-primary/50 hover:bg-accent/30 hover:shadow-md"
-                  role="article"
-                  aria-labelledby={`cert-title-${cert.slug}`}
-                >
-                  <CardHeader className="border-b border-border pb-4">
-                    <CardTitle className="pr-2 text-base font-semibold leading-tight text-foreground transition-colors duration-200 group-hover:text-primary">
-                      <h3
-                        id={`cert-title-${cert.slug}`}
-                        class="m-0 text-inherit font-inherit"
-                      >
-                        <a
-                          href={`/certificates/${cert.slug}`}
-                          class="cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring focus-visible:rounded py-1"
-                        >
-                          {cert.title}
-                        </a>
-                      </h3>
-                    </CardTitle>
-                  </CardHeader>
-                  {cert.description && (
-                    <CardDescription className="line-clamp-2 leading-relaxed px-4">
-                      {truncateDescription(cert.description)}
-                    </CardDescription>
-                  )}
-
-                  <CardContent className="flex flex-col gap-2 pt-0">
-                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
-                      <a
-                        href={cert.courseLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Open course page for ${cert.title} (opens in new tab)`}
-                        class="hover:text-foreground underline decoration-muted-foreground/50 underline-offset-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring focus-visible:rounded py-2 min-h-[44px] items-center inline-flex"
-                      >
-                        Course link
-                      </a>
-                      {cert.completed && (
-                        <a
-                          href={`/certificates/${cert.slug}`}
-                          aria-label={`View notes for ${cert.title}`}
-                          class="hover:text-foreground underline decoration-muted-foreground/50 underline-offset-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring focus-visible:rounded py-2 min-h-[44px] items-center inline-flex"
-                        >
-                          View notes
-                        </a>
-                      )}
-                    </div>
-                  </CardContent>
-
-                  <CardFooter
-                    className={cn(
-                      "flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-border text-xs py-2",
-                      {
-                        ["bg-red-500 dark:bg-red-400 text-white"]:
-                          cert.completed,
-                      },
-                    )}
-                  >
-                    {cert.completed ? (
-                      <>
-                        <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
-                          {cert.completedDate && (
-                            <span
-                              class="font-mono"
-                              aria-label={`Completed ${cert.completedDate}`}
-                            >
-                              {formatCompletedDate(cert.completedDate)}
-                            </span>
-                          )}
-                          {cert.certificateLink && (
-                            <a
-                              href={cert.certificateLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label={`View certificate for ${cert.title} (opens in new tab)`}
-                              class="inline-flex cursor-pointer items-center gap-1.5 font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring focus-visible:rounded"
-                            >
-                              View certificate
-                            </a>
-                          )}
-                        </div>
-                        {cert.certificateLink && (
-                          <IconExternalLink size={12} aria-hidden="true" />
-                        )}
-                      </>
-                    ) : (
-                      <a
-                        href={`/certificates/${cert.slug}`}
-                        aria-label={`View notes for ${cert.title}`}
-                        class="flex items-center justify-between w-full font-semibold hover:text-foreground decoration-muted-foreground/50 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring focus-visible:rounded"
-                      >
-                        <span>View notes</span>
-                        <IconArrowRight size={16} aria-hidden="true" />
-                      </a>
-                    )}
-                  </CardFooter>
-                </Card>
+                <CertificateCard cert={cert} />
               </li>
             ))}
           </ul>

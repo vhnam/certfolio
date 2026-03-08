@@ -15,7 +15,7 @@ export const CourseOverview = ({ chapters, children }: OverviewProps) => {
 
   return (
     <div className='bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 rounded-lg p-4 md:p-6 mb-12 mt-8'>
-      <h2 className='flex items-center gap-2 !text-lg font-semibold !text-indigo-900 dark:!text-indigo-200 mb-4 !mt-0'>
+      <h2 className='flex items-center gap-2 !text-lg font-semibold !text-red-900 dark:!text-red-200 mb-4 !mt-0'>
         <IconInfoCircle className='w-5 h-5' aria-hidden />
         About This Course
       </h2>

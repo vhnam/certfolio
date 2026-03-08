@@ -1,11 +1,13 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { buildCertListFromData } from "@/lib/navigation";
-import { IconAward } from "@tabler/icons-react";
+import type { CertificatesJson } from "@/lib/navigation";
 import certificatesData from "@/data/certificates.json";
-import { cn } from "@/lib/utils";
+import CertificateCard from "@/components/CertificateCard.astro";
 
-const certificatesList = buildCertListFromData(certificatesData);
+const certificatesList = buildCertListFromData(
+  certificatesData as CertificatesJson,
+);
 ---
 
 <Layout title="Certificates">
@@ -19,84 +21,11 @@ const certificatesList = buildCertListFromData(certificatesData);
     </p>
   </div>
 
-  <ul class="flex flex-col gap-4" role="list">
+  <ul class="grid grid-cols-1 md:grid-cols-2 gap-6" role="list">
     {
-      certificatesList.map((certificate) => (
-        <li
-          class={cn(
-            "group border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-6 hover:border-red-300 dark:hover:border-red-600 hover:bg-red-50/30 dark:hover:bg-red-950/20 transition-colors transition-[border-color,background-color]",
-            {
-              "border-green-300 bg-green-50/30 dark:bg-green-950/20 hover:border-green-400 dark:hover:border-green-600 hover:bg-green-50/40 dark:hover:bg-green-950/30":
-                certificate.completed,
-            },
-          )}
-        >
-          <div class="flex items-start gap-4">
-            <div
-              class={cn(
-                "p-3 bg-red-100 dark:bg-red-950 rounded-lg group-hover:bg-red-200 dark:group-hover:bg-red-800 text-red-700 dark:text-red-300 transition-colors",
-                {
-                  "bg-green-100 dark:bg-green-950 group-hover:bg-green-200 dark:group-hover:bg-green-800 text-green-700 dark:text-green-300":
-                    certificate.completed,
-                },
-              )}
-              aria-hidden="true"
-            >
-              <IconAward className="size-6" />
-            </div>
-            <div class="flex-1">
-              <h2
-                class={cn(
-                  "text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-red-700 dark:group-hover:text-red-300 transition-colors",
-                  {
-                    "group-hover:text-green-700 dark:group-hover:text-green-300":
-                      certificate.completed,
-                  },
-                )}
-              >
-                {certificate.title}
-              </h2>
-              <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                {certificate.description}
-              </p>
-              <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 lg:gap-6 text-sm text-gray-500">
-                <div class="space-x-4">
-                  {certificate.completedDate && (
-                    <span class="text-gray-500 dark:text-gray-300">
-                      Completed on {certificate.completedDate}
-                    </span>
-                  )}
-                </div>
-                <div class="space-x-1 space-y-3 md:space-y-0 flex flex-wrap gap-2">
-                  {certificate.certificateLink && (
-                    <a
-                      href={certificate.certificateLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="View certificate (opens in new tab)"
-                      class="inline-flex items-center justify-center rounded-lg border border-border bg-background px-2.5 h-8 text-sm font-medium hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 dark:bg-input/30 dark:border-input dark:hover:bg-input/50 transition-colors"
-                    >
-                      View certificate
-                    </a>
-                  )}
-                  <a
-                    href={certificate.courseLink}
-                    aria-label="View course"
-                    class="inline-flex items-center justify-center rounded-lg border border-border bg-background px-2.5 h-8 text-sm font-medium hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 dark:bg-input/30 dark:border-input dark:hover:bg-input/50 transition-colors"
-                  >
-                    View course
-                  </a>
-                  <a
-                    href={`/certificates/${certificate.slug}`}
-                    aria-label="View notes"
-                    class="inline-flex items-center justify-center rounded-lg border border-border bg-background px-2.5 h-8 text-sm font-medium hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 dark:bg-input/30 dark:border-input dark:hover:bg-input/50 transition-colors"
-                  >
-                    View notes
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+      certificatesList.map((cert) => (
+        <li>
+          <CertificateCard cert={cert} />
         </li>
       ))
     }
