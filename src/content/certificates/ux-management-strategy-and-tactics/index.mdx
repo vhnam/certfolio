@@ -1,0 +1,22 @@
+---
+title: "UX Management: Strategy and Tactics"
+---
+
+import { CourseOverview } from "@/components/CourseOverview";
+import { ChapterOverview } from "@/components/ChapterOverview";
+import data from "@/data/certificates/ux-management-strategy-and-tactics.json";
+
+<p className="text-lg text-gray-600 leading-relaxed">{data.description}</p>
+
+<CourseOverview
+  chapters={data.chapters}
+>
+This course focuses on helping designers transition into effective **UX leaders and managers** who can create real impact within their organizations. It teaches how to lead UX teams, align design work with business goals, and demonstrate measurable value such as improved customer satisfaction, retention, and profitability. By mastering UX management skills, designers can accelerate their careers, increase their earning potential, and contribute to meaningful work that improves people’s lives.
+
+The program also emphasizes positioning **UX as a strategic function** within a company. Participants learn how to influence decision-making at higher levels, advocate for user needs, and ensure design contributes directly to business success. As organizations increasingly adopt AI and move faster in product development, UX leaders play a critical role in turning speed into thoughtful strategy while keeping decisions grounded in real human needs.
+
+Finally, the course provides **practical frameworks and tools** to build confidence and credibility as a UX leader. Learners practice conducting organizational assessments, defining UX strategies, and creating collaborative roadmaps that balance short-term wins with long-term impact. Through optional exercises and portfolio-building activities, participants strengthen their ability to embed UX as a core business driver and deliver results that benefit both users and the organization.
+
+</CourseOverview>
+
+<ChapterOverview chapters={data.chapters} slug={data.slug} />

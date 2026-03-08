@@ -1,0 +1,77 @@
+{
+  "title": "UX Management: Strategy and Tactics",
+  "slug": "ux-management-strategy-and-tactics",
+  "description": "This course will explore will explore the ins and outs of UX maturity as well as the best practices on how to manage and support your UX and UI teams.",
+  "completed": false,
+  "certificateLink": null,
+  "completedDate": null,
+  "courseLink": "https://www.interaction-design.org/courses/ux-management-strategy-and-tactics",
+  "chapters": [
+    {
+      "title": "Where to Begin?",
+      "lessons": [
+        {
+          "title": "Welcome to UX Management: Strategy and Tactics",
+          "slug": "where-to-begin/welcome-to-ux-management-strategy-and-tactics"
+        },
+        {
+          "title": "Understanding UX and UX Teams",
+          "slug": "where-to-begin/understanding-ux-and-ux-teams"
+        },
+        {
+          "title": "Interview: Understanding the Core Function of UX Teams - User Advocacy",
+          "slug": "where-to-begin/interview-understanding-the-core-function-of-ux-teams-user-advocacy"
+        },
+        {
+          "title": "Managing UX as a Process",
+          "slug": "where-to-begin/managing-ux-as-a-process"
+        },
+        {
+          "title": "UX Maturity as a Lifecycle",
+          "slug": "where-to-begin/ux-maturity-a-lifecycle-view"
+        },
+        {
+          "title": "Assessing Your Organization’s UX Maturity",
+          "slug": "where-to-begin/assessing-your-organization-s-ux-maturity"
+        },
+        {
+          "title": "First Steps Toward Accelerating and Growing UX",
+          "slug": "where-to-begin/first-steps-toward-accelerating-and-growing-ux"
+        }
+      ]
+    },
+    {
+      "title": "Making the Business Case for UX",
+      "lessons": [
+        {
+          "title": "Business Goals of UX",
+          "slug": "making-the-business-case-for-ux/business-goals-of-ux"
+        },
+        {
+          "title": "How Teams Perform With UX: the Good, the Bad, the Ugly",
+          "slug": "making-the-business-case-for-ux/how-teams-perform-with-ux-the-good-the-bad-the-ugly"
+        },
+        {
+          "title": "Interview (A) - What Managers Need to Know About UX",
+          "slug": "making-the-business-case-for-ux/interview-a--what-managers-need-to-know-about-ux"
+        },
+        {
+          "title": "Interview: How Teams Perform - Analysis Paralysis",
+          "slug": "making-the-business-case-for-ux/interview--how-teams-perform--analysis-paralysis"
+        },
+        {
+          "title": "What is the ROI of UX?",
+          "slug": "making-the-business-case-for-ux/what-is-the-roi-of-ux"
+        },
+        {
+          "title": "Interview - Quantifying Success in UX efforts",
+          "slug": "making-the-business-case-for-ux/interview--quantifying-success-in-ux-efforts"
+        },
+        {
+          "title": "Interview (B) - What Managers Need to Know About UX",
+          "slug": "making-the-business-case-for-ux/interview-b--what-managers-need-to-know-about-ux"
+        }
+      ]
+    }
+  ]
+}

@@ -160,7 +160,12 @@ function SidebarGlobalView({
           href={masterClass.path}
           isActive={isActive(masterClass.path)}
           activeVariant='highlight'
-          icon={<IconCertificate size={12} className='text-blue-500 dark:text-blue-400' />}
+          icon={
+            <IconCertificate
+              size={12}
+              className='text-blue-500 dark:text-blue-400'
+            />
+          }
         >
           {masterClass.title}
         </SidebarListLink>

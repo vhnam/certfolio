@@ -173,7 +173,6 @@ Example elements:
 
 ![Engineer's model of an elevator](../../../../assets/images/object-oriented-ui-design-build-interfaces-users-love/from-stories-to-structure-build-the-models-that-power-great-interfaces/object-oriented-ui-design-illustrations-engineers-model.avif)
 
-
 Purpose:
 
 - Help engineers **build the system**, not explain it to users.

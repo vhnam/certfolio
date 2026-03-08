@@ -230,16 +230,18 @@ export type CertDataJson = {
 
 /** Build cert list from data/certificates.json (requires slug on each entry). */
 export function buildCertListFromData(data: CertificatesJson): CertRef[] {
-  return data.certificates.map((c) => ({
-    title: c.title,
-    slug: c.slug,
-    courseLink: c.courseLink ?? c.link ?? "",
-    path: `${CERT_BASE}${c.slug}/`,
-    description: c.description,
-    completed: c.completed,
-    certificateLink: c.certificateLink,
-    completedDate: c.completedDate,
-  })).sort((a, b) => a.title.localeCompare(b.title));
+  return data.certificates
+    .map((c) => ({
+      title: c.title,
+      slug: c.slug,
+      courseLink: c.courseLink ?? c.link ?? "",
+      path: `${CERT_BASE}${c.slug}/`,
+      description: c.description,
+      completed: c.completed,
+      certificateLink: c.certificateLink,
+      completedDate: c.completedDate,
+    }))
+    .sort((a, b) => a.title.localeCompare(b.title));
 }
 
 /**
@@ -306,5 +308,6 @@ export function buildMasterClassList(entries: Entry[]): MasterClassRef[] {
         slug: masterClassSlug,
         path: `/master-classes/${masterClassSlug}/`,
       };
-    }).sort((a, b) => a.title.localeCompare(b.title));
+    })
+    .sort((a, b) => a.title.localeCompare(b.title));
 }

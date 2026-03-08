@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import type { NavCertificate } from '@/lib/navigation';
-import { readStoredExpanded } from '@/lib/navigation';
+import { useState, useEffect } from "react";
+import type { NavCertificate } from "@/lib/navigation";
+import { readStoredExpanded } from "@/lib/navigation";
 
 /**
  * Persisted expanded chapter state per certificate (localStorage key: nav-expanded-{certSlug}).
@@ -9,14 +9,14 @@ import { readStoredExpanded } from '@/lib/navigation';
 export function useExpandedChapters(
   storageKey: string | null,
   currentCert: NavCertificate | null,
-  currentPath: string
+  currentPath: string,
 ): [Set<string>, (slug: string, open: boolean) => void] {
   const [expandedChapters, setExpandedChapters] = useState<Set<string>>(() => {
     const stored = readStoredExpanded(storageKey);
     const result = new Set<string>(stored);
     if (currentCert) {
       const active = currentCert.chapters.find((ch) =>
-        currentPath.startsWith(ch.path)
+        currentPath.startsWith(ch.path),
       );
       if (active) result.add(active.slug);
     }
@@ -29,7 +29,7 @@ export function useExpandedChapters(
     const stored = readStoredExpanded(storageKey);
     const result = new Set<string>(stored);
     const active = currentCert.chapters.find((ch) =>
-      currentPath.startsWith(ch.path)
+      currentPath.startsWith(ch.path),
     );
     if (active) result.add(active.slug);
     setExpandedChapters(result);
