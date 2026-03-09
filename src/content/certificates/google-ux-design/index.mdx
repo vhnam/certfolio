@@ -1,0 +1,26 @@
+---
+title: Google UX Design
+---
+
+import { CourseOverview } from "@/components/CourseOverview";
+import { ChapterOverview } from "@/components/ChapterOverview";
+import data from "@/data/certificates/google-ux-design.json";
+
+<p className="text-lg text-gray-600 leading-relaxed">{data.description}</p>
+
+<CourseOverview
+  chapters={data.chapters}
+>
+
+
+The **Google UX Design Certificate** prepares learners for a career in **user experience (UX) design**, a field focused on improving how people interact with products such as websites, apps, and digital services. UX designers aim to make everyday interactions **useful, enjoyable, and accessible**. The program is beginner-friendly and does not require prior experience or a college degree.
+
+UX design is a **high-demand career** with strong job opportunities. There are more than **58,000 open UX design jobs in the U.S.**, with a **median entry-level salary of $117,000**. After completing the certificate, learners can apply for jobs with **Google and more than 150 partner employers**, including companies like Deloitte, Target, and Verizon. Many graduates report positive career outcomes such as new jobs, promotions, or salary increases within six months of completing the program.
+
+The certificate includes **seven courses and more than 200 hours of instruction**, combining videos, readings, assessments, and hands-on activities. Learners gain practical experience with the **full UX design process**, including understanding user needs, defining problems, generating design ideas, creating wireframes and prototypes, conducting usability testing, and improving designs based on feedback.
+
+Throughout the program, learners create designs using **paper sketches and digital tools like Figma**. By the end of the course, participants will complete **three end-to-end projects** and build a **professional UX portfolio** that can be shared with employers when applying for entry-level UX design roles.
+
+</CourseOverview>
+
+<ChapterOverview chapters={data.chapters} slug={data.slug} />
