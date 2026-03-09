@@ -1,4 +1,5 @@
 import type { Chapter } from '@/models/certificate';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 interface ChapterOverviewProps {
   chapters: Chapter[];
@@ -8,31 +9,34 @@ interface ChapterOverviewProps {
 export const ChapterOverview = ({ chapters, slug }: ChapterOverviewProps) => {
   return (
     <div>
-      <h2 className='text-2xl font-semibold text-gray-900 dark:text-gray-50 mb-6'>
+      <h2 className='text-2xl font-semibold text-foreground mb-6'>
         Course Structure
       </h2>
       <div className='space-y-6'>
         {chapters.map((chapter, chapterIndex) => (
-          <div
-            key={`${chapterIndex}-${chapter.title}`}
-            className='border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-6'
-          >
-            <h3 className='text-lg font-semibold text-gray-900 dark:text-gray-50 mb-3'>
-              Chapter {chapterIndex + 1}. {chapter.title}
-            </h3>
-            <ul className='space-y-2'>
-              {chapter.lessons.map((lesson, lessonIndex) => (
-                <li key={`${lessonIndex}-${lesson.slug}`}>
-                  <a
-                    href={`/certificates/${slug}/${lesson.slug}`}
-                    className='!text-red-600 dark:!text-red-400 hover:!text-red-700 dark:hover:!text-red-300 hover:underline text-sm'
-                  >
-                    {lesson.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <Card key={`${chapterIndex}-${chapter.title}`} className='md:py-6'>
+            <CardHeader className='pb-3'>
+              <CardTitle>
+                <h3 className='text-lg font-semibold text-foreground'>
+                  Chapter {chapterIndex + 1}. {chapter.title}
+                </h3>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className='pt-0'>
+              <ul className='space-y-1' role='list'>
+                {chapter.lessons.map((lesson, lessonIndex) => (
+                  <li key={`${lessonIndex}-${lesson.slug}`}>
+                    <a
+                      href={`/certificates/${slug}/${lesson.slug}`}
+                      className='inline-flex items-center min-h-10 py-2 text-sm font-medium !text-red-600 dark:!text-red-400 hover:!text-red-700 dark:hover:!text-red-300 hover:underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded'
+                    >
+                      {lesson.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </div>

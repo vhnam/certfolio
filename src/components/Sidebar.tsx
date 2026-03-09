@@ -33,7 +33,7 @@ const navClass = 'flex flex-col gap-0.5 px-3 py-4';
 const sectionTitleClass =
   'mb-2 px-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground';
 const listLinkBaseClass =
-  'flex gap-2 justify-start rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-red-700 dark:hover:text-red-300';
+  'flex gap-2 justify-start rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-red-700 dark:hover:text-red-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring focus-visible:ring-offset-2 focus-visible:ring-offset-sidebar';
 const listLinkInactiveClass =
   'text-sidebar-foreground hover:bg-sidebar-accent/60';
 const listLinkAccentActiveClass =
@@ -41,7 +41,7 @@ const listLinkAccentActiveClass =
 const listLinkHighlightActiveClass =
   'bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 font-medium';
 const blockLinkBaseClass =
-  'block px-3 py-2 text-sm rounded-md transition-colors';
+  'block px-3 py-2 text-sm rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring focus-visible:ring-offset-2 focus-visible:ring-offset-sidebar';
 const blockLinkInactiveClass =
   'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-900';
 const lessonLinkInactiveClass =
