@@ -80,6 +80,15 @@
       "completed": false,
       "certificateLink": null,
       "completedDate": null
+    },
+    {
+      "title": "AI for Designers",
+      "slug": "ai-for-designers",
+      "description": "Discover the future of design with AI. Seamlessly integrate AI tools in your design process, master AI-driven design, and lead innovation. Join us!",
+      "courseLink": "https://ixdf.org/courses/ai-for-designers",
+      "completed": false,
+      "certificateLink": null,
+      "completedDate": null
     }
   ]
 }

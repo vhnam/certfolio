@@ -1,0 +1,20 @@
+{
+  "title": "AI for Designers",
+  "slug": "ai-for-designers",
+  "description": "Discover the future of design with AI. Seamlessly integrate AI tools in your design process, master AI-driven design, and lead innovation. Join us!",
+  "completed": false,
+  "certificateLink": null,
+  "completedDate": null,
+  "courseLink": "https://ixdf.org/courses/ai-for-designers",
+  "chapters": [
+    {
+      "title": "Design in the Age of AI",
+      "lessons": [
+        {
+          "title": "Welcome to AI for Designers",
+          "slug": "design-in-the-age-of-ai/welcome-to-ai-for-designers"
+        }
+      ]
+    }
+  ]
+}

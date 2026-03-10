@@ -1,0 +1,22 @@
+---
+title: "AI for Designers"
+---
+
+import { CourseOverview } from "@/components/CourseOverview";
+import { ChapterOverview } from "@/components/ChapterOverview";
+import data from "@/data/certificates/ai-for-designers.json";
+
+<p className="text-lg text-gray-600 leading-relaxed">{data.description}</p>
+
+<CourseOverview
+  chapters={data.chapters}
+>
+This course shows how designers can combine AI tools with timeless human-centered design skills to create meaningful results faster. By turning AI into a creative and productivity superpower, you’ll learn how to solve real-world problems more efficiently while designing ethical products people truly value.
+
+You’ll discover how to automate repetitive tasks, streamline workflows, and make data-driven decisions using AI. At the same time, you’ll strengthen uniquely human abilities—such as empathy, critical thinking, and ethical judgment—to guide AI toward solutions that genuinely serve users and businesses.
+
+Through practical guidance, real-world examples, and hands-on exercises, you’ll learn prompt design, explore bias in AI systems, and build AI-enhanced case studies for your portfolio. By the end of the course, you’ll have the skills and confidence to use AI responsibly and stay competitive as a modern designer.
+
+</CourseOverview>
+
+<ChapterOverview chapters={data.chapters} slug={data.slug} />
