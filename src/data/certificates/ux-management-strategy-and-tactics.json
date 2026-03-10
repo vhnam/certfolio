@@ -72,6 +72,15 @@
           "slug": "making-the-business-case-for-ux/interview-b--what-managers-need-to-know-about-ux"
         }
       ]
+    },
+    {
+      "title": "UX as Core to Product Delivery",
+      "lessons": [
+        {
+          "title": "Agile and Lean UX: Today, How Is That Marriage Going?",
+          "slug": "ux-as-core-to-product-delivery/agile-and-lean-ux-today-how-is-that-marriage-going"
+        }
+      ]
     }
   ]
 }
