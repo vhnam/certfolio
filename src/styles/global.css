@@ -179,7 +179,7 @@
     @apply text-gray-700 dark:text-gray-300 leading-relaxed mb-4;
   }
   a {
-    @apply font-mono text-sky-500 dark:text-sky-400 font-medium no-underline transition-colors hover:underline;
+    @apply font-mono text-sky-500 dark:text-sky-400 font-medium no-underline transition-colors hover:underline mx-2;
   }
   strong {
     @apply font-semibold;
@@ -230,6 +230,9 @@
   }
   img {
     @apply my-6 rounded-lg bg-white;
+  }
+  video {
+    @apply my-6;
   }
 }
 
