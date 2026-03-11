@@ -2,7 +2,7 @@
 title: "Affinity Diagrams: How to Cluster Your Ideas and Reveal Insights"
 ---
 
-![Illustration of how affinity diagrams leads to insights.](../../../../assets/images/design-thinking-the-ultimate-guide/stage-2-how-to-define-the-problem/affinity-diagram.avif)
+![Illustration of how affinity diagrams leads to insights.](../../../../assets/images/design-thinking-the-ultimate-guide/stage-2-how-to-define-the-problem/affinity-diagrams.avif)
 
 ## Affinity Diagrams Overview
 
