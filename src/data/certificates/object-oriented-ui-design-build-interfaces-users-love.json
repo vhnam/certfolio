@@ -113,6 +113,15 @@
           "slug": "from-stories-to-structure-build-the-models-that-power-great-interfaces/recap"
         }
       ]
+    },
+    {
+      "title": "From Sketch to Build: Bring Your Designs to Life with Your Team",
+      "lessons": [
+        {
+          "title": "Welcome and Introduction",
+          "slug": "from-sketch-to-build-bring-your-designs-to-life-with-your-team/welcome-and-introduction"
+        }
+      ]
     }
   ]
 }
