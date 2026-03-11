@@ -22,16 +22,14 @@ function applyTheme(theme: 'light' | 'dark') {
 }
 
 export function ToggleTheme() {
-  const [theme, setTheme] = useState<'light' | 'dark'>(() =>
-    typeof document !== 'undefined' &&
-    document.documentElement.classList.contains('dark')
-      ? 'dark'
-      : getTheme()
-  );
+  // SSR-safe initial state: always 'light' so server and first client render match (avoids hydration mismatch).
+  // Real theme is applied in useEffect after mount.
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    const isDark = document.documentElement.classList.contains('dark');
-    setTheme(isDark ? 'dark' : 'light');
+    const resolved = getTheme();
+    setTheme(resolved);
+    applyTheme(resolved);
   }, []);
 
   const toggle = useCallback(() => {

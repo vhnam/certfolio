@@ -28,7 +28,7 @@ export const ChapterOverview = ({ chapters, slug }: ChapterOverviewProps) => {
                   <li key={`${lessonIndex}-${lesson.slug}`}>
                     <a
                       href={`/certificates/${slug}/${lesson.slug}`}
-                      className='inline-flex items-center min-h-10 py-2 text-sm font-medium !text-blue-600 dark:!text-blue-400 hover:!text-blue-700 dark:hover:!text-blue-300 hover:underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded'
+                      className='inline-flex items-center min-h-10 py-2 text-sm font-medium !text-blue-600 dark:!text-blue-400 hover:!text-blue-700 dark:hover:!text-blue-300 hover:underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded !mx-0'
                     >
                       {lesson.title}
                     </a>
