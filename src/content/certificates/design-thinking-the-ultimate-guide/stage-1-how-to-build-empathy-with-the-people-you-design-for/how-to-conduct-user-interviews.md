@@ -175,6 +175,7 @@ These unusual findings can reveal:
 - Future research questions
 
 ## References
+
 - Interaction Design Foundation, [User Research – Methods and Best Practices](https://ixdf.org/courses/user-research-methods-and-best-practices)
 - Malte Windwehr, [Know Thy User: The Seven Research Commandments](https://medium.com/swlh/know-thy-user-the-seven-research-commandments-5b3a6f65b515)
 - Maria Rosala, Kara Pernice, [User Interviews 101](https://www.nngroup.com/articles/user-interviews/)

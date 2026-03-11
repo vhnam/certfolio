@@ -20,7 +20,6 @@
 - **Definition:** Fictional representations of target users based on real research.
 - **Purpose:** Humanize design needs and guide product direction.
 - **Include:**
-
   - Age, education, occupation, location, family, goals, frustrations, abilities, gender, race.
 
 - **Tip:** Avoid bias—base all traits on **real user data**, not assumptions.
@@ -38,7 +37,6 @@
 
 - **Definition:** Visualize the steps a user takes to achieve a goal.
 - **Steps:**
-
   1. List user actions.
   2. Add descriptions for each step.
   3. Note how the user feels.
@@ -57,7 +55,6 @@
 > Use the persona’s **name**, **characteristics**, and **needs** to describe their **goal** and **pain point**.
 
 - **Qualities of a strong problem statement:**
-
   - Human-centered
   - Broad enough for creativity
   - Narrow enough to design a solution
@@ -76,7 +73,6 @@
 
 - **Goal:** Understand what competitors do well or poorly.
 - **Steps:**
-
   1. Define goals for the audit.
   2. List competitors (direct and indirect).
   3. Identify features to evaluate.
@@ -95,7 +91,6 @@
 
 - Organizes and structures content logically.
 - Benefits:
-
   - Helps users navigate easily.
   - Clarifies structure for stakeholders and developers.
   - Makes future iterations flexible.
@@ -104,7 +99,6 @@
 
 - **Fast, low-cost, and exploratory** sketches of layouts.
 - **Steps:**
-
   1. List essential content.
   2. Draw at least 5 layout variations.
   3. Review and refine (mark best parts).
@@ -137,7 +131,6 @@
 
 - Your **portfolio should tell a story** — show not just the final design, but the **process, rationale, and evolution**.
 - Include evidence of:
-
   - Empathy (personas, user research)
   - Structure (wireframes, IA)
   - Creativity (sketches, prototypes)
@@ -154,31 +147,24 @@ Before conducting a **usability study**, you must create a **research plan** —
 #### **7 Elements of a UX Research Plan**
 
 1. **Project Background:**
-
    - Explain why this research is needed and what context led to it.
 
 2. **Research Goals:**
-
    - Define what you’re trying to solve or learn through the study.
 
 3. **Research Questions:**
-
    - List specific, actionable questions to guide the study (not participant interview questions).
 
 4. **Key Performance Indicators (KPIs):**
-
    - Identify measurable signs of success or progress (e.g., task completion rate, error frequency).
 
 5. **Methodology:**
-
    - Describe how you’ll collect and analyze your data.
 
 6. **Participants:**
-
    - Identify your target participants — ideally members of the community you’re designing for (especially in social good projects).
 
 7. **Script / Discussion Guide:**
-
    - Prepare the exact prompts or questions you’ll use during the study.
 
 ### 🧍‍♀️ Conducting a Usability Study
@@ -203,19 +189,15 @@ Evaluate how easy it is for users to complete tasks in your design and gather in
 #### **Four Steps to Generate Insights:**
 
 1. **Gather data:**
-
    - Combine all notes, sticky observations, and feedback in one place.
 
 2. **Organize data:**
-
    - Use **affinity diagramming** or spreadsheets to cluster related insights.
 
 3. **Find themes:**
-
    - Identify patterns and recurring behaviors across users.
 
 4. **Develop insights:**
-
    - Translate themes into actionable takeaways.
    - Example: “Users struggle to find the submit button” → improve button placement and hierarchy.
 
@@ -312,7 +294,6 @@ The structure and organization of content — helps users find what they need ef
 1. **Research common pages** on similar websites.
 2. **Recall user goals** from personas and journey maps.
 3. **Choose a structure:**
-
    - **Sequential:** Step-by-step process.
    - **Hierarchical:** Organized by importance (most common).
 
@@ -345,7 +326,6 @@ Show your **process**, not just your final designs.
 ## ✅ Final Takeaways
 
 - You’ve now practiced every phase of the **UX Design Process**:
-
   1. Empathize
   2. Define
   3. Ideate
@@ -353,7 +333,6 @@ Show your **process**, not just your final designs.
   5. Test
 
 - You’ve also learned to:
-
   - Conduct **usability studies** and analyze results.
   - Build **mockups** and **high-fidelity prototypes**.
   - Establish a **design system** for cross-device consistency.

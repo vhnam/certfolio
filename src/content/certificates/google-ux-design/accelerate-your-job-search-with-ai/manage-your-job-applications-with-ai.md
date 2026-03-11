@@ -2,6 +2,7 @@
 title: "Manage Your Job Applications with AI"
 description: ""
 ---
+
 # Module 3: Manage Your Job Applications with AI
 
 ## Contents (TOCS)
@@ -95,7 +96,6 @@ Industry-specific organizations that provide job listings and networking opportu
 
 - Job search tracker: A system (typically a spreadsheet) used to organize and monitor job applications.
 - Benefits:
-
   - Keeps track of where and when applications were submitted
   - Records communication and outcomes
   - Helps manage multiple platforms and roles efficiently
@@ -143,7 +143,6 @@ Track status updates such as:
 
 - Job description summary: A short, 2–3 sentence overview of the role.
 - Benefits:
-
   - Quickly distinguishes similar job titles
   - Serves as a reminder of role differences
 
@@ -152,7 +151,6 @@ Track status updates such as:
 1. Copy the full job description from the posting.
 2. Use Gemini to summarize it into 2–3 sentences.
 3. Include both:
-
    - Link to full job description
    - Short summarized version in the tracker
 
@@ -191,7 +189,6 @@ Focus areas:
 2. Provide the company name and job title.
 3. Ask Gemini to research current company needs and priorities.
 4. Receive:
-
    - A research plan
    - A detailed report
    - Optional audio summary
@@ -267,12 +264,10 @@ Being structured and disciplined helps maintain momentum:
 ### Why Networking Matters
 
 - Early career:
-
   - Learn about job opportunities
   - Meet people who can support your job search
 
 - Experienced professionals:
-
   - Gain guidance on career advancement
   - Develop new skills
   - Get noticed by companies hiring now or in the future
@@ -303,7 +298,6 @@ Being structured and disciplined helps maintain momentum:
 
 - Track contacts in your job search tracker to keep everything centralized.
 - Group contacts to stay organized:
-
   - Allies: Strong, frequent connections
   - Acquaintances: Friendly but less frequent contact
   - Expanded network: People you haven’t met yet
@@ -315,12 +309,10 @@ Being structured and disciplined helps maintain momentum:
 
 - Examples: Coffee chats, phone calls, video meetings
 - How to connect:
-
   - Ask for introductions through mutual connections
   - Send a brief, thoughtful, and specific outreach message
 
 - Preparation:
-
   - Why you want to talk to them
   - What skills or insights you want to learn
   - How you’ll use that knowledge
@@ -330,7 +322,6 @@ Being structured and disciplined helps maintain momentum:
 
 - Use social media to connect without meeting in person
 - Examples:
-
   - Join LinkedIn groups
   - Share ideas and engage in industry discussions
 
@@ -364,7 +355,6 @@ Being structured and disciplined helps maintain momentum:
 
 - Hidden job market: Many job openings are never publicly advertised.
 - Networking advantage:
-
   - Access roles through referrals, word-of-mouth, and direct connections.
   - Strong referrals increase the likelihood of interviews and job offers.
 
@@ -379,7 +369,6 @@ Being structured and disciplined helps maintain momentum:
 
 - Authentic connections: Built on trust, mutual respect, and genuine interest.
 - Go beyond favors:
-
   - Practice active listening
   - Offer insights, help, and support
   - Invest in understanding others’ career journeys
@@ -393,7 +382,6 @@ Being structured and disciplined helps maintain momentum:
 #### Beyond Job Descriptions
 
 - Insider insights include:
-
   - Company culture
   - Team dynamics
   - Hiring manager preferences
@@ -409,7 +397,6 @@ Being structured and disciplined helps maintain momentum:
 #### Continuous Learning
 
 - Industry awareness:
-
   - Emerging trends
   - New skill requirements
   - Evolving career paths
@@ -423,12 +410,10 @@ Being structured and disciplined helps maintain momentum:
 #### Emotional and Practical Support
 
 - You’re not alone:
-
   - Encouragement during setbacks
   - Sense of community
 
 - Practical help:
-
   - Resume feedback
   - Interview practice
 
@@ -441,7 +426,6 @@ Being structured and disciplined helps maintain momentum:
 #### Skill Practice
 
 - Low-stakes environment:
-
   - Networking conversations help refine communication and presentation skills.
 
 #### Career Readiness
@@ -453,7 +437,6 @@ Being structured and disciplined helps maintain momentum:
 #### Beyond the Immediate Job
 
 - Relationship evolution:
-
   - Mentorships
   - Collaborations
   - Partnerships
