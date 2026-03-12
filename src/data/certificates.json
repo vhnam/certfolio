@@ -14,9 +14,9 @@
       "slug": "accessibility-how-to-design-for-all",
       "description": "This course will explore how to approach accessibility from all angles and incorporate it into your design and development processes.",
       "courseLink": "https://www.interaction-design.org/courses/accessibility-how-to-design-for-all",
-      "completed": false,
-      "certificateLink": null,
-      "completedDate": null
+      "completed": true,
+      "certificateLink": "https://ixdf.org/members/nam-vo/certificate/course/f2b3fc59-e645-4d31-8071-bae068c7daf7",
+      "completedDate": "Mar 12, 2026"
     },
     {
       "title": "Agile Methods for UX Design",
@@ -95,6 +95,24 @@
       "slug": "service-design-how-to-design-integrated-service-experiences",
       "description": "Discover the future of design with AI. Seamlessly integrate AI tools in your design process, master AI-driven design, and lead innovation. Join us!",
       "courseLink": "https://ixdf.org/courses/service-design-how-to-design-integrated-service-experiences",
+      "completed": false,
+      "certificateLink": null,
+      "completedDate": null
+    },
+    {
+      "title": "The Practical Guide to Usability",
+      "slug": "the-practical-guide-to-usability",
+      "description": "In this course, you will learn about the theoretical and practical applications surrounding usability and how to apply it into your daily design work.",
+      "courseLink": "https://ixdf.org/courses/the-practical-guide-to-usability",
+      "completed": false,
+      "certificateLink": null,
+      "completedDate": null
+    },
+    {
+      "title": "Gestalt Psychology and Web Design: The Ultimate Guide",
+      "slug": "gestalt-psychology-and-web-design-the-ultimate-guide",
+      "description": "You will cover Gestalt principles, Gestalt psychology, Gestalt laws and visual perception, which are all crucial in making or breaking your designs.",
+      "courseLink": "https://ixdf.org/courses/gestalt-psychology-and-web-design-the-ultimate-guide",
       "completed": false,
       "certificateLink": null,
       "completedDate": null
