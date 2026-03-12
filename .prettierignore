@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+.pnpm-store
+
+# lockfiles
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# build output
+dist/
+
+# generated
+.astro/
+
+# environment
+.env
+.env.*
+
+# misc
+.DS_Store
+.netlify
