@@ -59,9 +59,9 @@
       "slug": "object-oriented-ui-design-build-interfaces-users-love",
       "description": "Master the new standard in UI design and get the clarity, control, and credibility to deliver interfaces that users love and teams love building.",
       "courseLink": "https://www.interaction-design.org/courses/object-oriented-user-interface-design",
-      "completed": false,
-      "certificateLink": null,
-      "completedDate": null
+      "completed": true,
+      "certificateLink": "https://ixdf.org/members/nam-vo/certificate/course/de5274d9-f22b-4a15-99a2-f1e497faa165",
+      "completedDate": "Mar 12, 2026"
     },
     {
       "title": "Google AI",
@@ -86,6 +86,15 @@
       "slug": "ai-for-designers",
       "description": "Discover the future of design with AI. Seamlessly integrate AI tools in your design process, master AI-driven design, and lead innovation. Join us!",
       "courseLink": "https://ixdf.org/courses/ai-for-designers",
+      "completed": false,
+      "certificateLink": null,
+      "completedDate": null
+    },
+    {
+      "title": "Service Design: How to Design Integrated Service Experiences",
+      "slug": "service-design-how-to-design-integrated-service-experiences",
+      "description": "Discover the future of design with AI. Seamlessly integrate AI tools in your design process, master AI-driven design, and lead innovation. Join us!",
+      "courseLink": "https://ixdf.org/courses/service-design-how-to-design-integrated-service-experiences",
       "completed": false,
       "certificateLink": null,
       "completedDate": null
