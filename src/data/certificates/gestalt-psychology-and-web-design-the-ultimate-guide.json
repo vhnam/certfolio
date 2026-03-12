@@ -6,5 +6,15 @@
   "completed": false,
   "certificateLink": null,
   "completedDate": null,
-  "chapters": []
+  "chapters": [
+    {
+      "title": "An Introduction to Gestalt Psychology",
+      "lessons": [
+        {
+          "title": "Welcome to Gestalt Psychology and Web Design: The Ultimate Guide",
+          "slug": "an-introduction-to-gestalt-psychology/welcome-to-gestalt-psychology-and-web-design-the-ultimate-guide"
+        }
+      ]
+    }
+  ]
 }
