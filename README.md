@@ -4,11 +4,12 @@ A static site for organizing and browsing professional certificates and master c
 
 ## Tech stack
 
-- **Astro 5** — static site generation, content collections
-- **React** — interactive components (navigation, UI)
+- **Astro 6** — static site generation, content collections
+- **React** — interactive components (navigation, sidebar, theme toggle)
 - **MDX** — certificate/course content with JSX
 - **Tailwind CSS 4** — styling
-- **Base UI / shadcn-style** — UI components
+- **Base UI / shadcn** — UI components
+- **Netlify** — deployment (static adapter)
 
 ## Project structure
 
@@ -16,22 +17,30 @@ A static site for organizing and browsing professional certificates and master c
 .
 ├── public/                 # Static assets (favicon, etc.)
 ├── src/
+│   ├── assets/             # Images and files per certificate
+│   │   ├── images/
+│   │   └── files/
 │   ├── components/         # React and Astro components
 │   │   ├── ui/             # Reusable UI (button, collapsible, etc.)
+│   │   ├── CertificateCard.astro
 │   │   ├── ChapterOverview.tsx
 │   │   ├── CourseOverview.tsx
-│   │   └── MobileDrawer.tsx
+│   │   ├── MobileDrawer.tsx
+│   │   ├── Sidebar.tsx
+│   │   └── ToggleTheme.tsx
 │   ├── content/
 │   │   ├── certificates/   # Certificate course content (MDX + markdown)
-│   │   └── master-classes/# Master class content
-│   ├── data/              # JSON: certificates.json, master-classes.json
+│   │   └── master-classes/ # Master class content
+│   ├── data/               # JSON: certificates.json, master-classes.json
+│   ├── hooks/
 │   ├── layouts/
 │   ├── lib/                # Utilities, navigation helpers
 │   ├── models/             # Content collection schemas
-│   └── pages/
-│       ├── index.astro     # Home: certs + master classes
-│       ├── certificates/   # Certificate list & [...slug] course pages
-│       └── master-classes/ # Master class list & [...slug] pages
+│   ├── pages/
+│   │   ├── index.astro     # Home: certs + master classes
+│   │   ├── certificates/   # Certificate list & [...slug] course pages
+│   │   └── master-classes/ # Master class list & [...slug] pages
+│   └── styles/
 ├── astro.config.mjs
 ├── components.json
 ├── package.json
