@@ -24,13 +24,6 @@ export default defineConfig({
     build: {
       cssMinify: true,
       minify: "esbuild",
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            "react-vendor": ["react", "react-dom"],
-          },
-        },
-      },
     },
   },
 });
