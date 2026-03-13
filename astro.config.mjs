@@ -23,7 +23,6 @@ export default defineConfig({
     plugins: [tailwindcss()],
     build: {
       cssMinify: true,
-      minify: "esbuild",
     },
   },
 });

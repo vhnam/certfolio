@@ -2,8 +2,6 @@
 title: "Shigeo Fukuda: Playing with Perception"
 ---
 
-# Using Negative Space and Grouping Laws in Gestalt Design
-
 ## Gestalt Principles in Visual Art
 
 ### Perceptual Ambiguity and Visual Interpretation
