@@ -2,8 +2,6 @@
 title: The Origins of Gestalt Psychology
 ---
 
-# Structuralism and the Origins of Gestalt Psychology
-
 ## Structuralism
 
 ### Wilhelm Wundt and Experimental Psychology

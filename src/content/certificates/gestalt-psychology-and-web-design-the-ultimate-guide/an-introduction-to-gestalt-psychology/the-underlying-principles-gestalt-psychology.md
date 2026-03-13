@@ -1,5 +1,5 @@
 ---
-title: The Underlying Principles of Gestalt Psychology
+title: "The Underlying Principles: Gestalt Psychology"
 ---
 
 ## Emergence
