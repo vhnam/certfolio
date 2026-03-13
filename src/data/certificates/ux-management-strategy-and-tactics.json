@@ -162,6 +162,15 @@
           "slug": "climbing-the-ladder/recap"
         }
       ]
+    },
+    {
+      "title": "Your UX Roadmap Process",
+      "lessons": [
+        {
+          "title": "Process Mapping Your UX Strategy",
+          "slug": "your-ux-roadmap-process/process-mapping-your-ux-strategy"
+        }
+      ]
     }
   ]
 }
