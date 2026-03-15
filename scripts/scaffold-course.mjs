@@ -8,6 +8,7 @@
  *   --title "Course Title"   Course title (default: slug formatted)
  *   --platform IxDF         One of: IxDF, Coursera
  *   --chapter "Chapter 1"   Add a first chapter folder with one placeholder lesson
+ *   --lesson "Lesson 1"     Add a lesson file with one placeholder lesson and a placeholder lesson file with *.mdx extension
  */
 
 import fs from "node:fs";
@@ -35,7 +36,7 @@ function parseArgs() {
   const slug = args.find((a) => !a.startsWith("--"));
   if (!slug) {
     console.error(
-      'Usage: node scripts/scaffold-course.mjs <course-slug> [--title "..."] [--platform IxDF] [--chapter "Chapter name"]',
+      'Usage: node scripts/scaffold-course.mjs <course-slug> [--title "..."] [--platform IxDF] [--chapter "Chapter name"] [--lesson "Lesson 1"]',
     );
     process.exit(1);
   }
@@ -48,6 +49,7 @@ function parseArgs() {
     title: getOpt("--title") ?? slugToTitle(slug),
     platform: getOpt("--platform") ?? "Other",
     chapter: getOpt("--chapter"),
+    lesson: getOpt("--lesson"),
   };
 }
 
@@ -73,11 +75,16 @@ Add your notes here.
 `;
 
 function main() {
-  const { slug, title, platform, chapter } = parseArgs();
+  const { slug, title, platform, chapter, lesson } = parseArgs();
   const courseDir = path.join(CONTENT_BASE, slug);
 
   if (fs.existsSync(courseDir)) {
     console.error(`Directory already exists: ${courseDir}`);
+    process.exit(1);
+  }
+
+  if (lesson && !chapter) {
+    console.error("Lesson cannot be added without a chapter");
     process.exit(1);
   }
 
@@ -93,8 +100,18 @@ function main() {
       .replace(/[^a-z0-9-]/g, "");
     const chapterDir = path.join(courseDir, chapterSlug);
     fs.mkdirSync(chapterDir, { recursive: true });
-    const lessonPath = path.join(chapterDir, "lesson-01.md");
-    fs.writeFileSync(lessonPath, lessonMd("Lesson 1"), "utf8");
+
+    const lessonSlug = lesson
+      ? lesson
+          .toLowerCase()
+          .replace(/\s+/g, "-")
+          .replace(/[^a-z0-9-]/g, "")
+      : "lesson-01";
+
+    const lessonDir = path.join(chapterDir, lessonSlug);
+    fs.mkdirSync(lessonDir, { recursive: true });
+    const lessonPath = path.join(lessonDir, `${lessonSlug}.md`);
+    fs.writeFileSync(lessonPath, lessonMd(lesson), "utf8");
     console.log(`Created ${lessonPath}`);
   }
 
