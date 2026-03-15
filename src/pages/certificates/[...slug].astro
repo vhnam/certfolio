@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import {
   buildCertNavigation,
+  getCertOrder,
   navToChaptersForOverview,
 } from "@/lib/navigation";
 import { CourseOverview } from "@/components/CourseOverview";
@@ -28,7 +29,10 @@ const { title, description } = entry.data;
 const routeSlug = Astro.params.slug ?? "";
 const certSlug = routeSlug.split("/")[0];
 const entries = await getCollection("certificate");
-const certNav = certSlug ? buildCertNavigation(entries, certSlug) : null;
+const certOrder = certSlug ? await getCertOrder(certSlug) : null;
+const certNav = certSlug
+  ? buildCertNavigation(entries, certSlug, certOrder)
+  : null;
 const isCourseIndex = entry.id === certSlug || entry.id === `${certSlug}/index`;
 const chaptersForOverview = certNav ? navToChaptersForOverview(certNav) : [];
 ---

@@ -1,0 +1,143 @@
+{
+  "chapters": [
+    {
+      "title": "What is Design Thinking?",
+      "lessons": [
+        {
+          "title": "Welcome to Design Thinking: The Ultimate Guide",
+          "slug": "what-is-design-thinking/welcome-to-design-thinking-the-ultimate-guide"
+        },
+        {
+          "title": "What is Design Thinking and Why is it So Popular?",
+          "slug": "what-is-design-thinking/what-is-design-thinking-and-why-is-it-so-popular"
+        },
+        {
+          "title": "The History of Design Thinking",
+          "slug": "what-is-design-thinking/the-history-of-design-thinking"
+        },
+        {
+          "title": "10 Insightful Design Thinking Frameworks: A Quick Overview",
+          "slug": "what-is-design-thinking/10-insightful-design-thinking-frameworks-a-quick-overview"
+        },
+        {
+          "title": "The 5 Stages in the Design Thinking Process",
+          "slug": "what-is-design-thinking/the-5-stages-in-the-design-thinking-process"
+        },
+        {
+          "title": "Design Thinking: How to Solve Problems in an Innovative Way",
+          "slug": "what-is-design-thinking/design-thinking-how-to-solve-problems-in-an-innovative-way"
+        },
+        {
+          "title": "What are Wicked Problems and How Might We Solve Them?",
+          "slug": "what-is-design-thinking/what-are-wicked-problems-and-how-might-we-solve-them"
+        },
+        {
+          "title": "Three Steps to Facilitate Design Thinking in Your Team",
+          "slug": "what-is-design-thinking/three-steps-to-facilitate-design-thinking-in-your-team"
+        },
+        {
+          "title": "Essential Design Thinking Videos, Methods and Tools",
+          "slug": "what-is-design-thinking/essential-design-thinking-videos-methods-and-tools"
+        },
+        {
+          "title": "Lesson 1 Recap",
+          "slug": "what-is-design-thinking/recap"
+        }
+      ]
+    },
+    {
+      "title": "Stage 1: How to Build Empathy With the People You Design For",
+      "lessons": [
+        {
+          "title": "Welcome and Introduction",
+          "slug": "stage-1-how-to-build-empathy-with-the-people-you-design-for/welcome-and-introduction"
+        },
+        {
+          "title": "What Is Empathy and Why Is It So Important in Design Thinking?",
+          "slug": "stage-1-how-to-build-empathy-with-the-people-you-design-for/what-is-empathy-and-why-is-it-so-important-in-design-thinking"
+        },
+        {
+          "title": "How to Develop Empathy for Your Target Group",
+          "slug": "stage-1-how-to-build-empathy-with-the-people-you-design-for/how-to-develop-empathy-for-your-target-group"
+        },
+        {
+          "title": "9 Ways to Become a More Empathic Designer",
+          "slug": "stage-1-how-to-build-empathy-with-the-people-you-design-for/9-ways-to-become-a-more-empathic-designer"
+        },
+        {
+          "title": "10 Techniques to Develop Empathy with Your Users",
+          "slug": "stage-1-how-to-build-empathy-with-the-people-you-design-for/10-techniques-to-develop-empathy-with-your-users"
+        },
+        {
+          "title": "7 Simple Ways to Get Better Results from Ethnographic Research",
+          "slug": "stage-1-how-to-build-empathy-with-the-people-you-design-for/7-simple-ways-to-get-better-results-from-ethnographic-research"
+        },
+        {
+          "title": "How to Conduct User Interviews",
+          "slug": "stage-1-how-to-build-empathy-with-the-people-you-design-for/how-to-conduct-user-interviews"
+        },
+        {
+          "title": "Cultural Probes: How to Design and Use Them",
+          "slug": "stage-1-how-to-build-empathy-with-the-people-you-design-for/cultural-probes-how-to-design-and-use-them"
+        },
+        {
+          "title": "Lesson 2 Recap",
+          "slug": "stage-1-how-to-build-empathy-with-the-people-you-design-for/recap"
+        }
+      ]
+    },
+    {
+      "title": "Stage 2: How to Define the Problem",
+      "lessons": [
+        {
+          "title": "Welcome and Introduction",
+          "slug": "stage-2-how-to-define-the-problem/welcome-and-introduction"
+        },
+        {
+          "title": "The Define Phase in Design Thinking",
+          "slug": "stage-2-how-to-define-the-problem/the-define-phase-in-design-thinking"
+        },
+        {
+          "title": "Affinity Diagrams: How to Cluster Your Ideas and Reveal Insights",
+          "slug": "stage-2-how-to-define-the-problem/affinity-diagrams-how-to-cluster-your-ideas-and-reveal-insights"
+        },
+        {
+          "title": "Personas – A Simple Introduction",
+          "slug": "stage-2-how-to-define-the-problem/personas-a-simple-introduction"
+        },
+        {
+          "title": "10 Steps to Create Your Engaging Personas",
+          "slug": "stage-2-how-to-define-the-problem/10-steps-to-create-your-engaging-personas"
+        },
+        {
+          "title": "Deep Dive into How to Construct and Describe a Persona",
+          "slug": "stage-2-how-to-define-the-problem/deep-dive-into-how-to-construct-and-describe-a-persona"
+        },
+        {
+          "title": "Personas Allow You to Focus on Individuals",
+          "slug": "stage-2-how-to-define-the-problem/personas-allow-you-to-focus-on-individuals"
+        },
+        {
+          "title": "Empathy Maps: Why and How to Use Them",
+          "slug": "stage-2-how-to-define-the-problem/empathy-maps-why-and-how-to-use-them"
+        },
+        {
+          "title": "How to Create Your Point of View (POV) Problem Statement",
+          "slug": "stage-2-how-to-define-the-problem/how-to-create-your-point-of-view-pov-problem-statement"
+        },
+        {
+          "title": "Why Are \"How Might We\" Questions So Important?",
+          "slug": "stage-2-how-to-define-the-problem/why-are-how-might-we-questions-so-important"
+        },
+        {
+          "title": "Stakeholder Mapping: The Complete Guide to Stakeholder Maps",
+          "slug": "stage-2-how-to-define-the-problem/stakeholder-mapping-the-complete-guide-to-stakeholder-maps"
+        },
+        {
+          "title": "Lesson 3 Recap",
+          "slug": "stage-2-how-to-define-the-problem/recap"
+        }
+      ]
+    }
+  ]
+}
