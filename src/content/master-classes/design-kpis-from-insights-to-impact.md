@@ -3,6 +3,13 @@ title: "Design KPIs: From Insights to Impact"
 description: "Discover the impact of Design KPIs in this Master Class with Vitaly Friedman. Elevate your design metrics expertise and drive design success."
 platform: "IxDF"
 tags: ["kpis", "metrics", "design-ops", "ux"]
+speakers:
+  [
+    {
+      name: "Vitaly Friedman",
+      title: "Co-Founder of Smashing Magazine and Senior UX Consultant for the European Parliament",
+    },
+  ]
 ---
 
 ## Organizational Awareness: Understanding the Design Environment

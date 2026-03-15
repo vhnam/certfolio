@@ -3,6 +3,13 @@ title: "Accessible Typography: Design UIs All Your Users Will Love to Use"
 description: "Discover accessible typography strategies for web and UI design. Enhance readability and user experience for all audiences."
 platform: "IxDF"
 tags: ["accessibility", "typography", "ui", "ux"]
+speakers:
+  [
+    {
+      name: "Oliver Schöndorfer",
+      title: "Typography Expert, Speaker, and UX Designer",
+    },
+  ]
 ---
 
 ## Introduction to Typography & Accessibility

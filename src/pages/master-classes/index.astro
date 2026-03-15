@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { buildMasterClassList } from "@/lib/navigation";
+import MasterClassCard from "@/components/MasterClassCard.astro";
 
 const masterClassEntries = await getCollection("masterClass").catch(() => []);
 const masterClasses = buildMasterClassList(masterClassEntries);
@@ -18,27 +19,20 @@ const masterClasses = buildMasterClassList(masterClassEntries);
     </p>
   </div>
 
-  <ul class="flex flex-col gap-4" role="list">
-    {
-      masterClasses.map((mc) => (
-        <li>
-          <a
-            href={mc.path}
-            aria-label={`View notes for ${mc.title}`}
-            class="index-card group flex min-h-[3.5rem] cursor-pointer items-center justify-between rounded-xl border border-border bg-card px-5 py-4 text-sm shadow-sm transition-[border-color,box-shadow,background-color] duration-200 hover:border-primary/50 hover:bg-accent/50 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-          >
-            <span class="font-medium text-foreground group-hover:text-primary transition-colors duration-200">
-              {mc.title}
-            </span>
-            <span
-              class="text-muted-foreground text-xs transition-transform duration-200 group-hover:translate-x-0.5"
-              aria-hidden="true"
-            >
-              View notes →
-            </span>
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  {
+    masterClasses.length === 0 ? (
+      <p class="text-muted-foreground">No master classes found.</p>
+    ) : (
+      <ul
+        class="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-auto"
+        role="list"
+      >
+        {masterClasses.map((mc, i) => (
+          <li class="index-card-wrap" style={`--stagger: ${i}`}>
+            <MasterClassCard masterClass={mc} />
+          </li>
+        ))}
+      </ul>
+    )
+  }
 </Layout>

@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { buildCertList, buildMasterClassList } from "@/lib/navigation";
 import CertificateCard from "@/components/CertificateCard.astro";
+import MasterClassCard from "@/components/MasterClassCard.astro";
 
 const certEntries = await getCollection("certificate").catch(() => []);
 const masterClassEntries = await getCollection("masterClass").catch(() => []);
@@ -81,7 +82,7 @@ const masterClasses = buildMasterClassList(masterClassEntries).sort((a, b) =>
     </section>
 
     <!-- Master Classes -->
-    <section aria-labelledby="master-classes-heading">
+    <section class="mb-14" aria-labelledby="master-classes-heading">
       <p
         class="mb-1 font-mono text-xs font-medium uppercase tracking-widest text-muted-foreground"
       >
@@ -89,35 +90,28 @@ const masterClasses = buildMasterClassList(masterClassEntries).sort((a, b) =>
       </p>
       <h2
         id="master-classes-heading"
-        class="text-2xl font-bold tracking-tight text-foreground mb-6"
+        class="text-2xl font-bold tracking-tight text-foreground mb-2"
       >
         Master Classes
       </h2>
+      <p class="text-muted-foreground mb-6 max-w-2xl">
+        Focused sessions and workshops from industry experts. Select one to view
+        notes and takeaways.
+      </p>
       {
         masterClasses.length === 0 ? (
           <p class="text-muted-foreground">No master classes found.</p>
         ) : (
-          <ul class="flex flex-col gap-4" role="list">
+          <ul
+            class="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-auto"
+            role="list"
+          >
             {masterClasses.map((mc, i) => (
               <li
                 class="index-card-wrap"
                 style={`--stagger: ${certs.length + i}`}
               >
-                <a
-                  href={mc.path}
-                  aria-label={`View notes for ${mc.title}`}
-                  class="index-card group flex min-h-[3.5rem] cursor-pointer items-center justify-between rounded-xl border border-border bg-card px-5 py-4 text-sm shadow-sm transition-[border-color,box-shadow,background-color] duration-200 hover:border-primary/50 hover:bg-accent/50 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-                >
-                  <span class="font-medium text-foreground group-hover:text-primary transition-colors duration-200">
-                    {mc.title}
-                  </span>
-                  <span
-                    class="text-muted-foreground text-xs transition-transform duration-200 group-hover:translate-x-0.5"
-                    aria-hidden="true"
-                  >
-                    View notes →
-                  </span>
-                </a>
+                <MasterClassCard masterClass={mc} />
               </li>
             ))}
           </ul>

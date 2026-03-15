@@ -83,6 +83,7 @@ export type MasterClassRef = {
   title: string;
   slug: string;
   path: string;
+  speakers?: { name: string; title: string }[];
 };
 
 /** Certificate collection entry shape (id from loader + data from schema). */
@@ -366,6 +367,7 @@ export function buildMasterClassList(
         title: e.data.title,
         slug: masterClassSlug,
         path: `/master-classes/${masterClassSlug}/`,
+        speakers: e.data.speakers,
       };
     })
     .sort((a, b) => a.title.localeCompare(b.title));
