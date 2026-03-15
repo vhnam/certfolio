@@ -1,6 +1,12 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
+import {
+  buildCertNavigation,
+  navToChaptersForOverview,
+} from "@/lib/navigation";
+import { CourseOverview } from "@/components/CourseOverview";
+import { ChapterOverview } from "@/components/ChapterOverview";
 
 export async function getStaticPaths() {
   const entries = await getCollection("certificate");
@@ -19,6 +25,12 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 
 const { title, description } = entry.data;
+const routeSlug = Astro.params.slug ?? "";
+const certSlug = routeSlug.split("/")[0];
+const entries = await getCollection("certificate");
+const certNav = certSlug ? buildCertNavigation(entries, certSlug) : null;
+const isCourseIndex = entry.id === certSlug || entry.id === `${certSlug}/index`;
+const chaptersForOverview = certNav ? navToChaptersForOverview(certNav) : [];
 ---
 
 <Layout title={title} description={description} type="article">
@@ -31,6 +43,16 @@ const { title, description } = entry.data;
         <p class="lead text-gray-600 dark:text-gray-300">{description}</p>
       )
     }
-    <Content />
+    {
+      isCourseIndex && certNav && chaptersForOverview.length > 0 && (
+        <>
+          <CourseOverview chapters={chaptersForOverview}>
+            <Content />
+          </CourseOverview>
+          <ChapterOverview chapters={chaptersForOverview} slug={certSlug} />
+        </>
+      )
+    }
+    {!isCourseIndex && <Content />}
   </article>
 </Layout>

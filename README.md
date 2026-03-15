@@ -31,7 +31,6 @@ A static site for organizing and browsing professional certificates and master c
 │   ├── content/
 │   │   ├── certificates/   # Certificate course content (MDX + markdown)
 │   │   └── master-classes/ # Master class content
-│   ├── data/               # JSON: certificates.json, master-classes.json
 │   ├── hooks/
 │   ├── layouts/
 │   ├── lib/                # Utilities, navigation helpers
@@ -47,9 +46,8 @@ A static site for organizing and browsing professional certificates and master c
 └── tsconfig.json
 ```
 
-- **Certificates** are defined in `src/data/certificates.json` and can have full course content under `src/content/certificates/<slug>/`.
-- **Master classes** are listed in `src/data/master-classes.json` with content in `src/content/master-classes/`.
-- Course structure (chapters, lessons) is driven by the file tree and optional per-certificate JSON in `src/data/certificates/<slug>.json`.
+- **Certificates** and **master classes** use [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/). Metadata (title, description, platform, status, tags, etc.) lives in the frontmatter of each course’s `index.mdx` under `src/content/certificates/<slug>/` or `src/content/master-classes/`.
+- Course structure (chapters, lessons) is derived from the file tree under each certificate folder.
 
 ## Commands
 

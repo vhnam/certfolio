@@ -21,14 +21,39 @@ export type NavCertificate = {
   description: string;
 };
 
+/** Shape for CourseOverview/ChapterOverview (lesson.slug = "chapterSlug/lessonSlug"). */
+export type ChapterForOverview = {
+  title: string;
+  lessons: { title: string; slug: string }[];
+};
+
+/** Convert NavCertificate to the chapter list shape expected by course overview components. */
+export function navToChaptersForOverview(
+  nav: NavCertificate,
+): ChapterForOverview[] {
+  return nav.chapters.map((ch) => ({
+    title: ch.title,
+    lessons: ch.lessons.map((l) => ({
+      title: l.title,
+      slug: `${ch.slug}/${l.slug}`,
+    })),
+  }));
+}
+
 export type CertRef = {
   title: string;
   slug: string;
+  path: string;
   courseLink: string;
   description?: string;
   completed?: boolean;
   certificateLink?: string | null;
   completedDate?: string | null;
+  /** From content collection schema */
+  platform?: string;
+  thumbnail?: string;
+  status?: "completed" | "in-progress";
+  tags?: string[];
 };
 
 export type MasterClassRef = {
@@ -37,9 +62,27 @@ export type MasterClassRef = {
   path: string;
 };
 
-type Entry = {
+/** Minimal shape for certificate collection entries (content collection or legacy). */
+export type CertificateEntryLike = {
   id: string;
-  data: { title: string; description?: string; order?: number };
+  data: {
+    title: string;
+    description?: string;
+    order?: number;
+    platform?: string;
+    status?: "completed" | "in-progress";
+    tags?: string[];
+    thumbnail?: string;
+    courseLink?: string;
+    certificateLink?: string | null;
+    completedDate?: Date | null;
+  };
+};
+
+/** Minimal shape for master class collection entries. */
+export type MasterClassEntryLike = {
+  id: string;
+  data: { title: string; description?: string };
 };
 
 // ── Path helpers ───────────────────────────────────────────────────────────
@@ -92,7 +135,7 @@ function normalizeEntryId(id: string): string {
  * (/certificates/certSlug/...); both are normalized for matching.
  */
 export function buildCertNavigation(
-  entries: Entry[],
+  entries: CertificateEntryLike[],
   certSlug: string,
 ): NavCertificate | null {
   const prefix = certSlug + "/";
@@ -103,7 +146,7 @@ export function buildCertNavigation(
 
   const rootEntry = certEntries.find((e) => {
     const id = normalizeEntryId(e.id);
-    return id === certSlug || id === prefix + "index";
+    return id === certSlug || id === `${certSlug}/index`;
   });
   if (!rootEntry) return null;
 
@@ -135,17 +178,17 @@ export function buildCertNavigation(
     const chapterPrefix = prefix + chapterSlug + "/";
     const chapterIndexEntry = certEntries.find((e) => {
       const id = normalizeEntryId(e.id);
-      return (
-        id === chapterPrefix.slice(0, -1) || id === chapterPrefix + "index"
-      );
+      const chapterSlugOnly = chapterPrefix.slice(0, -1);
+      return id === chapterSlugOnly || id === `${chapterSlugOnly}/index`;
     });
 
+    const chapterSlugOnly = chapterPrefix.slice(0, -1);
     const lessonEntries = certEntries.filter((e) => {
       const id = normalizeEntryId(e.id);
       return (
         id.startsWith(chapterPrefix) &&
-        id !== chapterPrefix.slice(0, -1) &&
-        id !== chapterPrefix + "index"
+        id !== chapterSlugOnly &&
+        id !== `${chapterSlugOnly}/index`
       );
     });
 
@@ -185,107 +228,64 @@ export function buildCertNavigation(
   };
 }
 
-export function buildCertList(entries: Entry[]): CertRef[] {
-  return entries
-    .filter((e) => {
-      const parts = e.id.split("/");
-      return parts.length === 1;
-    })
-    .map((e) => {
-      const certSlug = e.id.split("/")[0];
-      return {
-        title: e.data.title,
-        slug: certSlug,
-        courseLink: "",
-        path: `/certificates/${certSlug}/`,
-      };
-    });
-}
-
-// ── Data from /data/*.json ───────────────────────────────────────────────────
-
-export type CertificatesListEntry = {
-  title: string;
-  description?: string;
-  slug: string;
-  link?: string;
-  courseLink?: string;
-  completed?: boolean;
-  certificateLink?: string | null;
-  completedDate?: string | null;
-};
-
-export type CertificatesJson = { certificates: CertificatesListEntry[] };
-
-export type CertDataChapter = {
-  title: string;
-  lessons: Array<{ title: string; slug: string }>;
-};
-
-export type CertDataJson = {
-  title: string;
-  description?: string;
-  chapters: CertDataChapter[];
-};
-
-/** Build cert list from data/certificates.json (requires slug on each entry). */
-export function buildCertListFromData(data: CertificatesJson): CertRef[] {
-  return data.certificates
-    .map((c) => ({
-      title: c.title,
-      slug: c.slug,
-      courseLink: c.courseLink ?? c.link ?? "",
-      path: `${CERT_BASE}${c.slug}/`,
-      description: c.description,
-      completed: c.completed,
-      certificateLink: c.certificateLink,
-      completedDate: c.completedDate,
-    }))
-    .sort((a, b) => a.title.localeCompare(b.title));
+/**
+ * Get unique course slugs from certificate collection entries.
+ * Course root is either id "course-slug" or "course-slug/index".
+ */
+function getUniqueCourseSlugs(entries: CertificateEntryLike[]): string[] {
+  const slugs = new Set<string>();
+  for (const e of entries) {
+    const id = normalizeEntryId(e.id);
+    const firstSegment = id.split("/")[0];
+    if (firstSegment) slugs.add(firstSegment);
+  }
+  return Array.from(slugs);
 }
 
 /**
- * Build cert navigation from data/certificates/{certSlug}.json.
- * Lesson slug in JSON is "chapterSlug/lessonSlug".
+ * Build cert list from content collection entries only (no JSON).
+ * Uses root entry (index.mdx or single file at course root) for metadata.
  */
-export function buildCertNavigationFromData(
-  certSlug: string,
-  data: CertDataJson,
-): NavCertificate {
-  const chapters: NavChapter[] = data.chapters.map((ch, chapterIndex) => {
-    const chapterSlug =
-      ch.lessons[0]?.slug.split("/")[0] ??
-      ch.title.toLowerCase().replace(/\s+/g, "-");
-    const lessons: NavLesson[] = ch.lessons.map((lesson, lessonIndex) => {
-      const lessonSlug = (() => {
-        if (lesson.slug.includes("/")) {
-          const part = lesson.slug.split("/").filter(Boolean).pop();
-          return part ?? lesson.slug;
-        }
-        return lesson.slug;
-      })();
-      return {
-        title: lesson.title,
-        slug: lessonSlug,
-        path: `${CERT_BASE}${certSlug}/${chapterSlug}/${lessonSlug}/`,
-        order: lessonIndex,
-      };
+export function buildCertList(entries: CertificateEntryLike[]): CertRef[] {
+  const courseSlugs = getUniqueCourseSlugs(entries);
+  const result: CertRef[] = [];
+
+  for (const certSlug of courseSlugs) {
+    const rootEntry = entries.find((e) => {
+      const id = normalizeEntryId(e.id);
+      return id === certSlug || id === `${certSlug}/index`;
     });
-    return {
-      title: ch.title,
-      slug: chapterSlug,
-      path: `${CERT_BASE}${certSlug}/${chapterSlug}/`,
-      lessons,
-      order: chapterIndex,
-    };
-  });
-  return {
-    title: data.title,
-    slug: certSlug,
-    path: `${CERT_BASE}${certSlug}/`,
-    description: data.description ?? "",
-    chapters,
-  };
+    if (!rootEntry) continue;
+
+    const d = rootEntry.data;
+    const completed =
+      d.status === "completed" ||
+      (d as { completed?: boolean }).completed === true;
+    const rawDate = d.completedDate;
+    const completedDate =
+      rawDate != null
+        ? rawDate instanceof Date
+          ? rawDate.toISOString().slice(0, 10)
+          : String(rawDate)
+        : null;
+
+    result.push({
+      title: d.title,
+      slug: certSlug,
+      courseLink: d.courseLink ?? "",
+      path: `${CERT_BASE}${certSlug}/`,
+      description: d.description,
+      completed,
+      certificateLink: d.certificateLink ?? null,
+      completedDate,
+      platform: d.platform,
+      thumbnail: d.thumbnail,
+      status: d.status,
+      tags: d.tags,
+    });
+  }
+
+  return result.sort((a, b) => a.title.localeCompare(b.title));
 }
 
 function formatSlug(slug: string): string {
@@ -295,7 +295,9 @@ function formatSlug(slug: string): string {
     .join(" ");
 }
 
-export function buildMasterClassList(entries: Entry[]): MasterClassRef[] {
+export function buildMasterClassList(
+  entries: MasterClassEntryLike[],
+): MasterClassRef[] {
   return entries
     .filter((e) => {
       const parts = e.id.split("/");

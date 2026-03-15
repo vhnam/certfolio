@@ -1,14 +1,12 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import { buildCertListFromData, buildMasterClassList } from "@/lib/navigation";
-import type { CertificatesJson } from "@/lib/navigation";
-import certificatesData from "@/data/certificates.json";
+import { buildCertList, buildMasterClassList } from "@/lib/navigation";
 import CertificateCard from "@/components/CertificateCard.astro";
 
-const certs = buildCertListFromData(certificatesData as CertificatesJson);
-
+const certEntries = await getCollection("certificate").catch(() => []);
 const masterClassEntries = await getCollection("masterClass").catch(() => []);
+const certs = buildCertList(certEntries);
 const masterClasses = buildMasterClassList(masterClassEntries).sort((a, b) =>
   a.title.localeCompare(b.title),
 );

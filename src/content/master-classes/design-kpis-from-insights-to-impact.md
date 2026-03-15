@@ -1,6 +1,8 @@
 ---
 title: "Design KPIs: From Insights to Impact"
-description: Discover the impact of Design KPIs in this Master Class with Vitaly Friedman. Elevate your design metrics expertise and drive design success.
+description: "Discover the impact of Design KPIs in this Master Class with Vitaly Friedman. Elevate your design metrics expertise and drive design success."
+platform: "IxDF"
+tags: ["kpis", "metrics", "design-ops", "ux"]
 ---
 
 ## Organizational Awareness: Understanding the Design Environment
