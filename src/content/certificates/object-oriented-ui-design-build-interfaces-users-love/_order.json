@@ -1,0 +1,140 @@
+{
+  "chapters": [
+    {
+      "title": "Master the Object-Oriented Principles Behind Every Great UI",
+      "lessons": [
+        {
+          "title": "Welcome to Object-Oriented UI Design: Build Interfaces Users Love",
+          "slug": "master-the-object-oriented-principles-behind-every-great-ui/welcome-to-object-oriented-ui-design-build-interfaces-users-love"
+        },
+        {
+          "title": "Why Object-Oriented UI Design Is Your Secret Career Advantage",
+          "slug": "master-the-object-oriented-principles-behind-every-great-ui/why-object-oriented-ui-design-is-your-secret-career-advantage"
+        },
+        {
+          "title": "Object-Oriented Design Shapes Every Interface You Use Today",
+          "slug": "master-the-object-oriented-principles-behind-every-great-ui/object-oriented-design-shapes-every-interface-you-use-today"
+        },
+        {
+          "title": "Great Design Starts Here: Get the Requirements Right",
+          "slug": "master-the-object-oriented-principles-behind-every-great-ui/great-design-starts-here-get-the-requirements-right"
+        },
+        {
+          "title": "Use Cases: The Ideal Bridge Between Requirements and Design?",
+          "slug": "master-the-object-oriented-principles-behind-every-great-ui/use-cases-the-ideal-bridge-between-requirements-and-design"
+        },
+        {
+          "title": "What Use Case Narratives Tell You About Key OO Concepts",
+          "slug": "master-the-object-oriented-principles-behind-every-great-ui/what-use-case-narratives-tell-you-about-key-oo-concepts"
+        },
+        {
+          "title": "What Agile Got Right (and What You Can Do Even Better)",
+          "slug": "master-the-object-oriented-principles-behind-every-great-ui/what-agile-got-right-and-what-you-can-do-even-better"
+        },
+        {
+          "title": "How Persona Stories Help You Design for Real People",
+          "slug": "master-the-object-oriented-principles-behind-every-great-ui/how-persona-stories-help-you-design-for-real-people"
+        },
+        {
+          "title": "Build on Stories to Create Solutions Users Need",
+          "slug": "master-the-object-oriented-principles-behind-every-great-ui/build-on-stories-to-create-solutions-users-need"
+        },
+        {
+          "title": "Lesson 1 Recap",
+          "slug": "master-the-object-oriented-principles-behind-every-great-ui/recap"
+        }
+      ]
+    },
+    {
+      "title": "Prioritize What Matters to Your Users and Your Team: Turn Features, Epics, and Constraints into a Clear Plan",
+      "lessons": [
+        {
+          "title": "Welcome and Introduction",
+          "slug": "prioritize-what-matters-to-your-users-and-your-team-turn-features-epics-and-constraints-into-a-clear-plan/welcome-and-introduction"
+        },
+        {
+          "title": "How to Find Your Way Around Requirements: Features, Epics, and Constraints",
+          "slug": "prioritize-what-matters-to-your-users-and-your-team-turn-features-epics-and-constraints-into-a-clear-plan/how-to-find-your-way-around-requirements-features-epics-and-constraints"
+        },
+        {
+          "title": "Epics: How to Break Down Your Big Stories Without Breaking Your Sprint",
+          "slug": "prioritize-what-matters-to-your-users-and-your-team-turn-features-epics-and-constraints-into-a-clear-plan/epics-how-to-break-down-your-big-stories-without-breaking-your-sprint"
+        },
+        {
+          "title": "Get to Grips with Constraints",
+          "slug": "prioritize-what-matters-to-your-users-and-your-team-turn-features-epics-and-constraints-into-a-clear-plan/get-to-grips-with-constraints"
+        },
+        {
+          "title": "Which Features Matter Most? Let Your Personas Show You",
+          "slug": "prioritize-what-matters-to-your-users-and-your-team-turn-features-epics-and-constraints-into-a-clear-plan/which-features-matter-most-let-your-personas-show-you"
+        },
+        {
+          "title": "What Should You Build First? Decide Fast with the Prioritization Matrix",
+          "slug": "prioritize-what-matters-to-your-users-and-your-team-turn-features-epics-and-constraints-into-a-clear-plan/what-should-you-build-first-decide-fast-with-the-prioritization-matrix"
+        },
+        {
+          "title": "Lesson 2 Recap",
+          "slug": "prioritize-what-matters-to-your-users-and-your-team-turn-features-epics-and-constraints-into-a-clear-plan/recap"
+        }
+      ]
+    },
+    {
+      "title": "From Stories to Structure: Build the Models That Power Great Interfaces",
+      "lessons": [
+        {
+          "title": "Welcome and Introduction",
+          "slug": "from-stories-to-structure-build-the-models-that-power-great-interfaces/welcome-and-introduction"
+        },
+        {
+          "title": "The Three Levels of Detail: Your Roadmap from Abstract Ideas to Finished UI",
+          "slug": "from-stories-to-structure-build-the-models-that-power-great-interfaces/the-three-levels-of-detail-your-roadmap-from-abstract-ideas-to-finished-ui"
+        },
+        {
+          "title": "Conceptual Models: The Hidden Structure Behind Your Next Great Interface",
+          "slug": "from-stories-to-structure-build-the-models-that-power-great-interfaces/conceptual-models-the-hidden-structure-behind-your-next-great-interface"
+        },
+        {
+          "title": "Conceptual Models: Your Essential Guide",
+          "slug": "from-stories-to-structure-build-the-models-that-power-great-interfaces/conceptual-models-your-essential-guide"
+        },
+        {
+          "title": "Stories of Use: How to Turn User Needs into the Building Blocks of Your UI",
+          "slug": "from-stories-to-structure-build-the-models-that-power-great-interfaces/stories-of-use-how-to-turn-user-needs-into-the-building-blocks-of-your-ui"
+        },
+        {
+          "title": "Lesson 3 Recap",
+          "slug": "from-stories-to-structure-build-the-models-that-power-great-interfaces/recap"
+        }
+      ]
+    },
+    {
+      "title": "From Sketch to Build: Bring Your Designs to Life with Your Team",
+      "lessons": [
+        {
+          "title": "Welcome and Introduction",
+          "slug": "from-sketch-to-build-bring-your-designs-to-life-with-your-team/welcome-and-introduction"
+        },
+        {
+          "title": "Design Smarter from the Start: Use Sketches to Explore Ideas Without Getting Stuck",
+          "slug": "from-sketch-to-build-bring-your-designs-to-life-with-your-team/design-smarter-from-the-start-use-sketches-to-explore-ideas-without-getting-stuck"
+        },
+        {
+          "title": "Build Your UI with Confidence: Let Sketches, Wireframes, and Prototypes Lead the Way",
+          "slug": "from-sketch-to-build-bring-your-designs-to-life-with-your-team/build-your-ui-with-confidence-let-sketches-wireframes-and-prototypes-lead-the-way"
+        },
+        {
+          "title": "Who, What, and How: Design Maps Show You the Way for Implementation",
+          "slug": "from-sketch-to-build-bring-your-designs-to-life-with-your-team/who-what-and-how-design-maps-show-you-the-way-for-implementation"
+        },
+        {
+          "title": "From UX to Code: Use Your Design Maps to Deliver Development-Ready Guidance",
+          "slug": "from-sketch-to-build-bring-your-designs-to-life-with-your-team/from-ux-to-code-use-your-design-maps-to-deliver-development-ready-guidance"
+        },
+        {
+          "title": "Lesson 4 Recap",
+          "slug": "from-sketch-to-build-bring-your-designs-to-life-with-your-team/recap"
+        }
+      ]
+    }
+  ]
+}

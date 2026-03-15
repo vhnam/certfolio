@@ -1,0 +1,62 @@
+{
+  "chapters": [
+    {
+      "title": " The World Is Artificial and the Way We Measure It Is Wrong",
+      "lessons": [
+        {
+          "title": "Welcome to Design for a Better World",
+          "slug": "the-world-is-artificial-and-the-way-we-measure-it-is-wrong/welcome-to-design-for-a-better-world"
+        },
+        {
+          "title": "What Can Designers Do to Make the World Better?",
+          "slug": "the-world-is-artificial-and-the-way-we-measure-it-is-wrong/what-can-designers-do-to-make-the-world-better"
+        },
+        {
+          "title": "Anything Artificial We Can Design Better",
+          "slug": "the-world-is-artificial-and-the-way-we-measure-it-is-wrong/anything-artificial-we-can-design-better"
+        },
+        {
+          "title": "Use More Meaningful Measurements in Design and in the World",
+          "slug": "the-world-is-artificial-and-the-way-we-measure-it-is-wrong/use-more-meaningful-measurements-in-design-and-in-the-world"
+        },
+        {
+          "title": "Lesson 1 Recap",
+          "slug": "the-world-is-artificial-and-the-way-we-measure-it-is-wrong/recap"
+        }
+      ]
+    },
+    {
+      "title": " How to Design For Sustainability and the Circular Economy",
+      "lessons": [
+        {
+          "title": "Welcome and Introduction",
+          "slug": "how-to-design-for-sustainability-and-the-circular-economy/welcome-and-introduction"
+        },
+        {
+          "title": "Recycling is Not Enough. Let's Design for Reuse",
+          "slug": "how-to-design-for-sustainability-and-the-circular-economy/recycling-is-not-enough-lets-design-for-reuse"
+        },
+        {
+          "title": "Sustainability is Not Enough",
+          "slug": "how-to-design-for-sustainability-and-the-circular-economy/sustainability-is-not-enough"
+        },
+        {
+          "title": "Design Products That Are Sustainable, Robust and Resilient",
+          "slug": "how-to-design-for-sustainability-and-the-circular-economy/design-products-that-are-sustainable-robust-and-resilient"
+        },
+        {
+          "title": "Use Circular Design to Reverse Harm",
+          "slug": "how-to-design-for-sustainability-and-the-circular-economy/use-circular-design-to-reverse-harm"
+        },
+        {
+          "title": "How Designers Can Help Companies Design for the Circular Economy",
+          "slug": "how-to-design-for-sustainability-and-the-circular-economy/how-designers-can-help-companies-design-for-the-circular-economy"
+        },
+        {
+          "title": "Lesson 2 Recap",
+          "slug": "how-to-design-for-sustainability-and-the-circular-economy/recap"
+        }
+      ]
+    }
+  ]
+}

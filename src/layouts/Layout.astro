@@ -11,6 +11,7 @@ import {
   buildCertList,
   buildCertNavigation,
   buildMasterClassList,
+  getCertOrder,
 } from "@/lib/navigation";
 import Header from "@/layouts/Header.astro";
 import Footer from "@/layouts/Footer.astro";
@@ -54,8 +55,9 @@ const allMasterClasses = buildMasterClassList(masterClassEntries);
 const pathParts = currentPath.split("/").filter(Boolean);
 const certSlug =
   pathParts[0] === "certificates" && pathParts[1] ? pathParts[1] : null;
+const certOrder = certSlug ? await getCertOrder(certSlug) : null;
 const currentCert = certSlug
-  ? buildCertNavigation(certEntries, certSlug)
+  ? buildCertNavigation(certEntries, certSlug, certOrder)
   : null;
 
 // ── Page metadata ────────────────────────────────────────────────────────────

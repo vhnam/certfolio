@@ -14,7 +14,10 @@ export const ChapterOverview = ({ chapters, slug }: ChapterOverviewProps) => {
       </h2>
       <div className='space-y-6'>
         {chapters.map((chapter, chapterIndex) => (
-          <Card key={`${chapterIndex}-${chapter.title}`} className='md:py-6'>
+          <Card
+            key={`${chapterIndex}-${chapter.title}`}
+            className='md:py-6 bg-sidebar hover:bg-accent/30 hover:shadow-md'
+          >
             <CardHeader className='pb-3'>
               <CardTitle>
                 <h3 className='text-lg font-semibold text-foreground'>
@@ -28,7 +31,7 @@ export const ChapterOverview = ({ chapters, slug }: ChapterOverviewProps) => {
                   <li key={`${lessonIndex}-${lesson.slug}`}>
                     <a
                       href={`/certificates/${slug}/${lesson.slug}`}
-                      className='inline-flex items-center min-h-10 py-2 text-sm font-medium !text-blue-600 dark:!text-blue-400 hover:!text-blue-700 dark:hover:!text-blue-300 hover:underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded !mx-0'
+                      className='inline-flex items-center min-h-10 py-2 text-sm font-medium !text-blue-600 dark:!text-blue-400 hover:!text-blue-700 dark:hover:!text-blue-300 hover:underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded !mx-0 w-[calc(100%-1.5rem)]'
                     >
                       {lesson.title}
                     </a>

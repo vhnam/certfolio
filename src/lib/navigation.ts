@@ -1,3 +1,9 @@
+import type {
+  CertificateEntryData,
+  MasterClassEntryData,
+} from "@/content.config";
+import type { Chapter } from "@/models/certificate";
+
 export type NavLesson = {
   title: string;
   slug: string;
@@ -21,16 +27,33 @@ export type NavCertificate = {
   description: string;
 };
 
-/** Shape for CourseOverview/ChapterOverview (lesson.slug = "chapterSlug/lessonSlug"). */
-export type ChapterForOverview = {
-  title: string;
-  lessons: { title: string; slug: string }[];
+/** Shape for _order.json: defines chapter and lesson order per certificate. */
+export type OrderJson = {
+  chapters: {
+    title: string;
+    lessons: { title: string; slug: string }[];
+  }[];
 };
 
-/** Convert NavCertificate to the chapter list shape expected by course overview components. */
-export function navToChaptersForOverview(
-  nav: NavCertificate,
-): ChapterForOverview[] {
+const orderModules = import.meta.glob<{ default: OrderJson }>(
+  "../content/certificates/*/_order.json",
+);
+
+/**
+ * Load _order.json for a certificate by slug. Returns null if no _order.json exists.
+ */
+export async function getCertOrder(
+  certSlug: string,
+): Promise<OrderJson | null> {
+  const key = `../content/certificates/${certSlug}/_order.json`;
+  const load = orderModules[key];
+  if (!load) return null;
+  const mod = await load();
+  return mod.default ?? null;
+}
+
+/** Convert NavCertificate to Chapter[] for CourseOverview/ChapterOverview (lesson.slug = "chapterSlug/lessonSlug"). */
+export function navToChaptersForOverview(nav: NavCertificate): Chapter[] {
   return nav.chapters.map((ch) => ({
     title: ch.title,
     lessons: ch.lessons.map((l) => ({
@@ -62,27 +85,16 @@ export type MasterClassRef = {
   path: string;
 };
 
-/** Minimal shape for certificate collection entries (content collection or legacy). */
+/** Certificate collection entry shape (id from loader + data from schema). */
 export type CertificateEntryLike = {
   id: string;
-  data: {
-    title: string;
-    description?: string;
-    order?: number;
-    platform?: string;
-    status?: "completed" | "in-progress";
-    tags?: string[];
-    thumbnail?: string;
-    courseLink?: string;
-    certificateLink?: string | null;
-    completedDate?: Date | null;
-  };
+  data: CertificateEntryData;
 };
 
-/** Minimal shape for master class collection entries. */
+/** Master class collection entry shape (id from loader + data from schema). */
 export type MasterClassEntryLike = {
   id: string;
-  data: { title: string; description?: string };
+  data: MasterClassEntryData;
 };
 
 // ── Path helpers ───────────────────────────────────────────────────────────
@@ -133,10 +145,14 @@ function normalizeEntryId(id: string): string {
  *
  * Entry IDs may be relative (certSlug/..., certSlug/index) or absolute
  * (/certificates/certSlug/...); both are normalized for matching.
+ *
+ * When order (_order.json shape) is provided, chapters and lessons are sorted
+ * by that order; any chapters/lessons not listed appear after in alphabetical order.
  */
 export function buildCertNavigation(
   entries: CertificateEntryLike[],
   certSlug: string,
+  order: OrderJson | null = null,
 ): NavCertificate | null {
   const prefix = certSlug + "/";
   const certEntries = entries.filter((e) => {
@@ -164,10 +180,27 @@ export function buildCertNavigation(
     }
   }
 
+  const chapterOrderSlugs: string[] = order
+    ? order.chapters
+        .map((ch) => {
+          const firstSlug = ch.lessons[0]?.slug;
+          return firstSlug
+            ? normalizeSlugForOrder(firstSlug.split("/")[0] ?? "")
+            : "";
+        })
+        .filter(Boolean)
+    : [];
+  const sortedChapterSlugs = Array.from(chapterSlugs).sort((a, b) => {
+    if (chapterOrderSlugs.length === 0) return a.localeCompare(b);
+    const iA = chapterOrderSlugs.indexOf(normalizeSlugForOrder(a));
+    const iB = chapterOrderSlugs.indexOf(normalizeSlugForOrder(b));
+    if (iA !== -1 && iB !== -1) return iA - iB;
+    if (iA !== -1) return -1;
+    if (iB !== -1) return 1;
+    return a.localeCompare(b);
+  });
+
   const chapters: NavChapter[] = [];
-  const sortedChapterSlugs = Array.from(chapterSlugs).sort((a, b) =>
-    a.localeCompare(b),
-  );
 
   for (
     let chapterIndex = 0;
@@ -192,9 +225,28 @@ export function buildCertNavigation(
       );
     });
 
+    const orderChapter = order?.chapters.find(
+      (ch) =>
+        normalizeSlugForOrder(ch.lessons[0]?.slug.split("/")[0] ?? "") ===
+        normalizeSlugForOrder(chapterSlug),
+    );
+    const lessonOrderSlugs: string[] = orderChapter
+      ? orderChapter.lessons.map((l) => {
+          const parts = l.slug.split("/");
+          return parts.length > 1 ? parts.slice(1).join("/") : l.slug;
+        })
+      : [];
     const sortedLessonEntries = [...lessonEntries].sort((a, b) => {
       const idA = normalizeEntryId(a.id);
       const idB = normalizeEntryId(b.id);
+      const relA = idA.slice(chapterPrefix.length).replace(/\/index$/, "");
+      const relB = idB.slice(chapterPrefix.length).replace(/\/index$/, "");
+      if (lessonOrderSlugs.length === 0) return idA.localeCompare(idB);
+      const iA = lessonOrderSlugs.indexOf(relA);
+      const iB = lessonOrderSlugs.indexOf(relB);
+      if (iA !== -1 && iB !== -1) return iA - iB;
+      if (iA !== -1) return -1;
+      if (iB !== -1) return 1;
       return idA.localeCompare(idB);
     });
 
@@ -286,6 +338,11 @@ export function buildCertList(entries: CertificateEntryLike[]): CertRef[] {
   }
 
   return result.sort((a, b) => a.title.localeCompare(b.title));
+}
+
+/** Normalize slug for comparison (e.g. "optimizing your code" vs "optimizing-your-code"). */
+function normalizeSlugForOrder(slug: string): string {
+  return slug.replace(/\s+/g, "-").toLowerCase();
 }
 
 function formatSlug(slug: string): string {

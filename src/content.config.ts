@@ -13,45 +13,53 @@ const statusEnum = z.enum(["completed", "in-progress"]);
  * - Chapters/lessons: certificates/[course-slug]/[chapter-slug]/[lesson].md(x) — title, optional description, optional order.
  * Entry id from glob is the path (e.g. "course-slug/index", "course-slug/chapter/lesson").
  */
+export const certificateSchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+  // ── Course-level (set on index.mdx only)
+  platform: platformEnum.optional(),
+  /** Path to image (relative to file or URL). Use Astro's Image component with import for optimization. */
+  thumbnail: z.string().optional(),
+  status: statusEnum.optional(),
+  tags: z.array(z.string()).optional(),
+  courseLink: z.url().optional().or(z.literal("")),
+  certificateLink: z.url().optional().nullable(),
+  completedDate: z.coerce.date().optional().nullable(),
+  // ── Lesson/chapter ordering
+  order: z.number().int().min(0).optional(),
+});
+
+export type CertificateEntryData = z.infer<typeof certificateSchema>;
+
 const certificates = defineCollection({
   loader: glob({
     pattern: "**/*.{md,mdx}",
     base: "./src/content/certificates",
   }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    // ── Course-level (set on index.mdx only)
-    platform: platformEnum.optional(),
-    /** Path to image (relative to file or URL). Use Astro's Image component with import for optimization. */
-    thumbnail: z.string().optional(),
-    status: statusEnum.optional(),
-    tags: z.array(z.string()).optional(),
-    courseLink: z.url().optional().or(z.literal("")),
-    certificateLink: z.url().optional().nullable(),
-    completedDate: z.coerce.date().optional().nullable(),
-    // ── Lesson/chapter ordering
-    order: z.number().int().min(0).optional(),
-  }),
+  schema: certificateSchema,
 });
 
 /**
  * Master classes collection: flat list of MDX files.
  * Each file can have the same metadata as a certificate (platform,  thumbnail, status, tags).
  */
+export const masterClassSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  platform: platformEnum.optional(),
+  thumbnail: z.string().optional(),
+  status: statusEnum.optional(),
+  tags: z.array(z.string()).optional(),
+});
+
+export type MasterClassEntryData = z.infer<typeof masterClassSchema>;
+
 const masterClasses = defineCollection({
   loader: glob({
     pattern: "**/*.{md,mdx}",
     base: "./src/content/master-classes",
   }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    platform: platformEnum.optional(),
-    thumbnail: z.string().optional(),
-    status: statusEnum.optional(),
-    tags: z.array(z.string()).optional(),
-  }),
+  schema: masterClassSchema,
 });
 
 export const collections = {
