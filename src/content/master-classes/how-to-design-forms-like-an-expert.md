@@ -1,6 +1,8 @@
 ---
 title: How to Design Forms Like an Expert
-description: Learn User Experience (UX) and Design from experts
+description: "Improve your form UX and drive business success. Learn from Zoltan Kollin how to design effective, user-friendly forms that convert."
+platform: "IxDF"
+tags: ["forms", "ux", "design"]
 ---
 
 ## Overview

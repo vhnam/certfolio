@@ -1,13 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { buildCertListFromData } from "@/lib/navigation";
-import type { CertificatesJson } from "@/lib/navigation";
-import certificatesData from "@/data/certificates.json";
+import { getCollection } from "astro:content";
+import { buildCertList } from "@/lib/navigation";
 import CertificateCard from "@/components/CertificateCard.astro";
 
-const certificatesList = buildCertListFromData(
-  certificatesData as CertificatesJson,
-);
+const certEntries = await getCollection("certificate").catch(() => []);
+const certificatesList = buildCertList(certEntries);
 ---
 
 <Layout title="Certificates">

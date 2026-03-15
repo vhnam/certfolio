@@ -8,15 +8,12 @@ import { getCollection } from "astro:content";
 
 import { Sidebar } from "@/components/Sidebar";
 import {
-  buildCertListFromData,
+  buildCertList,
   buildCertNavigation,
-  buildCertNavigationFromData,
   buildMasterClassList,
 } from "@/lib/navigation";
-import type { CertificatesJson, CertDataJson } from "@/lib/navigation";
-import certificatesData from "@/data/certificates.json";
 import Header from "@/layouts/Header.astro";
-import Footer from "./Footer.astro";
+import Footer from "@/layouts/Footer.astro";
 
 interface Props {
   title?: string;
@@ -48,33 +45,18 @@ const {
 
 const currentPath = Astro.url.pathname;
 
-// ── Navigation data (reuse /data/*.json) ──────────────────────────────────────
 const certEntries = await getCollection("certificate").catch(() => []);
 const masterClassEntries = await getCollection("masterClass").catch(() => []);
 
-const allCerts = buildCertListFromData(certificatesData as CertificatesJson);
+const allCerts = buildCertList(certEntries);
 const allMasterClasses = buildMasterClassList(masterClassEntries);
 
-// Cert nav: prefer data/certificates/{slug}.json when present, else from content
-const certDataBySlug = import.meta.glob<{ default: CertDataJson }>(
-  "../data/certificates/*.json",
-  { eager: true },
-);
 const pathParts = currentPath.split("/").filter(Boolean);
 const certSlug =
   pathParts[0] === "certificates" && pathParts[1] ? pathParts[1] : null;
-const currentCert = (() => {
-  if (!certSlug) return null;
-  const key = Object.keys(certDataBySlug).find((k) =>
-    k.endsWith(`/${certSlug}.json`),
-  );
-  if (key) {
-    const mod = certDataBySlug[key];
-    const data = mod?.default;
-    return data ? buildCertNavigationFromData(certSlug, data) : null;
-  }
-  return buildCertNavigation(certEntries, certSlug);
-})();
+const currentCert = certSlug
+  ? buildCertNavigation(certEntries, certSlug)
+  : null;
 
 // ── Page metadata ────────────────────────────────────────────────────────────
 const siteName = "Certfolio";
