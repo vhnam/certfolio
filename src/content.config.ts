@@ -39,6 +39,11 @@ const certificates = defineCollection({
   schema: certificateSchema,
 });
 
+const speakerSchema = z.object({
+  name: z.string(),
+  title: z.string(),
+});
+
 /**
  * Master classes collection: flat list of MDX files.
  * Each file can have the same metadata as a certificate (platform,  thumbnail, status, tags).
@@ -50,6 +55,7 @@ export const masterClassSchema = z.object({
   thumbnail: z.string().optional(),
   status: statusEnum.optional(),
   tags: z.array(z.string()).optional(),
+  speakers: z.array(speakerSchema).optional(),
 });
 
 export type MasterClassEntryData = z.infer<typeof masterClassSchema>;

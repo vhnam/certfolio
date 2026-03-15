@@ -3,12 +3,12 @@ title: How to Design Forms Like an Expert
 description: "Improve your form UX and drive business success. Learn from Zoltan Kollin how to design effective, user-friendly forms that convert."
 platform: "IxDF"
 tags: ["forms", "ux", "design"]
+speakers:
+  [
+    { name: "Zoltan Kollin", title: "Design Principal at IBM" },
+    { name: "Frank Spillers", title: "Founder of Experience Dynamics" },
+  ]
 ---
-
-## Overview
-
-**Presenter:** Zoltan Kollin, UX Design Director at IBM  
-**Host:** Frank Spillers, Interaction Design Foundation
 
 ## Executive Overview: Why Form Design Matters
 
