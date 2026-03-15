@@ -23,7 +23,6 @@ pnpm-debug.log*
 
 # Agents
 .agents
-skills-lock.json
 
 # Netlify
 .netlify
