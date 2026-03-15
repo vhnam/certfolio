@@ -55,8 +55,8 @@ export function ToggleTheme() {
   return (
     <Button
       type='button'
-      variant='ghost'
-      size='icon-sm'
+      variant='outline'
+      size='icon'
       onClick={toggle}
       aria-label={
         theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
