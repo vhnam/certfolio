@@ -2,8 +2,6 @@
 title: "12 Characteristics of Outside-In Design Organizations"
 ---
 
-# Outside-In Design: The 12 Characteristics + Manager Actions + ROI Impact
-
 Outside-in organizations do more than “care about users.”
 They operationalize evidence, validation, empathy, funding, and executive alignment into a measurable business system.
 

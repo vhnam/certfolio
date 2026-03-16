@@ -73,7 +73,6 @@ Feedback includes:
   - Search
   - Pagination
   - Power-user tools
-
 - Add complexity only when usage demands it.
 
 ## Learning and Decision-Making
