@@ -80,7 +80,6 @@ title: Ten Principles of Accessibility for Web and Mobile Design
 - Finding:
   - Accessibility testing is riskier than usability testing.
   - Blind users may take nearly 3× longer to complete tasks.
-
 - Common causes of failure:
   - Missing labels
   - Improperly tagged dialogs
