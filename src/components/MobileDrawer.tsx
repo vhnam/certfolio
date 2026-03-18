@@ -45,14 +45,22 @@ export function MobileDrawer({
     if (isOpen) {
       main?.setAttribute('aria-hidden', 'true');
       header?.setAttribute('aria-hidden', 'true');
+      // Prevent pointer + keyboard interaction with background content.
+      // (Supported in modern browsers; gracefully ignored elsewhere.)
+      main?.setAttribute('inert', '');
+      header?.setAttribute('inert', '');
     } else {
       main?.removeAttribute('aria-hidden');
       header?.removeAttribute('aria-hidden');
+      main?.removeAttribute('inert');
+      header?.removeAttribute('inert');
     }
     return () => {
       document.body.style.overflow = '';
       main?.removeAttribute('aria-hidden');
       header?.removeAttribute('aria-hidden');
+      main?.removeAttribute('inert');
+      header?.removeAttribute('inert');
     };
   }, [isOpen]);
 
@@ -120,7 +128,7 @@ export function MobileDrawer({
         ? 'bg-sidebar-accent text-sidebar-accent-foreground font-medium'
         : completed
           ? 'text-sidebar-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-accent-foreground'
-          : 'text-gray-500 dark:text-gray-400 hover:bg-sidebar-accent/60'
+          : 'text-muted-foreground hover:bg-sidebar-accent/60 hover:text-foreground'
     );
 
   return (
@@ -149,7 +157,7 @@ export function MobileDrawer({
       <div
         ref={panelRef}
         className={cn(
-          'fixed top-0 left-0 z-50 h-full w-72 overflow-y-auto overscroll-contain bg-sidebar shadow-xl ease-in-out',
+          'fixed top-0 left-0 z-50 h-full w-72 overflow-y-auto overscroll-contain bg-background/90 supports-backdrop-filter:backdrop-blur-md shadow-xl ease-in-out',
           'transition-transform duration-300 motion-reduce:duration-0',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
@@ -160,7 +168,7 @@ export function MobileDrawer({
       >
         {/* Drawer header */}
         <div className='flex items-center justify-between border-b border-sidebar-border px-6 py-3'>
-          <a href='/' className='text-sm font-semibold text-sidebar-foreground'>
+          <a href='/' className='text-sm font-semibold text-foreground'>
             Certfolio
           </a>
           <button

@@ -16,7 +16,7 @@ const { allCerts, allMasterClasses, currentCert, currentPath } = Astro.props;
 
 <header
   id="site-header"
-  class="flex items-center gap-3 border-b border-border bg-sidebar px-4 py-3 lg:px-6"
+  class="flex items-center gap-3 border-b border-border bg-background/70 supports-backdrop-filter:backdrop-blur-md px-4 py-3 lg:px-6"
 >
   <MobileDrawer
     client:load
@@ -27,7 +27,7 @@ const { allCerts, allMasterClasses, currentCert, currentPath } = Astro.props;
   />
   <a
     href="/"
-    class="text-sm font-bold text-blue-700 dark:text-blue-300 tracking-widest uppercase"
+    class="text-sm font-bold tracking-widest uppercase text-foreground hover:text-[color:var(--color-cta)] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring focus-visible:rounded px-2 py-1"
   >
     Certfolio
   </a>

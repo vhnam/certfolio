@@ -1,6 +1,7 @@
 ---
 import "@fontsource/ibm-plex-mono";
-import "@fontsource/poppins";
+import "@fontsource-variable/space-grotesk";
+import "@fontsource-variable/archivo";
 import "@/styles/global.css";
 
 import { ClientRouter } from "astro:transitions";
@@ -110,12 +111,12 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
     <!-- Theme color (match page background per scheme) -->
     <meta
       name="theme-color"
-      content="#ffffff"
+      content="#fafafa"
       media="(prefers-color-scheme: light)"
     />
     <meta
       name="theme-color"
-      content="#1f2937"
+      content="#09090b"
       media="(prefers-color-scheme: dark)"
     />
 
@@ -140,9 +141,8 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
             const stored = localStorage.getItem("theme");
             if (stored === "light" || stored === "dark") return stored;
           }
-          return window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light";
+          // Design system: do not default to dark mode
+          return "light";
         };
 
         const applyTheme = () => {
@@ -187,7 +187,7 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
     <div class="flex overflow-y-auto h-[calc(100dvh-var(--header-height))]">
       <!-- ── Desktop sidebar ─────────────────────────────────────────────── -->
       <aside
-        class="hidden lg:flex w-60 shrink-0 flex-col border-r border-sidebar-border bg-sidebar"
+        class="hidden lg:flex w-64 shrink-0 flex-col border-r border-sidebar-border bg-background/70 supports-backdrop-filter:backdrop-blur-md"
         aria-label="Certificate and course navigation"
       >
         <!-- Scrollable nav tree -->
@@ -211,7 +211,7 @@ const canonicalUrl = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
           class="flex-1 min-h-0 px-4 md:px-6 lg:px-10 pt-10 overflow-y-auto"
           data-pagefind-body
         >
-          <div class="mx-auto w-full max-w-3xl">
+          <div class="mx-auto w-full max-w-4xl">
             <slot />
           </div>
 

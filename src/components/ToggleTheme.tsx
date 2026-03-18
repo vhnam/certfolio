@@ -8,9 +8,8 @@ function getTheme(): 'light' | 'dark' {
   if (typeof localStorage === 'undefined') return 'light';
   const stored = localStorage.getItem(THEME_KEY);
   if (stored === 'light' || stored === 'dark') return stored;
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light';
+  // Design system: do not default to dark mode
+  return 'light';
 }
 
 function applyTheme(theme: 'light' | 'dark') {
@@ -56,7 +55,6 @@ export function ToggleTheme() {
     <Button
       type='button'
       variant='outline'
-      size='icon'
       onClick={toggle}
       aria-label={
         theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
