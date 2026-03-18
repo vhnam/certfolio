@@ -33,7 +33,7 @@ const navClass = 'flex flex-col gap-0.5 px-3 py-4';
 const sectionTitleClass =
   'mb-2 px-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground';
 const listLinkBaseClass =
-  'flex gap-2 justify-start rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-blue-700 dark:hover:text-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring focus-visible:ring-offset-2 focus-visible:ring-offset-sidebar';
+  'flex gap-2 justify-start rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-[color:var(--color-cta)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring focus-visible:ring-offset-2 focus-visible:ring-offset-sidebar';
 const listLinkInactiveClass =
   'text-sidebar-foreground hover:bg-sidebar-accent/60';
 const listLinkAccentActiveClass =
@@ -139,12 +139,12 @@ function SidebarGlobalView({
             cert.completed ? (
               <IconCertificate
                 size={12}
-                className='text-blue-500 dark:text-blue-400'
+                className='text-[color:var(--color-cta)]'
               />
             ) : (
               <IconProgress
                 size={12}
-                className='animate-spin text-gray-500 dark:text-gray-400'
+                className='animate-spin motion-reduce:animate-none text-gray-500 dark:text-gray-400'
               />
             )
           }
@@ -163,7 +163,7 @@ function SidebarGlobalView({
           icon={
             <IconCertificate
               size={12}
-              className='text-blue-500 dark:text-blue-400'
+              className='text-[color:var(--color-cta)]'
             />
           }
         >
@@ -264,7 +264,7 @@ function SidebarCertView({
     <nav className={navClass} aria-label='Certificate and course navigation'>
       <a
         href='/certificates/'
-        className='flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 mb-6 transition-colors'
+        className='flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 mb-6 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring focus-visible:ring-offset-2 focus-visible:ring-offset-sidebar rounded-md px-2 py-1'
       >
         <IconChevronLeft size={14} strokeWidth={2} />
         All Certificates
@@ -274,7 +274,7 @@ function SidebarCertView({
         <a
           href={currentCert.path}
           className={cn(
-            'text-base font-semibold text-gray-900 dark:text-gray-100 mb-1',
+            'text-base font-semibold text-gray-900 dark:text-gray-100 mb-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring focus-visible:ring-offset-2 focus-visible:ring-offset-sidebar rounded-md px-2 py-1 inline-block',
             isActive(`/certificates/${currentCert.slug}`)
               ? 'text-sidebar-primary'
               : 'text-sidebar-foreground hover:text-sidebar-primary'

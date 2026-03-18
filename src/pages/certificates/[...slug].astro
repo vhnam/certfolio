@@ -39,14 +39,8 @@ const chaptersForOverview = certNav ? navToChaptersForOverview(certNav) : [];
 
 <Layout title={title} description={description} type="article">
   <article class="prose">
-    <h1 class="text-4xl font-bold text-gray-900 mb-4 dark:text-gray-50">
-      {title}
-    </h1>
-    {
-      description && (
-        <p class="lead text-gray-600 dark:text-gray-300">{description}</p>
-      )
-    }
+    <h1>{title}</h1>
+    {description && <p class="lead">{description}</p>}
     {
       isCourseIndex && certNav && chaptersForOverview.length > 0 && (
         <>

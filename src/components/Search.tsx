@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -9,25 +9,28 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { IconSearch } from '@tabler/icons-react';
+import { IconArrowRight, IconSearch } from '@tabler/icons-react';
 import { Kbd } from '@/components/ui/kbd';
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from '@/components/ui/command';
 
-const SEARCH_DIALOG_ID = 'search-dialog-root';
+const DEV_FALLBACK_MESSAGE =
+  'Search is not available in dev. Run `pnpm build` then `pnpm preview`.';
 
 // Base URL without trailing slash; avoid '//' in paths (browser treats // as protocol-relative)
 const baseUrl =
   typeof import.meta.env !== 'undefined' && import.meta.env.BASE_URL != null
     ? (import.meta.env.BASE_URL as string).replace(/\/$/, '') || ''
     : '';
-const bundlePathRelative = baseUrl ? `${baseUrl}/pagefind/` : '/pagefind/';
-
-/** Absolute bundle URL so fragment fetches use the same origin and path (avoids Failed to fetch) */
-function getBundlePath(): string {
-  if (typeof window === 'undefined') return bundlePathRelative;
-  const origin = window.location.origin;
-  const base = baseUrl ? `${baseUrl}/` : '/';
-  return `${origin}${base}pagefind/`;
-}
+const pagefindScriptSrc = baseUrl
+  ? `${baseUrl}/pagefind/pagefind.js`
+  : '/pagefind/pagefind.js';
 
 function formatURL(url: string): string {
   const normalized = url.replace(/\/index\.html$/, '') || '/';
@@ -44,14 +47,67 @@ const translations: Record<string, string> = {
   many_results: '[COUNT] results',
 };
 
-// Cache the PagefindUI class so we only import once; we create a new instance each time the dialog opens
-// because the dialog content unmounts when closed, leaving the previous instance attached to a detached node.
-const pagefindUIClassRef: {
-  current: (new (opts: Record<string, unknown>) => void) | null;
-} = { current: null };
+type PagefindResultData = {
+  url: string;
+  excerpt?: string;
+  meta?: { title?: string };
+};
+
+type PagefindSearchResult = {
+  results: Array<{
+    id: string;
+    score: number;
+    data: () => Promise<PagefindResultData>;
+  }>;
+};
+
+type PagefindApi = {
+  search: (q: string) => Promise<PagefindSearchResult>;
+};
+
+const pagefindReadyRef: { current: Promise<PagefindApi> | null } = {
+  current: null,
+};
+
+function loadPagefind(): Promise<PagefindApi> {
+  if (typeof window === 'undefined')
+    return Promise.reject(new Error('No window'));
+  if (pagefindReadyRef.current) return pagefindReadyRef.current;
+
+  pagefindReadyRef.current = import(
+    /* @vite-ignore */
+    pagefindScriptSrc
+  ).then((mod: unknown) => {
+    const api = mod as { search?: PagefindApi['search'] };
+    if (typeof api.search !== 'function') {
+      throw new Error('Pagefind module loaded but search() missing');
+    }
+    return { search: api.search };
+  });
+
+  return pagefindReadyRef.current;
+}
+
+function useDebouncedValue<T>(value: T, delayMs: number): T {
+  const [debounced, setDebounced] = useState(value);
+  useEffect(() => {
+    const id = window.setTimeout(() => setDebounced(value), delayMs);
+    return () => window.clearTimeout(id);
+  }, [value, delayMs]);
+  return debounced;
+}
 
 export function Search() {
   const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  const debouncedQuery = useDebouncedValue(query, 120);
+  const [loading, setLoading] = useState(false);
+  const [ready, setReady] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [items, setItems] = useState<
+    Array<{ id: string; title: string; url: string; excerpt?: string }>
+  >([]);
+  const lastRequestId = useRef(0);
 
   // Cmd+K / Ctrl+K shortcut
   useEffect(() => {
@@ -72,49 +128,98 @@ export function Search() {
     return () => window.removeEventListener('astro:page-load', close);
   }, []);
 
-  // Init PageFind UI when dialog opens: import once, create new instance each open (dialog content unmounts when closed)
+  // Load Pagefind API when dialog opens (production builds only)
   useEffect(() => {
     if (!open) return;
-    if (import.meta.env.DEV) return;
-    const onIdle =
-      typeof window.requestIdleCallback !== 'undefined'
-        ? window.requestIdleCallback
-        : (cb: () => void) => setTimeout(cb, 1);
-    onIdle(async () => {
-      try {
-        if (!pagefindUIClassRef.current) {
-          // @ts-expect-error — Missing types for @pagefind/default-ui package.
-          const mod = await import('@pagefind/default-ui');
-          pagefindUIClassRef.current = mod.PagefindUI;
-        }
-        const PagefindUI = pagefindUIClassRef.current;
-        if (!PagefindUI) return;
-        new PagefindUI({
-          element: `#${SEARCH_DIALOG_ID}`,
-          baseUrl: baseUrl || '/',
-          bundlePath: getBundlePath(),
-          showImages: false,
-          translations,
-          showSubResults: true,
-          resetStyles: false,
-          autofocus: true,
-          processResult: (result: {
-            url: string;
-            sub_results: Array<{ url: string }>;
-          }) => {
-            result.url = formatURL(result.url);
-            result.sub_results = result.sub_results.map((sub) => {
-              sub.url = formatURL(sub.url);
-              return sub;
-            });
-            return result;
-          },
-        });
-      } catch {
-        // PageFind bundle not available (e.g. first load before build)
-      }
-    });
+    setError(null);
+    setReady(false);
+    loadPagefind()
+      .then(() => setReady(true))
+      .catch(() => {
+        setReady(false);
+        setError(
+          import.meta.env.DEV
+            ? DEV_FALLBACK_MESSAGE
+            : 'Search index not found. Please run `pnpm build` and try again.'
+        );
+      });
   }, [open]);
+
+  // Run search on debounced query
+  useEffect(() => {
+    if (!open) return;
+    if (!ready) return;
+
+    const q = debouncedQuery.trim();
+    const requestId = ++lastRequestId.current;
+
+    if (!q) {
+      setItems([]);
+      setLoading(false);
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+    loadPagefind()
+      .then(async (api) => {
+        const res = await api.search(q);
+        const top = res.results.slice(0, 20);
+        const datas = await Promise.all(
+          top.map(async (r) => {
+            const d = await r.data();
+            const url = formatURL(d.url);
+            const title = d.meta?.title?.trim() || url;
+            return {
+              id: r.id,
+              title,
+              url,
+              excerpt: d.excerpt,
+            };
+          })
+        );
+        if (requestId !== lastRequestId.current) return;
+        setItems(datas);
+      })
+      .catch(() => {
+        if (requestId !== lastRequestId.current) return;
+        setError('Search is temporarily unavailable.');
+      })
+      .finally(() => {
+        if (requestId !== lastRequestId.current) return;
+        setLoading(false);
+      });
+  }, [debouncedQuery, open, ready]);
+
+  const resultLabel = useMemo(() => {
+    const trimmed = query.trim();
+    if (loading || error || !trimmed) return '';
+    const n = items.length;
+    if (n === 0)
+      return translations.zero_results.replace('[SEARCH_TERM]', trimmed);
+    if (n === 1) return translations.one_result;
+    return translations.many_results.replace('[COUNT]', String(n));
+  }, [error, items.length, loading, query]);
+
+  const commandLabel = useMemo(() => {
+    if (loading) return 'Searching…';
+    if (error) return error;
+    const trimmed = query.trim();
+    if (!trimmed) return 'Type to search…';
+  }, [error, items.length, loading, query]);
+
+  const srStatus = useMemo(() => {
+    if (!open) return '';
+    if (error) return error;
+    if (loading) return 'Searching…';
+    const trimmed = query.trim();
+    if (!trimmed) return 'Type to search.';
+    const n = items.length;
+    if (n === 0)
+      return translations.zero_results.replace('[SEARCH_TERM]', trimmed);
+    if (n === 1) return translations.one_result;
+    return translations.many_results.replace('[COUNT]', String(n));
+  }, [error, items.length, loading, open, query]);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -134,14 +239,73 @@ export function Search() {
       <DialogContent
         showCloseButton={false}
         className={cn(
-          'top-[15%] max-w-2xl -translate-y-0 sm:max-w-2xl p-4 md:p-6'
+          'pagefind-modal top-[12%] max-w-2xl -translate-y-0 sm:max-w-2xl p-4 md:p-6'
         )}
       >
         <DialogTitle className='sr-only'>Search</DialogTitle>
-        <div id={SEARCH_DIALOG_ID} className='min-h-[12rem] [&+*]:mt-0' />
-        <p className='mt-2 text-center text-xs text-muted-foreground'>
-          <Kbd>Esc</Kbd> to close
-        </p>
+
+        <div
+          role='status'
+          aria-live='polite'
+          aria-atomic='true'
+          className='sr-only'
+        >
+          {srStatus}
+        </div>
+
+        <Command
+          className='pagefind-command bg-transparent'
+          shouldFilter={false}
+          loop
+        >
+          <CommandInput
+            value={query}
+            onValueChange={setQuery}
+            placeholder='Search…'
+            aria-label='Search'
+            autoFocus
+            className='border-input'
+          />
+
+          <div className='mt-3 mb-2 flex items-center justify-between text-xs text-muted-foreground'>
+            <span>{resultLabel}</span>
+            <span className='hidden sm:inline'>Up/Down to navigate</span>
+          </div>
+
+          <CommandList>
+            <CommandEmpty>{commandLabel}</CommandEmpty>
+            <CommandGroup className='[&>div]:space-y-3'>
+              {items.map((it) => (
+                <CommandItem
+                  key={it.id}
+                  value={it.title}
+                  onSelect={() => {
+                    setOpen(false);
+                    window.location.href = it.url;
+                  }}
+                >
+                  <div className='min-w-0 flex-1'>
+                    <div className='flex items-center justify-between gap-3'>
+                      <p className='truncate font-semibold text-foreground'>
+                        {it.title}
+                      </p>
+                      <IconArrowRight
+                        className='size-4 shrink-0 text-muted-foreground'
+                        aria-hidden
+                      />
+                    </div>
+                    {it.excerpt && (
+                      <p
+                        className='mt-1 line-clamp-2 text-sm leading-relaxed text-foreground/75'
+                        dangerouslySetInnerHTML={{ __html: it.excerpt }}
+                      />
+                    )}
+                  </div>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
+        </Command>
       </DialogContent>
     </Dialog>
   );
