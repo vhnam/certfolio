@@ -2,8 +2,6 @@
 title: "Identify Your Audience: Disability Personas"
 ---
 
-# Accessibility Personas, Field Research, and Mapping Requirements to Standards
-
 ## Accessibility Personas
 
 ### Purpose

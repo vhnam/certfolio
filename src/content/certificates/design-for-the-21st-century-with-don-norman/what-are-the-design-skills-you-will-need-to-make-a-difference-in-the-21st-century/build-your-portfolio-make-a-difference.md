@@ -87,4 +87,4 @@ Design is about solving real problems — and this project helps you prove you c
 
 ## References
 
-- Interaction Design Foundation, [Build a Standout UX/UI Portfolio: Land Your Dream Job](https://www.interaction-design.org/courses/build-a-standout-ux-ui-portfolio-land-your-dream-job)
+- Interaction Design Foundation, [Build a Standout UX/UI Portfolio: Land Your Dream Job](https://ixdf.org/courses/build-a-standout-ux-ui-portfolio-land-your-dream-job)

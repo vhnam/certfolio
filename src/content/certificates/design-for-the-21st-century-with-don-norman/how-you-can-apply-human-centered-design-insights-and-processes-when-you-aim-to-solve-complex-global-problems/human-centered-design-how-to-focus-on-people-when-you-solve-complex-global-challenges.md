@@ -91,5 +91,5 @@ Quoted verbatim:
 
 ## References
 
-- Interaction Design Foundation, [Design for a Better World with Don Norman](https://www.interaction-design.org/courses/design-for-a-better-world-with-don-norman-course)
-- Interaction Design Foundation, [Design for the 21st Century with Don Norman](https://www.interaction-design.org/courses/design-for-the-21st-century)
+- Interaction Design Foundation, [Design for a Better World with Don Norman](https://ixdf.org/courses/design-for-a-better-world-with-don-norman-course)
+- Interaction Design Foundation, [Design for the 21st Century with Don Norman](https://ixdf.org/courses/design-for-the-21st-century)

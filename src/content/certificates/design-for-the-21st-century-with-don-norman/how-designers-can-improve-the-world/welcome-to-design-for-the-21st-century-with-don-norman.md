@@ -154,6 +154,6 @@ title: Welcome to Design for the 21st Century with Don Norman
 
 ## References
 
-- IxDF, [Design Thinking: The Ultimate Guide](https://www.interaction-design.org/courses/design-thinking-the-ultimate-guide)
+- IxDF, [Design Thinking: The Ultimate Guide](https://ixdf.org/courses/design-thinking-the-ultimate-guide)
 - Don Norman, [The Design of Everyday Things](https://www.hachettebookgroup.com/titles/don-norman/the-design-of-everyday-things/9780465072996/?lens=basic-books)
 - Nielsen Norman Group, [Living With Complexity](https://www.nngroup.com/books/living-with-complexity/)

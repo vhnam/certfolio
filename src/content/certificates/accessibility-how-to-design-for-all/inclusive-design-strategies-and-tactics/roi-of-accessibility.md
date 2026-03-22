@@ -2,9 +2,7 @@
 title: "ROI of Accessibility"
 ---
 
-# Building the Business Case and Operationalizing Accessibility
-
-## 1. Build the Business Case (ROI)
+## Build the Business Case (ROI)
 
 Accessibility is not just ethical — it is strategic. Key ROI drivers include:
 
@@ -18,7 +16,7 @@ Accessibility is not just ethical — it is strategic. Key ROI drivers include:
 
 Accessibility strengthens product quality, reduces risk, and increases market access.
 
-## 2. Bring the Organization Along
+## Bring the Organization Along
 
 Accessibility must be embedded across the organization:
 
@@ -30,7 +28,7 @@ Accessibility must be embedded across the organization:
 
 This moves accessibility from “good intentions” to operational discipline.
 
-## 3. All Hands On: Role-Based Responsibilities
+## All Hands On: Role-Based Responsibilities
 
 Accessibility spans four core areas:
 
@@ -64,7 +62,7 @@ Accessibility spans four core areas:
 
 Accessibility succeeds only when responsibilities are distributed, not isolated.
 
-## 4. Establish a Testing Methodology
+## Establish a Testing Methodology
 
 A structured testing process includes:
 
@@ -100,7 +98,7 @@ A structured testing process includes:
 
 Testing must be continuous, not one-time.
 
-## 5. Write Accessibility User Stories
+## Write Accessibility User Stories
 
 Embed accessibility into Agile workflows:
 
@@ -110,7 +108,7 @@ Embed accessibility into Agile workflows:
 
 Accessibility user stories ensure that requirements are actionable and testable.
 
-## 6. Follow a Structured Roadmap (Section 508 Model)
+## Follow a Structured Roadmap (Section 508 Model)
 
 A strong roadmap includes:
 
@@ -123,7 +121,7 @@ A strong roadmap includes:
 
 This ensures accessibility is systematic and measurable.
 
-## 7. Take a Triangulated Approach
+## Take a Triangulated Approach
 
 Effective accessibility requires three pillars:
 
@@ -133,7 +131,7 @@ Effective accessibility requires three pillars:
 
 No single method is sufficient. The combination ensures robustness.
 
-## 8. Use Procurement Tools (VPAT 2.0)
+## Use Procurement Tools (VPAT 2.0)
 
 If buying or selling software, use structured evaluation tools like VPAT:
 

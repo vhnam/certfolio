@@ -7,7 +7,7 @@ They operationalize evidence, validation, empathy, funding, and executive alignm
 
 Below is the fully integrated model — combining the 12 characteristics, why they matter, what managers should do, and how they connect to ROI.
 
-## 1. Gather Evidence and Data
+## Gather Evidence and Data
 
 ### Why It Matters
 
@@ -23,7 +23,7 @@ Evidence-based design grounds opinions in real user behavior. Assumptions are no
 
 Reduces guesswork and prevents building the wrong product.
 
-## 2. Validate with Users
+## Validate with Users
 
 ### Why It Matters
 
@@ -38,7 +38,7 @@ Concepts must align with user goals, habits, and constraints _before_ design exe
 
 Prevents inside-out design and late-stage rework.
 
-## 3. Test UI Assumptions
+## Test UI Assumptions
 
 ### Why It Matters
 
@@ -53,7 +53,7 @@ Internal debates waste time. Real users resolve assumptions quickly.
 
 Reduces development waste and increases estimation accuracy.
 
-## 4. Think Like Your Users
+## Think Like Your Users
 
 ### Why It Matters
 
@@ -68,7 +68,7 @@ Insiders know too much. Most UX problems come from internal bias.
 
 Improves alignment between product and user mental models.
 
-## 5. Factor User Needs at Key Decision Points
+## Factor User Needs at Key Decision Points
 
 ### Why It Matters
 
@@ -84,7 +84,7 @@ Business and tech decisions often exclude user context.
 
 Improves feature prioritization and reduces misaligned investments.
 
-## 6. Reference User Habits, Behavior & Probability
+## Reference User Habits, Behavior & Probability
 
 ### Why It Matters
 
@@ -102,7 +102,7 @@ Ask:
 
 Stops feature creep and edge-case overengineering.
 
-## 7. Empathize with User Pain Points
+## Empathize with User Pain Points
 
 ### Why It Matters
 
@@ -119,7 +119,7 @@ If personas lack pain, they lack realism.
 
 Increases satisfaction, retention, and long-term loyalty.
 
-## 8. Research Like a Boss
+## Research Like a Boss
 
 ### Why It Matters
 
@@ -135,7 +135,7 @@ Qualitative research shows _why_ and _how_.
 
 Enables innovation, not just optimization.
 
-## 9. Spread UX Obsession Across the Organization
+## Spread UX Obsession Across the Organization
 
 ### Why It Matters
 
@@ -151,7 +151,7 @@ Outside-in requires full organizational alignment.
 
 Creates sustainable UX culture instead of isolated excellence.
 
-## 10. Revolutionize Product Management with UX
+## Revolutionize Product Management with UX
 
 ### Why It Matters
 
@@ -170,7 +170,7 @@ Product Management ensures business alignment.
 
 Aligns user value with business value.
 
-## 11. Fund and Empower UX (12–15% Budget)
+## Fund and Empower UX (12–15% Budget)
 
 ### Why It Matters
 
@@ -187,7 +187,7 @@ It is a strategic function like SEO or Accessibility.
 
 Early research reduces downstream waste (1:10:100 Rule).
 
-## 12. Give UX Senior Management Access (An Ear to the CEO)
+## Give UX Senior Management Access (An Ear to the CEO)
 
 ### Why It Matters
 
@@ -203,7 +203,7 @@ UX must have parity in decision-making authority.
 
 Accelerates development cycles, reduces rework, strengthens innovation.
 
-# Organizational Recap: What Outside-In Really Means
+## Organizational Recap: What Outside-In Really Means
 
 Outside-in organizations:
 
@@ -223,7 +223,7 @@ They understand:
 - Meeting and exceeding expectations builds trust
 - Trust enables the organization to _shape_ markets, not just compete in them
 
-# Final Integration: Outside-In as a Business Growth Engine
+## Final Integration: Outside-In as a Business Growth Engine
 
 When all 12 characteristics operate together:
 

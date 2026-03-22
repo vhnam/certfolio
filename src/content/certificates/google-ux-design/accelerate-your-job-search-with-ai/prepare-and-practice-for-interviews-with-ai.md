@@ -3,8 +3,6 @@ title: "Prepare and Practice for Interviews with AI"
 description: ""
 ---
 
-# Module 4: Prepare and Practice for Interviews with AI
-
 ## Contents (TOCS)
 
 ```md

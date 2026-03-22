@@ -3,8 +3,6 @@ title: "Manage Your Job Applications with AI"
 description: ""
 ---
 
-# Module 3: Manage Your Job Applications with AI
-
 ## Contents (TOCS)
 
 ```md

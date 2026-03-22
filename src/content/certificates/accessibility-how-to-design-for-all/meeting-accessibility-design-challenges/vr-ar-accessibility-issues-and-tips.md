@@ -2,8 +2,6 @@
 title: VR/AR Accessibility Issues and Tips
 ---
 
-# VR/AR Accessibility: Designing Inclusive Spatial Interfaces from the Start
-
 ## Why Accessibility in VR/AR Matters Now
 
 Virtual Reality (VR), Augmented Reality (AR), and Mixed Reality (MR) are highly visual, spatial technologies. If accessibility is not embedded early, we risk repeating the web’s history—retroactively fixing exclusion years later.

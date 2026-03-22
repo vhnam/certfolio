@@ -512,17 +512,17 @@ Confusing navigation creates frustration, while clear navigation enhances user s
 
 ## References
 
-- Interaction Design Foundation, [Emphasis: Setting up the focal point of your design](https://www.interaction-design.org/literature/article/emphasis-setting-up-the-focal-point-of-your-design)
+- Interaction Design Foundation, [Emphasis: Setting up the focal point of your design](https://ixdf.org/literature/article/emphasis-setting-up-the-focal-point-of-your-design)
 - Toptal, [The Principles of Design and Their Importance](https://www.toptal.com/designers/ui/principles-of-design)
 - Mockplus, [Golden Tips and Examples to Create Visual Hierarchy in Website Design](https://www.mockplus.com/blog/post/ui-visual-hierarchy)
-- Interaction Design Foundation, [What is Visual Hierarchy?](https://www.interaction-design.org/literature/topics/visual-hierarchy)
+- Interaction Design Foundation, [What is Visual Hierarchy?](https://ixdf.org/literature/topics/visual-hierarchy)
 - UX Collective, [The A to Z of UX — A is for Accessibility: 12 tips for designing an inclusive user experience](https://uxdesign.cc/the-a-to-z-of-ux-a-is-for-accessibility-12-top-tips-for-designing-an-inclusive-user-experience-667eedaf5bca)
 - [Golden ratio: Bring Balance in UI Design](https://uxplanet.org/golden-ratio-bring-balance-in-ui-design-765c954f0ff9)
 - Design Mantic, [What is Unity?](https://www.youtube.com/watch?v=VQhHX5zpC-U)
 - Shift4Shop's blog, [Ways to Improve your Website's User Experience](https://blog.shift4shop.com/improve-website-user-experience)
 - SkillShare, [symmetry vs. asymmetry](https://www.youtube.com/watch?v=fXo7l5JceA4)
 - UX Collective, [Improve Your Designs With The Principles Of Closure And Figure-Ground](https://www.smashingmagazine.com/2016/05/improve-your-designs-with-the-principles-of-closure-and-figure-ground-part-2/)
-- Interaction Design Foundation, [Design Principles](https://www.interaction-design.org/literature/topics/design-principles)
+- Interaction Design Foundation, [Design Principles](https://ixdf.org/literature/topics/design-principles)
 - Springboard, [16 Important UX Design Principles for Newcomers](https://www.springboard.com/blog/design/ux-design-principles/)
 - Adobe, [The 4 Golden Rules of UI Design](https://xd.adobe.com/ideas/process/ui-design/4-golden-rules-ui-design/)
 - Usability.gov, [User Interface Design Basics](https://www.usability.gov/what-and-why/user-interface-design.html)

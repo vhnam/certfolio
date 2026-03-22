@@ -77,4 +77,4 @@ Being a generalist is not a weakness — it is the defining strength of a design
 
 ## References
 
-- Interaction Design Foundation [Human-Computer Interaction: The Foundations of UX Design](https://www.interaction-design.org/courses/hci-foundations-of-ux-design)
+- Interaction Design Foundation [Human-Computer Interaction: The Foundations of UX Design](https://ixdf.org/courses/hci-foundations-of-ux-design)

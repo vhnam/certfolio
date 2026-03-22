@@ -113,4 +113,4 @@ title: "The 5 Whys Method: How to Identify the Root Causes of a Problem by Inves
 
 ## References
 
-- Interaction Design Foundation, [Design Thinking: The Ultimate Guide](https://www.interaction-design.org/courses/design-thinking-the-ultimate-guide)
+- Interaction Design Foundation, [Design Thinking: The Ultimate Guide](https://ixdf.org/courses/design-thinking-the-ultimate-guide)

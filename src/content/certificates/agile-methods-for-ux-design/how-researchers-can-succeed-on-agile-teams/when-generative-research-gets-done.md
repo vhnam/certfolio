@@ -160,4 +160,4 @@ This prevents:
 ## References
 
 - Maria Nicholas, [A Few Things I’ve Learned About Dual-Track Agile](https://marianicholas.svbtle.com/dual-track-agile-and-ux-things-i-ve-learned)
-- Interactive Design Foundation, [User Research – Methods and Best Practices](https://www.interaction-design.org/courses/user-research-methods-and-best-practices)
+- Interactive Design Foundation, [User Research – Methods and Best Practices](https://ixdf.org/courses/user-research-methods-and-best-practices)
