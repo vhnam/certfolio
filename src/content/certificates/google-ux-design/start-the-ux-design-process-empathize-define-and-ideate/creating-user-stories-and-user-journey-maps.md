@@ -98,4 +98,4 @@ To learn more about inclusive design, here are some additional resources to get 
 
 ## Reference
 
-- Interaction Design Foundation, [User Stories: As a \[UX Designer\] I want to \[embrace Agile\] so that \[I can make my projects user-centered\]](https://www.interaction-design.org/literature/article/user-stories-as-a-ux-designer-i-want-to-embrace-agile-so-that-i-can-make-my-projects-user-centered)
+- Interaction Design Foundation, [User Stories: As a \[UX Designer\] I want to \[embrace Agile\] so that \[I can make my projects user-centered\]](https://ixdf.org/literature/article/user-stories-as-a-ux-designer-i-want-to-embrace-agile-so-that-i-can-make-my-projects-user-centered)

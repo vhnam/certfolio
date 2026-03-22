@@ -156,6 +156,6 @@ title: Why Is Design Missing in Agile?
 - Wikipedia, [Big design up front](https://en.wikipedia.org/wiki/Big_design_up_front)
 - Product Plan, [Product Requirements Document (PRD)](https://www.productplan.com/glossary/product-requirements-document/)
 - Product Plan, [Market Requirements Document (MRD)](https://www.productplan.com/glossary/market-requirements-document/)
-- Interaction Design Foundation, [User Centered Design (UCD)](https://www.interaction-design.org/literature/topics/user-centered-design)
+- Interaction Design Foundation, [User Centered Design (UCD)](https://ixdf.org/literature/topics/user-centered-design)
 - Wikipedia, [Research-based design](https://en.wikipedia.org/wiki/Research-based_design)
 - Nerdery, [Research-driven design: The role of research and UX to create successful digital products](https://www.nerdery.com/insights/research-driven-design/)

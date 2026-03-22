@@ -2,8 +2,6 @@
 title: "Interview: Accessibility Testing in Action"
 ---
 
-# Mobile Accessibility Testing with Screen Readers (Case Study: Banking Website)
-
 ## Real-World Mobile Accessibility Testing
 
 ### Scenario Overview

@@ -173,4 +173,4 @@ View sample persona [here](../../../../assets/files/google-ux-design/start-the-u
 - Nielsen Norman Group, [Empathy Mapping: The First Step in Design Thinking](https://www.nngroup.com/articles/empathy-mapping/)
 - Just In Mind, [60 must-see user persona templates](https://www.justinmind.com/blog/user-persona-templates/)
 - Xtensio, [User Persona Template](https://xtensio.com/user-persona-template/)
-- Interaction Design Foundation, [Personas – A Simple Introduction](https://www.interaction-design.org/literature/article/personas-why-and-how-you-should-use-them)
+- Interaction Design Foundation, [Personas – A Simple Introduction](https://ixdf.org/literature/article/personas-why-and-how-you-should-use-them)

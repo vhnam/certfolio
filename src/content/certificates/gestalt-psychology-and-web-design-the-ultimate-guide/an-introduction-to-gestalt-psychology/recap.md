@@ -175,9 +175,9 @@ Design implication:
 
 - White space can be used to create **secondary meanings or hidden visuals**.
 
-# Gestalt in Logo and Visual Design
+## Gestalt in Logo and Visual Design
 
-## Minimalism Through Perception
+### Minimalism Through Perception
 
 Many logos rely on Gestalt principles to create recognizable symbols using **very few elements**.
 
@@ -191,7 +191,7 @@ Benefits:
 - Clean aesthetics
 - Faster recognition
 
-# Key Insights for Designers
+## Key Insights for Designers
 
 Gestalt psychology reveals several important truths about perception:
 

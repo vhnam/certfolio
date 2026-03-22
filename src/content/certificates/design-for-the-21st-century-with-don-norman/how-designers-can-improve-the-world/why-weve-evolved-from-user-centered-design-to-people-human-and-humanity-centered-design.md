@@ -104,5 +104,5 @@ title: "Why We've Evolved from User-Centered Design to People-, Human- and Human
 
 ## References
 
-- Interaction Design Foundation, [Design for a Better World with Don Norman](https://www.interaction-design.org/courses/design-for-a-better-world-with-don-norman-course)
+- Interaction Design Foundation, [Design for a Better World with Don Norman](https://ixdf.org/courses/design-for-a-better-world-with-don-norman-course)
 - JSTOR, [The Organizational Context of User-Centered Software Designs](https://www.jstor.org/stable/249021)

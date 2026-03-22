@@ -166,9 +166,9 @@ AI already powers many widely used tools:
 
 ## References
 
-- Interaction Design Foundation, [Artificial Intelligence](https://www.interaction-design.org/literature/topics/ai)
-- Interaction Design Foundation, [Machine Learning](https://www.interaction-design.org/literature/topics/machine-learning)
-- Interaction Design Foundation, [Deep Learning](https://www.interaction-design.org/literature/topics/deep-learning)
-- Interaction Design Foundation, [Neural Networks](https://www.interaction-design.org/literature/topics/neural-networks)
-- Interaction Design Foundation, [General AI](https://www.interaction-design.org/literature/topics/general-ai)
-- Interaction Design Foundation, [Narrow AI](https://www.interaction-design.org/literature/topics/narrow-ai)
+- Interaction Design Foundation, [Artificial Intelligence](https://ixdf.org/literature/topics/ai)
+- Interaction Design Foundation, [Machine Learning](https://ixdf.org/literature/topics/machine-learning)
+- Interaction Design Foundation, [Deep Learning](https://ixdf.org/literature/topics/deep-learning)
+- Interaction Design Foundation, [Neural Networks](https://ixdf.org/literature/topics/neural-networks)
+- Interaction Design Foundation, [General AI](https://ixdf.org/literature/topics/general-ai)
+- Interaction Design Foundation, [Narrow AI](https://ixdf.org/literature/topics/narrow-ai)

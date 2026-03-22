@@ -716,7 +716,7 @@ If you answered “yes” to all three, you’re ready to move forward.
 - UX Collective, [How to create a UX Sitemap: a simple guideline](https://uxdesign.cc/how-to-create-a-ux-sitemap-a-simple-guideline-8786c16f85c1)
 - Adobe XD, [Sitemaps and IA](https://xd.adobe.com/ideas/process/information-architecture/sitemap-and-information-architecture/)
 - Adobe XD, [Example sitemaps for websites](https://xd.adobe.com/ideas/process/information-architecture/visual-sitemap-examples-website-designs/)
-- Interaction Design Foundation, [Responsive design](https://www.interaction-design.org/literature/topics/responsive-design)
+- Interaction Design Foundation, [Responsive design](https://ixdf.org/literature/topics/responsive-design)
 - Microsoft, [Responsive design techniques](https://docs.microsoft.com/en-us/windows/uwp/design/layout/responsive-design)
 - UX Planet, [Five navigation patterns](https://uxplanet.org/5-ui-patterns-navigation-that-makes-good-ux-sense-92a65df7485d)
 - Just in Mind, [Deep dive into page design](https://www.justinmind.com/blog/navigation-design-almost-everything-you-need-to-know/)

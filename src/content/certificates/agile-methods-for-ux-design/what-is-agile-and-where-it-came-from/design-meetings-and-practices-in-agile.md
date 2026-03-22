@@ -69,6 +69,6 @@ title: Design Meetings and Practices in Agile
 
 ## References
 
-- Interaction Design Foundation, [Design Sprints](https://www.interaction-design.org/literature/topics/design-sprints)
+- Interaction Design Foundation, [Design Sprints](https://ixdf.org/literature/topics/design-sprints)
 - Jake Knapp, John Zeratsky and Braden Kowitz, [Sprint: How to Solve Big Problems and Test New Ideas in Just Five Days](https://www.thesprintbook.com/book)
-- Interaction Design Foundation, [How (and When) to Run a Design Sprint](https://www.interaction-design.org/master-classes/how-and-when-to-run-a-design-sprint)
+- Interaction Design Foundation, [How (and When) to Run a Design Sprint](https://ixdf.org/master-classes/how-and-when-to-run-a-design-sprint)
