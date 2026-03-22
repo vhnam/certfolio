@@ -139,7 +139,7 @@ export function MobileDrawer({
         onClick={() => setIsOpen(true)}
         aria-label='Open navigation menu'
         aria-expanded={isOpen}
-        className='rounded-md min-h-[44px] min-w-[44px] flex items-center justify-center text-foreground hover:bg-accent/50 transition-colors lg:hidden'
+        className='rounded-md min-h-[44px] min-w-[44px] flex items-center justify-center text-foreground hover:bg-accent/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background lg:hidden'
       >
         <IconMenu2 size={20} strokeWidth={1.75} aria-hidden />
       </button>
@@ -174,7 +174,7 @@ export function MobileDrawer({
           <button
             onClick={closeDrawer}
             aria-label='Close menu'
-            className='rounded-md min-h-[44px] min-w-[44px] flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors'
+            className='rounded-md min-h-[44px] min-w-[44px] flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background'
           >
             <IconX size={18} strokeWidth={1.75} aria-hidden />
           </button>

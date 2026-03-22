@@ -140,11 +140,13 @@ function SidebarGlobalView({
               <IconCertificate
                 size={12}
                 className='text-[color:var(--color-cta)]'
+                aria-hidden
               />
             ) : (
               <IconProgress
                 size={12}
                 className='animate-spin motion-reduce:animate-none text-gray-500 dark:text-gray-400'
+                aria-hidden
               />
             )
           }
@@ -164,6 +166,7 @@ function SidebarGlobalView({
             <IconCertificate
               size={12}
               className='text-[color:var(--color-cta)]'
+              aria-hidden
             />
           }
         >
@@ -216,6 +219,7 @@ function SidebarChapter({
           <IconChevronLeft
             size={13}
             strokeWidth={2}
+            aria-hidden
             className={cn(
               'transition-transform duration-200',
               isExpanded && '-rotate-90'

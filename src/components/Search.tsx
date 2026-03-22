@@ -108,6 +108,7 @@ export function Search() {
     Array<{ id: string; title: string; url: string; excerpt?: string }>
   >([]);
   const lastRequestId = useRef(0);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   // Cmd+K / Ctrl+K shortcut
   useEffect(() => {
@@ -143,6 +144,15 @@ export function Search() {
             : 'Search index not found. Please run `pnpm build` and try again.'
         );
       });
+  }, [open]);
+
+  // Focus search input when dialog opens (desktop only — avoid stealing focus on mobile)
+  useEffect(() => {
+    if (!open) return;
+    const mq = window.matchMedia('(min-width: 768px)');
+    if (!mq.matches) return;
+    const id = requestAnimationFrame(() => searchInputRef.current?.focus());
+    return () => cancelAnimationFrame(id);
   }, [open]);
 
   // Run search on debounced query
@@ -206,6 +216,9 @@ export function Search() {
     if (error) return error;
     const trimmed = query.trim();
     if (!trimmed) return 'Type to search…';
+    if (items.length === 0)
+      return translations.zero_results.replace('[SEARCH_TERM]', trimmed);
+    return '';
   }, [error, items.length, loading, query]);
 
   const srStatus = useMemo(() => {
@@ -259,11 +272,11 @@ export function Search() {
           loop
         >
           <CommandInput
+            ref={searchInputRef}
             value={query}
             onValueChange={setQuery}
             placeholder='Search…'
             aria-label='Search'
-            autoFocus
             className='border-input'
           />
 
@@ -279,28 +292,35 @@ export function Search() {
                 <CommandItem
                   key={it.id}
                   value={it.title}
+                  asChild
                   onSelect={() => {
                     setOpen(false);
-                    window.location.href = it.url;
+                    window.location.assign(it.url);
                   }}
                 >
-                  <div className='min-w-0 flex-1'>
-                    <div className='flex items-center justify-between gap-3'>
-                      <p className='truncate font-semibold text-foreground'>
-                        {it.title}
-                      </p>
-                      <IconArrowRight
-                        className='size-4 shrink-0 text-muted-foreground'
-                        aria-hidden
-                      />
+                  <a
+                    href={it.url}
+                    className='flex min-w-0 flex-col gap-0 rounded-sm px-2 py-1.5 text-left no-underline hover:bg-transparent focus-visible:bg-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background'
+                    onClick={() => setOpen(false)}
+                  >
+                    <div className='min-w-0 flex-1'>
+                      <div className='flex items-center justify-between gap-3'>
+                        <p className='truncate font-semibold text-foreground'>
+                          {it.title}
+                        </p>
+                        <IconArrowRight
+                          className='size-4 shrink-0 text-muted-foreground'
+                          aria-hidden
+                        />
+                      </div>
+                      {it.excerpt && (
+                        <p
+                          className='mt-1 line-clamp-2 text-sm leading-relaxed text-foreground/75'
+                          dangerouslySetInnerHTML={{ __html: it.excerpt }}
+                        />
+                      )}
                     </div>
-                    {it.excerpt && (
-                      <p
-                        className='mt-1 line-clamp-2 text-sm leading-relaxed text-foreground/75'
-                        dangerouslySetInnerHTML={{ __html: it.excerpt }}
-                      />
-                    )}
-                  </div>
+                  </a>
                 </CommandItem>
               ))}
             </CommandGroup>

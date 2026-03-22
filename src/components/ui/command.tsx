@@ -63,14 +63,15 @@ function CommandDialog({
   );
 }
 
-function CommandInput({
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive.Input>) {
+const CommandInput = React.forwardRef<
+  React.ElementRef<typeof CommandPrimitive.Input>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
+>(function CommandInput({ className, ...props }, ref) {
   return (
     <div data-slot='command-input-wrapper' className='p-1 pb-0'>
       <InputGroup className='h-8! rounded-lg! border-input/30 bg-input/30 shadow-none! *:data-[slot=input-group-addon]:pl-2!'>
         <CommandPrimitive.Input
+          ref={ref}
           data-slot='input-group-control'
           data-command-input
           className={cn(
@@ -88,7 +89,8 @@ function CommandInput({
       </InputGroup>
     </div>
   );
-}
+});
+CommandInput.displayName = 'CommandInput';
 
 function CommandList({
   className,
@@ -98,7 +100,7 @@ function CommandList({
     <CommandPrimitive.List
       data-slot='command-list'
       className={cn(
-        'no-scrollbar max-h-72 scroll-py-1 overflow-x-hidden overflow-y-auto outline-none',
+        'no-scrollbar max-h-72 scroll-py-1 overflow-x-hidden overflow-y-auto overscroll-contain outline-none',
         className
       )}
       {...props}
@@ -151,22 +153,30 @@ function CommandSeparator({
 function CommandItem({
   className,
   children,
+  asChild,
   ...props
 }: React.ComponentProps<typeof CommandPrimitive.Item>) {
   return (
     <CommandPrimitive.Item
       data-slot='command-item'
+      asChild={asChild}
       className={cn(
         "group/command-item relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none in-data-[slot=dialog-content]:rounded-lg! data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-selected:bg-muted data-selected:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-selected:*:[svg]:text-foreground",
         className
       )}
       {...props}
     >
-      {children}
-      <IconCheck
-        className='ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100'
-        aria-hidden='true'
-      />
+      {asChild ? (
+        children
+      ) : (
+        <>
+          {children}
+          <IconCheck
+            className='ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100'
+            aria-hidden='true'
+          />
+        </>
+      )}
     </CommandPrimitive.Item>
   );
 }

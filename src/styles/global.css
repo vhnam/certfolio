@@ -7,6 +7,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  color-scheme: light;
   --font-heading: "Archivo Variable", sans-serif;
   --font-sans: "Space Grotesk Variable", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
@@ -213,22 +214,22 @@
   @apply max-w-none;
 
   h1 {
-    @apply mb-4 font-bold tracking-tight text-foreground;
+    @apply mb-4 font-bold tracking-tight text-foreground text-balance;
     font-size: var(--text-h1);
     line-height: 1.05;
   }
   h2 {
-    @apply mb-4 mt-12 font-bold tracking-tight text-foreground;
+    @apply mb-4 mt-12 font-bold tracking-tight text-foreground text-balance;
     font-size: var(--text-h2);
     line-height: 1.15;
   }
   h3 {
-    @apply mb-3 font-semibold text-foreground;
+    @apply mb-3 font-semibold text-foreground text-pretty;
     font-size: var(--text-h3);
     line-height: 1.2;
   }
   h4 {
-    @apply mb-3 mt-6 scroll-mt-23 font-semibold text-foreground;
+    @apply mb-3 mt-6 scroll-mt-23 font-semibold text-foreground text-pretty;
     font-size: var(--text-h4);
     line-height: 1.25;
   }
