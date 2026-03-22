@@ -36,6 +36,15 @@
           "slug": "design-in-the-age-of-ai/recap"
         }
       ]
+    },
+    {
+      "title": "Become an AI-Powered Designer: Research and Ideation",
+      "lessons": [
+        {
+          "title": "Welcome and Introduction",
+          "slug": "become-an-ai-powered-designer-research-and-ideation/welcome-and-introduction"
+        }
+      ]
     }
   ]
 }
