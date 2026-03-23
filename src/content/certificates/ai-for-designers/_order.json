@@ -73,6 +73,15 @@
           "slug": "become-an-ai-powered-designer-research-and-ideation/recap"
         }
       ]
+    },
+    {
+      "title": "Become an AI-Powered Designer: Prototyping and Testing",
+      "lessons": [
+        {
+          "title": "Welcome and Introduction",
+          "slug": "become-an-ai-powered-designer-prototyping-and-testing/welcome-and-introduction"
+        }
+      ]
     }
   ]
 }
