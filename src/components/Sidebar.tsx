@@ -229,7 +229,7 @@ function SidebarChapter({
       </CollapsibleTrigger>
       {chapter.lessons.length > 0 && (
         <CollapsibleContent>
-          <div className='ml-8 mt-1 space-y-1 border-l border-gray-200 dark:border-gray-700 pl-3'>
+          <div className='ml-3 mt-1 space-y-1 border-l border-gray-200 dark:border-gray-700 pl-3'>
             {chapter.lessons.map((lesson) => (
               <SidebarBlockLink
                 key={lesson.slug}
@@ -286,7 +286,7 @@ function SidebarCertView({
         >
           {currentCert.title}
         </a>
-        <p className='text-gray-600 dark:text-gray-400 text-sm'>
+        <p className='text-gray-600 dark:text-gray-400 text-sm px-2'>
           {currentCert.description}
         </p>
       </div>
