@@ -4,7 +4,7 @@ import type {
 } from "@/content.config";
 import type { Chapter } from "@/models/certificate";
 
-export type NavLesson = {
+type NavLesson = {
   title: string;
   slug: string;
   path: string;
@@ -28,7 +28,7 @@ export type NavCertificate = {
 };
 
 /** Shape for _order.json: defines chapter and lesson order per certificate. */
-export type OrderJson = {
+type OrderJson = {
   chapters: {
     title: string;
     lessons: { title: string; slug: string }[];
@@ -87,13 +87,13 @@ export type MasterClassRef = {
 };
 
 /** Certificate collection entry shape (id from loader + data from schema). */
-export type CertificateEntryLike = {
+type CertificateEntryLike = {
   id: string;
   data: CertificateEntryData;
 };
 
 /** Master class collection entry shape (id from loader + data from schema). */
-export type MasterClassEntryLike = {
+type MasterClassEntryLike = {
   id: string;
   data: MasterClassEntryData;
 };
