@@ -147,8 +147,8 @@ function normalizeEntryId(id: string): string {
  * Entry IDs may be relative (certSlug/..., certSlug/index) or absolute
  * (/certificates/certSlug/...); both are normalized for matching.
  *
- * When order (_order.json shape) is provided, chapters and lessons are sorted
- * by that order; any chapters/lessons not listed appear after in alphabetical order.
+ * When order (_order.json shape) is provided, chapters and lessons follow
+ * that order; any chapters/lessons not listed appear afterward in discovery order.
  */
 export function buildCertNavigation(
   entries: CertificateEntryLike[],
@@ -191,15 +191,23 @@ export function buildCertNavigation(
         })
         .filter(Boolean)
     : [];
-  const sortedChapterSlugs = Array.from(chapterSlugs).sort((a, b) => {
-    if (chapterOrderSlugs.length === 0) return a.localeCompare(b);
-    const iA = chapterOrderSlugs.indexOf(normalizeSlugForOrder(a));
-    const iB = chapterOrderSlugs.indexOf(normalizeSlugForOrder(b));
-    if (iA !== -1 && iB !== -1) return iA - iB;
-    if (iA !== -1) return -1;
-    if (iB !== -1) return 1;
-    return a.localeCompare(b);
-  });
+  const discoveredChapterSlugs = Array.from(chapterSlugs);
+  const sortedChapterSlugs =
+    chapterOrderSlugs.length > 0
+      ? [
+          ...chapterOrderSlugs
+            .map((orderedSlug) =>
+              discoveredChapterSlugs.find(
+                (slug) => normalizeSlugForOrder(slug) === orderedSlug,
+              ),
+            )
+            .filter((slug): slug is string => Boolean(slug)),
+          ...discoveredChapterSlugs.filter(
+            (slug) =>
+              !chapterOrderSlugs.includes(normalizeSlugForOrder(slug)),
+          ),
+        ]
+      : discoveredChapterSlugs;
 
   const chapters: NavChapter[] = [];
 
@@ -237,19 +245,32 @@ export function buildCertNavigation(
           return parts.length > 1 ? parts.slice(1).join("/") : l.slug;
         })
       : [];
-    const sortedLessonEntries = [...lessonEntries].sort((a, b) => {
-      const idA = normalizeEntryId(a.id);
-      const idB = normalizeEntryId(b.id);
-      const relA = idA.slice(chapterPrefix.length).replace(/\/index$/, "");
-      const relB = idB.slice(chapterPrefix.length).replace(/\/index$/, "");
-      if (lessonOrderSlugs.length === 0) return idA.localeCompare(idB);
-      const iA = lessonOrderSlugs.indexOf(relA);
-      const iB = lessonOrderSlugs.indexOf(relB);
-      if (iA !== -1 && iB !== -1) return iA - iB;
-      if (iA !== -1) return -1;
-      if (iB !== -1) return 1;
-      return idA.localeCompare(idB);
-    });
+    const lessonOrderKeys = lessonOrderSlugs.map(normalizeLessonSlugForOrder);
+    const sortedLessonEntries =
+      lessonOrderKeys.length > 0
+        ? [
+            ...lessonOrderKeys
+              .map((orderedKey) =>
+                lessonEntries.find((entry) => {
+                  const id = normalizeEntryId(entry.id);
+                  const rel = id
+                    .slice(chapterPrefix.length)
+                    .replace(/\/index$/, "");
+                  return normalizeLessonSlugForOrder(rel) === orderedKey;
+                }),
+              )
+              .filter(
+                (entry): entry is CertificateEntryLike => Boolean(entry),
+              ),
+            ...lessonEntries.filter((entry) => {
+              const id = normalizeEntryId(entry.id);
+              const rel = id
+                .slice(chapterPrefix.length)
+                .replace(/\/index$/, "");
+              return !lessonOrderKeys.includes(normalizeLessonSlugForOrder(rel));
+            }),
+          ]
+        : lessonEntries;
 
     const lessons = sortedLessonEntries.map((e, lessonIndex) => {
       const id = normalizeEntryId(e.id);
@@ -344,6 +365,12 @@ export function buildCertList(entries: CertificateEntryLike[]): CertRef[] {
 /** Normalize slug for comparison (e.g. "optimizing your code" vs "optimizing-your-code"). */
 function normalizeSlugForOrder(slug: string): string {
   return slug.replace(/\s+/g, "-").toLowerCase();
+}
+
+function normalizeLessonSlugForOrder(slug: string): string {
+  const parts = slug.split("/").filter(Boolean);
+  const leaf = parts.length > 0 ? parts[parts.length - 1] : slug;
+  return normalizeSlugForOrder(leaf);
 }
 
 function formatSlug(slug: string): string {
