@@ -2,7 +2,7 @@
 title: "5 Common Low-Fidelity Prototypes and Their Best Practices"
 ---
 
-![Illustration of different prototyping methods. They are Sketches, Paper, Lego, Digital, and Wizard of OZ.](../../../../assets/images/design-thinking-the-ultimate-guide/5-common-low-fidelity-prototypes-and-their-best-practices/5-common-low-fidelity-prototypes.avif)
+![Illustration of different prototyping methods. They are Sketches, Paper, Lego, Digital, and Wizard of OZ.](../../../../assets/images/design-thinking-the-ultimate-guide/stage-4-prototyping-your-ideas/5-common-low-fidelity-prototypes.avif)
 
 ## Overview of Low-Fidelity Prototypes
 
