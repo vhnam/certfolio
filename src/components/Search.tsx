@@ -40,6 +40,32 @@ function formatURL(url: string): string {
     : `${base}${normalized.startsWith('/') ? '' : '/'}${normalized}`;
 }
 
+function stripHtmlToText(html: string): string {
+  // Pagefind excerpts may include markup for emphasis/highlights.
+  // For safety, we render excerpt text only (no HTML rendering).
+  if (typeof window === 'undefined') {
+    return (
+      html
+        .replace(/<[^>]*>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim() || ''
+    );
+  }
+
+  try {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    return (doc.body?.textContent ?? '').replace(/\s+/g, ' ').trim() || '';
+  } catch {
+    // Fallback: strip tags if DOMParser fails for any reason.
+    return (
+      html
+        .replace(/<[^>]*>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim() || ''
+    );
+  }
+}
+
 const translations: Record<string, string> = {
   placeholder: 'Search…',
   zero_results: 'No results for "[SEARCH_TERM]"',
@@ -180,11 +206,12 @@ export function Search() {
             const d = await r.data();
             const url = formatURL(d.url);
             const title = d.meta?.title?.trim() || url;
+            const excerpt = d.excerpt ? stripHtmlToText(d.excerpt) : undefined;
             return {
               id: r.id,
               title,
               url,
-              excerpt: d.excerpt,
+              excerpt,
             };
           })
         );
@@ -316,8 +343,9 @@ export function Search() {
                       {it.excerpt && (
                         <p
                           className='mt-1 line-clamp-2 text-sm leading-relaxed text-foreground/75'
-                          dangerouslySetInnerHTML={{ __html: it.excerpt }}
-                        />
+                        >
+                          {it.excerpt}
+                        </p>
                       )}
                     </div>
                   </a>
