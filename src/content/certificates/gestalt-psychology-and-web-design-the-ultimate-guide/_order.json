@@ -64,6 +64,15 @@
           "slug": "an-introduction-to-gestalt-psychology/recap"
         }
       ]
+    },
+    {
+      "title": "The Gestalt Principles of Perceptual Organisation",
+      "lessons": [
+        {
+          "title": "The Law of Similarity",
+          "slug": "the-gestalt-principles-of-perceptual-organisation/the-law-of-similarity"
+        }
+      ]
     }
   ]
 }
