@@ -121,6 +121,15 @@
           "slug": "the-gestalt-principles-of-perceptual-organisation/octavio-ocampo-playing-with-perception"
         }
       ]
+    },
+    {
+      "title": "The Gestalt Principles in Web Design",
+      "lessons": [
+        {
+          "title": "The Law of Similarity: Gestalt and Web Design",
+          "slug": "the-gestalt-principles-in-web-design/the-law-of-similarity-gestalt-and-web-design"
+        }
+      ]
     }
   ]
 }
