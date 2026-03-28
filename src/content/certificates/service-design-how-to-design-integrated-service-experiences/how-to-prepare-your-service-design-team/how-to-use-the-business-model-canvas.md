@@ -2,7 +2,7 @@
 title: "How to Use the Business Model Canvas"
 ---
 
-![Business Model Canvas](../../../../assets/images/service-design-how-to-design-integrated-service-experiences/how-to-prepare-your-service-design-team/business-model-canvas.avif)
+![Business Model Canvas](../../../../assets/images/service-design-how-to-design-integrated-service-experiences/how-to-prepare-your-service-design-team/the-business-model-canvas.avif)
 
 ## Business Model Canvas
 
