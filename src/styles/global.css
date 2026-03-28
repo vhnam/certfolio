@@ -299,6 +299,10 @@
   }
   img {
     @apply my-6 rounded-lg bg-white;
+
+    & + em {
+      @apply text-sm block mb-4 text-muted-foreground;
+    }
   }
   video {
     @apply my-6;
