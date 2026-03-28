@@ -341,9 +341,7 @@ export function Search() {
                         />
                       </div>
                       {it.excerpt && (
-                        <p
-                          className='mt-1 line-clamp-2 text-sm leading-relaxed text-foreground/75'
-                        >
+                        <p className='mt-1 line-clamp-2 text-sm leading-relaxed text-foreground/75'>
                           {it.excerpt}
                         </p>
                       )}

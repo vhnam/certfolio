@@ -203,8 +203,7 @@ export function buildCertNavigation(
             )
             .filter((slug): slug is string => Boolean(slug)),
           ...discoveredChapterSlugs.filter(
-            (slug) =>
-              !chapterOrderSlugs.includes(normalizeSlugForOrder(slug)),
+            (slug) => !chapterOrderSlugs.includes(normalizeSlugForOrder(slug)),
           ),
         ]
       : discoveredChapterSlugs;
@@ -259,15 +258,15 @@ export function buildCertNavigation(
                   return normalizeLessonSlugForOrder(rel) === orderedKey;
                 }),
               )
-              .filter(
-                (entry): entry is CertificateEntryLike => Boolean(entry),
-              ),
+              .filter((entry): entry is CertificateEntryLike => Boolean(entry)),
             ...lessonEntries.filter((entry) => {
               const id = normalizeEntryId(entry.id);
               const rel = id
                 .slice(chapterPrefix.length)
                 .replace(/\/index$/, "");
-              return !lessonOrderKeys.includes(normalizeLessonSlugForOrder(rel));
+              return !lessonOrderKeys.includes(
+                normalizeLessonSlugForOrder(rel),
+              );
             }),
           ]
         : lessonEntries;

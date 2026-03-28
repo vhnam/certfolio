@@ -2,7 +2,7 @@
 title: "From Prototype to Product: Ensure That Your Solution Is Feasible and Viable"
 ---
 
-![Three circles with the words desirability (humans), feasability (tech) and viability (business). The word &quot;goal&quot; is at the intersection of the three circles.](../../../../assets/images/design-thinking-the-ultimate-guide/stage-4-prototyping-your-ideas/from-prototype-to-product-ensure-that-your-solution-is-feasible-and-viable-hero-image.avif)
+![Three circles with the words desirability (humans), feasability (tech) and viability (business). The word "goal" is at the intersection of the three circles.](../../../../assets/images/design-thinking-the-ultimate-guide/stage-4-prototyping-your-ideas/from-prototype-to-product-ensure-that-your-solution-is-feasible-and-viable-hero-image.avif)
 
 ## Overview
 
