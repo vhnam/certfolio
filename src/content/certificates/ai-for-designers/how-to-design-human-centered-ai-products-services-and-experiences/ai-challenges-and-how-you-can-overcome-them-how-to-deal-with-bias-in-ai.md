@@ -22,6 +22,8 @@ Impacts:
 
 ## Types of Bias in AI
 
+![A Figure that represents categories of AI bias. From the article "Towards a Standard for Identifying and Managing Bias in Artificial Intelligence" by Reva Schwartz, Apostol Vassilev, Kristen K. Greene, Lori Perine, Andrew Burt, Patrick Hall](../../../../assets/images/ai-for-designers/how-to-design-human-centered-ai-products-services-and-experiences/categories-of-ai-bias.avif)
+
 ### Human Bias
 
 - Originates from individuals creating or labeling data
