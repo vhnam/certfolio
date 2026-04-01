@@ -228,6 +228,15 @@
           "slug": "stage-4-prototyping-your-ideas/recap"
         }
       ]
+    },
+    {
+      "title": "Stage 5: How to Test Your Design Solutions",
+      "lessons": [
+        {
+          "title": "Welcome and Introduction",
+          "slug": "stage-5-testing-design-solutions/welcome-and-introduction"
+        }
+      ]
     }
   ]
 }
