@@ -110,6 +110,15 @@
           "slug": "become-an-ai-powered-designer-prototyping-and-testing/recap"
         }
       ]
+    },
+    {
+      "title": "How to Design Human-Centered AI Products, Services, and Experiences",
+      "lessons": [
+        {
+          "title": "Welcome and Introduction",
+          "slug": "how-to-design-human-centered-ai-products-services-and-experiences/welcome-and-introduction"
+        }
+      ]
     }
   ]
 }
